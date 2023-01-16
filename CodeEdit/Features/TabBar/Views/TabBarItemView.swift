@@ -179,6 +179,7 @@ struct TabBarItemView: View {
                         .padding(0)
                         .opacity(0)
                         .keyboardShortcut("w", modifiers: [.command])
+                        .allowsHitTesting(false)
                     }
                     // Switch Tab Shortcut:
                     // Using an invisible button to contain the keyboard shortcut is simply
@@ -196,6 +197,7 @@ struct TabBarItemView: View {
                         modifiers: [.command]
                     )
                     .background(.blue)
+                    .allowsHitTesting(false)
                     // Close button.
                     Button(action: closeAction) {
                         if prefs.preferences.general.tabBarStyle == .xcode {
