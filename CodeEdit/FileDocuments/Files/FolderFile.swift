@@ -5,11 +5,11 @@
 //  Created by Wouter Hennen on 15/01/2023.
 //
 
-import Foundation
+import SwiftUI
 
 class FolderFile: ObservableObject, Identifiable {
 
-    private var parent: FileType
+    var parent: FileType
 
     private var fileWrapper: FileWrapper
 
@@ -29,6 +29,14 @@ class FolderFile: ObservableObject, Identifiable {
         self.init(fileWrapper: fileWrapper, parent: .root(url: root))
     }
 
+    var icon: NSImage? {
+        fileWrapper.icon
+    }
+
+    var fileName: String! {
+        fileWrapper.filename!
+    }
+
     var url: URL {
         switch parent {
         case .child(let parent):
@@ -42,12 +50,13 @@ class FolderFile: ObservableObject, Identifiable {
 
     var children: [File] {
         fileWrapper.fileWrappers!.values.sorted { $0.filename! < $1.filename! }.map {
+            
             if $0.isDirectory {
                 return File.folder(.init(fileWrapper: $0, parent: self))
             } else if $0.isRegularFile {
                 return File.file(.init(fileWrapper: $0, parent: self))
             } else {
-                fatalError("Symbolic link is not implemented yet")
+                return File.symlink(.init(fileWrapper: $0, parent: self))
             }
         }
     }

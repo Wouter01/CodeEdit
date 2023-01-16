@@ -11,8 +11,11 @@ import Combine
 /// Wraps an ``OutlineViewController`` inside a `NSViewControllerRepresentable`
 struct OutlineView: NSViewControllerRepresentable {
 
+//    @EnvironmentObject
+//    var workspace: WorkspaceDocument
+
     @EnvironmentObject
-    var workspace: WorkspaceDocument
+    var workspace2: WorkspaceFiles
 
     @StateObject
     var prefs: AppPreferencesModel = .shared
@@ -21,10 +24,10 @@ struct OutlineView: NSViewControllerRepresentable {
 
     func makeNSViewController(context: Context) -> OutlineViewController {
         let controller = OutlineViewController()
-        controller.workspace = workspace
+        controller.workspace2 = workspace2
         controller.iconColor = prefs.preferences.general.fileIconStyle
 
-        context.coordinator.controller = controller
+//        context.coordinator.controller = controller
 
         return controller
     }
@@ -39,30 +42,30 @@ struct OutlineView: NSViewControllerRepresentable {
         return
     }
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator(workspace)
+    func makeCoordinator() {
+//        Coordinator(workspace)
     }
 
-    class Coordinator: NSObject {
-        init(_ workspace: WorkspaceDocument) {
-            self.workspace = workspace
-            super.init()
-
-            listener = workspace.listenerModel.$highlightedFileItem
-                .sink(receiveValue: { [weak self] fileItem in
-                guard let fileItem = fileItem else {
-                    return
-                }
-                self?.controller?.reveal(fileItem)
-            })
-        }
-
-        var listener: AnyCancellable?
-        var workspace: WorkspaceDocument
-        var controller: OutlineViewController?
-
-        deinit {
-            listener?.cancel()
-        }
-    }
+//    class Coordinator: NSObject {
+//        init(_ workspace: WorkspaceDocument) {
+//            self.workspace = workspace
+//            super.init()
+//
+//            listener = workspace.listenerModel.$highlightedFileItem
+//                .sink(receiveValue: { [weak self] fileItem in
+//                guard let fileItem = fileItem else {
+//                    return
+//                }
+//                self?.controller?.reveal(fileItem)
+//            })
+//        }
+//
+//        var listener: AnyCancellable?
+//        var workspace: WorkspaceDocument
+//        var controller: OutlineViewController?
+//
+//        deinit {
+//            listener?.cancel()
+//        }
+//    }
 }

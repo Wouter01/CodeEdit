@@ -7,17 +7,45 @@
 
 import SwiftUI
 
-// This filters out the default Sidebar Toggle ToolbarItem.
+// This will make the gray center bar have a reliable minimum and maximum size.
 extension NSToolbar {
 
     @objc var itemsSwizzled: [NSToolbarItem] {
-        self.itemsSwizzled.filter { $0.itemIdentifier.rawValue != "com.apple.SwiftUI.navigationSplitView.toggleSidebar" }
+        return self.itemsSwizzled
+            .map {
+                if $0.itemIdentifier.rawValue == "CenterSection" {
+                    $0.minSize = .init(width: 100, height: 25)
+                    $0.maxSize = .init(width: 400, height: 25)
+                }
+                return $0
+            }
     }
 
     static func swizzle() {
         swizzle(#selector (getter: items), #selector (getter: itemsSwizzled))
+        NSObject.swizzleSwiftUIToolbar()
     }
 }
+
+// Bugfix for SwiftUI: SwiftUI will crash if multiple window toolbar sections have spacers.
+// This is because SwiftUI injects too much splitview tracking separators when spacers are added.
+// To fix this, dummy spacers defined in SwiftUI are replaced with default flexible space.
+// Also, SwiftUI's default sidebar toggle is filtered out.
+extension NSObject {
+    @objc func defaultSwizzle(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        defaultSwizzle(toolbar)
+            .replacing([.init("FakeSpacer")], with: [.flexibleSpace])
+            .filter { $0.rawValue != "com.apple.SwiftUI.navigationSplitView.toggleSidebar" }
+    }
+
+    fileprivate static func swizzleSwiftUIToolbar() {
+        let originalMethodSet = class_getInstanceMethod(NSClassFromString("SwiftUI.ToolbarPlatformDelegate"), #selector(NSToolbarDelegate.toolbarDefaultItemIdentifiers(_:)))
+        let swizzledMethodSet = class_getInstanceMethod(self as AnyClass, #selector(defaultSwizzle))
+
+        method_exchangeImplementations(originalMethodSet!, swizzledMethodSet!)
+    }
+}
+
 
 // This will set the last column in a 3-column NavigationSplitView to an inspector state.
 extension NSSplitViewController {
@@ -30,6 +58,7 @@ extension NSSplitViewController {
             inspector.titlebarSeparatorStyle = .none
             inspector.canCollapse = true
             inspector.holdingPriority = newValue[0].holdingPriority
+            inspector.isSpringLoaded = true
         }
 
         setItemsSwizzled(newValue)
@@ -56,6 +85,7 @@ extension NSVisualEffectView {
     static func swizzle() {
         swizzle(#selector(setter: material), #selector(setMaterialSwizzled))
     }
+
 }
 
 extension NSObject {

@@ -13,7 +13,7 @@ import SwiftUI
 /// currently open project.
 final class OutlineViewController: NSViewController {
 
-    typealias Item = WorkspaceClient.FileItem
+    typealias Item = File
 
     var scrollView: NSScrollView!
     var outlineView: NSOutlineView!
@@ -22,14 +22,15 @@ final class OutlineViewController: NSViewController {
     ///
     /// Also creates a top level item "root" which represents the projects root directory and automatically expands it.
     private var content: [Item] {
-        guard let folderURL = workspace?.workspaceClient?.folderURL() else { return [] }
-        let children = workspace?.fileItems.sortItems(foldersOnTop: true)
-        guard let root = try? workspace?.workspaceClient?.getFileItem(folderURL.path) else { return [] }
-        root.children = children
-        return [root]
+//        guard let folderURL = workspace?.workspaceClient?.folderURL() else { return [] }
+//        let children = workspace?.fileItems.sortItems(foldersOnTop: true)
+//        guard let root = try? workspace?.workspaceClient?.getFileItem(folderURL.path) else { return [] }
+//        root.children = children
+        return [workspace2.root]
     }
 
-    var workspace: WorkspaceDocument?
+//    var workspace: WorkspaceDocument?
+    var workspace2: WorkspaceFiles!
 
     var iconColor: AppPreferences.FileIconStyle = .color
     var fileExtensionsVisibility: AppPreferences.FileExtensionsVisibility = .showAll
@@ -56,8 +57,8 @@ final class OutlineViewController: NSViewController {
         self.outlineView = NSOutlineView()
         self.outlineView.dataSource = self
         self.outlineView.delegate = self
-        self.outlineView.autosaveExpandedItems = true
-        self.outlineView.autosaveName = workspace?.workspaceClient?.folderURL()?.path ?? ""
+        self.outlineView.autosaveExpandedItems = false
+        self.outlineView.autosaveName = ""
         self.outlineView.headerView = nil
         self.outlineView.menu = OutlineMenu(sender: self.outlineView)
         self.outlineView.menu?.delegate = self
@@ -87,12 +88,12 @@ final class OutlineViewController: NSViewController {
     ///
     /// Most importantly when the `id` changes from an external view.
     func updateSelection() {
-        guard let itemID = workspace?.selectionState.selectedId else {
-            outlineView.deselectRow(outlineView.selectedRow)
-            return
-        }
-
-        select(by: itemID, from: content)
+//        guard let itemID = workspace?.selectionState.selectedId else {
+//            outlineView.deselectRow(outlineView.selectedRow)
+//            return
+//        }
+        
+//        select(by: itemID, from: content)
     }
 
     /// Expand or collapse the folder on double click
@@ -100,16 +101,16 @@ final class OutlineViewController: NSViewController {
     private func onItemDoubleClicked() {
         guard let item = outlineView.item(atRow: outlineView.clickedRow) as? Item else { return }
 
-        if item.children != nil {
+        switch item {
+        case .folder:
             if outlineView.isItemExpanded(item) {
                 outlineView.collapseItem(item)
             } else {
                 outlineView.expandItem(item)
             }
-        } else {
-            if workspace?.selectionState.temporaryTab == item.tabID {
-                workspace?.convertTemporaryTab()
-            }
+        case .file, .symlink:
+            // TODO: open file
+            break
         }
     }
 
@@ -117,11 +118,12 @@ final class OutlineViewController: NSViewController {
     /// - Parameter item: The `FileItem` to get the color for
     /// - Returns: A `NSColor` for the given `FileItem`.
     private func color(for item: Item) -> NSColor {
-        if item.children == nil && iconColor == .color {
-            return NSColor(item.iconColor)
-        } else {
-            return .secondaryLabelColor
-        }
+        return .blue
+//        if item.children == nil && iconColor == .color {
+//            return NSColor(item.iconColor)
+//        } else {
+//            return .secondaryLabelColor
+//        }
     }
 
 }
@@ -130,24 +132,34 @@ final class OutlineViewController: NSViewController {
 
 extension OutlineViewController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if let item = item as? Item {
-            return item.children?.count ?? 0
+        switch item as? Item {
+        case .folder(let folder):
+            return folder.children.count
+        case .file, .symlink:
+            return 0
+        case .none:
+            return content.count
         }
-        return content.count
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        if let item = item as? Item,
-           let children = item.children {
-            return children[index]
+        print("GEtting child \(index)")
+        switch item as? Item {
+        case .folder(let folder):
+            print(folder.children[index])
+            return folder.children[index]
+        default:
+            return content[index]
         }
-        return content[index]
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        if let item = item as? Item {
-            return item.children != nil
+
+        if case .folder = item as? Item {
+            print("Is Expandable")
+            return true
         }
+        print("Is Not Expandable")
         return false
     }
 }
@@ -169,6 +181,8 @@ extension OutlineViewController: NSOutlineViewDelegate {
 
         let frameRect = NSRect(x: 0, y: 0, width: tableColumn.width, height: rowHeight)
 
+        print("MAking cell \( OutlineTableViewCell(frame: frameRect, item: item as? Item, delegate: self))")
+
         return OutlineTableViewCell(frame: frameRect, item: item as? Item, delegate: self)
     }
 
@@ -181,9 +195,13 @@ extension OutlineViewController: NSOutlineViewDelegate {
 
         guard let item = outlineView.item(atRow: selectedIndex) as? Item else { return }
 
-        if item.children == nil && shouldSendSelectionUpdate {
-            workspace?.openTab(item: item)
-        }
+        print("Selected \(item.fileName)")
+        workspace2.selection = item
+
+        // TODO: open tab
+//        if item.children == nil && shouldSendSelectionUpdate {
+//            workspace?.openTab(item: item)
+//        }
     }
 
     func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
@@ -195,9 +213,8 @@ extension OutlineViewController: NSOutlineViewDelegate {
     func outlineViewItemDidCollapse(_ notification: Notification) {}
 
     func outlineView(_ outlineView: NSOutlineView, itemForPersistentObject object: Any) -> Any? {
-        guard let id = object as? Item.ID,
-              let item = try? workspace?.workspaceClient?.getFileItem(id) else { return nil }
-        return item
+        guard let id = object as? Item.ID else { return nil }
+        return workspace2.searchFile(with: id)
     }
 
     func outlineView(_ outlineView: NSOutlineView, persistentObjectForItem item: Any?) -> Any? {
@@ -209,37 +226,36 @@ extension OutlineViewController: NSOutlineViewDelegate {
     /// - Parameters:
     ///   - id: the id of the item item
     ///   - collection: the array to search for
-    private func select(by id: TabBarItemID, from collection: [Item]) {
-        // If the user has set "Reveal file on selection change" to on, we need to reveal the item before
-        // selecting the row.
-        if AppPreferencesModel.shared.preferences.general.revealFileOnFocusChange,
-           case let .codeEditor(id) = id,
-           let fileItem = try? workspace?.workspaceClient?.getFileItem(id as Item.ID) as? Item {
-            reveal(fileItem)
-        }
-
-        guard let item = collection.first(where: { $0.tabID == id }) else {
-            for item in collection {
-                select(by: id, from: item.children ?? [])
-            }
-            return
-        }
-        let row = outlineView.row(forItem: item)
-        if row == -1 {
-            outlineView.deselectRow(outlineView.selectedRow)
-        }
-        shouldSendSelectionUpdate = false
-        outlineView.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
-        shouldSendSelectionUpdate = true
-    }
+//    private func select(by id: TabBarItemID, from collection: [Item]) {
+//        // If the user has set "Reveal file on selection change" to on, we need to reveal the item before
+//        // selecting the row.
+//        if AppPreferencesModel.shared.preferences.general.revealFileOnFocusChange,
+//           case let .codeEditor(id) = id,
+//           let fileItem = try? workspace?.workspaceClient?.getFileItem(id as Item.ID) as? Item {
+//            reveal(fileItem)
+//        }
+//
+//        guard let item = collection.first(where: { $0.tabID == id }) else {
+//            for item in collection {
+//                select(by: id, from: item.children ?? [])
+//            }
+//            return
+//        }
+//        let row = outlineView.row(forItem: item)
+//        if row == -1 {
+//            outlineView.deselectRow(outlineView.selectedRow)
+//        }
+//        shouldSendSelectionUpdate = false
+//        outlineView.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
+//        shouldSendSelectionUpdate = true
+//    }
 
     /// Reveals the given `fileItem` in the outline view by expanding all the parent directories of the file.
     /// If the file is not found, it will present an alert saying so.
     /// - Parameter fileItem: The file to reveal.
     public func reveal(_ fileItem: Item) {
-        if let parent = fileItem.parent {
-            expandParent(item: parent)
-        }
+        expandParent(item: fileItem.parent)
+
         let row = outlineView.row(forItem: fileItem)
         outlineView.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
 
@@ -256,11 +272,14 @@ extension OutlineViewController: NSOutlineViewDelegate {
 
     /// Method for recursively expanding a file's parent directories.
     /// - Parameter item:
-    private func expandParent(item: Item) {
-        if let parent = item.parent as Item? {
-            expandParent(item: parent)
+    private func expandParent(item: FileType) {
+        switch item {
+        case .child(let parent):
+            expandParent(item: parent.parent)
+            outlineView.expandItem(parent)
+        case .root(let url):
+            break
         }
-        outlineView.expandItem(item)
     }
 }
 
@@ -280,8 +299,8 @@ extension OutlineViewController: NSMenuDelegate {
             menu.item = nil
         } else {
             if let item = outlineView.item(atRow: row) as? Item {
-                menu.item = item
-                menu.workspace = workspace
+//                menu.item = item
+//                menu.workspace = workspace
             } else {
                 menu.item = nil
             }
@@ -293,9 +312,11 @@ extension OutlineViewController: NSMenuDelegate {
 // MARK: - OutlineTableViewCellDelegate
 
 extension OutlineViewController: OutlineTableViewCellDelegate {
+
+
     func moveFile(file: Item, to destination: URL) {
-        workspace?.closeTab(item: .codeEditor(file.id))
-        file.move(to: destination)
-        workspace?.openTab(item: file)
+//        workspace?.closeTab(item: .codeEditor(file.id))
+//        file.move(to: destination)
+//        workspace?.openTab(item: file)
     }
 }

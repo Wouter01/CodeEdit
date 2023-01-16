@@ -16,7 +16,7 @@ class DataFile: ObservableObject, Identifiable {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    private var parent: FileType
+    var parent: FileType
 
     init(fileWrapper: FileWrapper, parent: FileType) {
         guard fileWrapper.isRegularFile else {
@@ -41,6 +41,10 @@ class DataFile: ObservableObject, Identifiable {
 
     convenience init(fileWrapper: FileWrapper, root: URL) {
         self.init(fileWrapper: fileWrapper, parent: .root(url: root))
+    }
+
+    var icon: NSImage? {
+        fileWrapper.icon
     }
 
     var url: URL {

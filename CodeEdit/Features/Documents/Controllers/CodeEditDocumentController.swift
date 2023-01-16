@@ -85,14 +85,14 @@ extension NSDocumentController {
     }
 
     final func updateRecent(_ url: URL) {
-        var recentProjectPaths: [String] = UserDefaults.standard.array(
-            forKey: "recentProjectPaths"
-        ) as? [String] ?? []
-        if let containedIndex = recentProjectPaths.firstIndex(of: url.path) {
-            recentProjectPaths.move(fromOffsets: IndexSet(integer: containedIndex), toOffset: 0)
-        } else {
-            recentProjectPaths.insert(url.path, at: 0)
-        }
-        UserDefaults.standard.set(recentProjectPaths, forKey: "recentProjectPaths")
+//        var recentProjectPaths: [String] = UserDefaults.standard.array(
+//            forKey: "recentProjectPaths"
+//        ) as? [String] ?? []
+//        if let containedIndex = recentProjectPaths.firstIndex(of: url.path) {
+//            recentProjectPaths.move(fromOffsets: IndexSet(integer: containedIndex), toOffset: 0)
+//        } else {
+//            recentProjectPaths.insert(url.path, at: 0)
+//        }
+//        UserDefaults.standard.set(recentProjectPaths, forKey: "recentProjectPaths")
     }
 }

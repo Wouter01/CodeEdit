@@ -17,6 +17,7 @@ import SwiftUI
 struct ProjectNavigatorView: View {
 
     var body: some View {
-        OutlineView()
+//        OutlineView()
+        VStack {}
     }
 }

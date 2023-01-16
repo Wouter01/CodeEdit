@@ -14,6 +14,7 @@ struct WorkspaceSplitView: View {
     @Environment(\.toggleInspector) var toggleInspector
     @State var visibility = NavigationSplitViewVisibility.automatic
 
+    @State var showPopover = false
     @State var currentOpen: File?
 
     var body: some View {
@@ -21,9 +22,9 @@ struct WorkspaceSplitView: View {
             NavigatorView(currentOpen: $currentOpen)
 
                 .navigationSplitViewColumnWidth(min: 200, ideal: 300)
-                .toolbar(id: "Sidebarr") {
+                .toolbar(id: "AltSidebar") {
 
-                    ToolbarItem(id: "toggleSidebarr") {
+                    ToolbarItem(id: "ToggleSidebar") {
                         Button {
                             withAnimation {
                                 if visibility == .all {
@@ -40,24 +41,90 @@ struct WorkspaceSplitView: View {
                 }
 
         } content: {
+            VStack {
+                if case .file(let data) = files.selection {
+                    WorkspaceFileEditor(file: data)
+                }
+            }
+            .navigationSplitViewColumnWidth(min: 500, ideal: 500)
+            .toolbar(id: "Editor") {
 
-            if case .file(let data) = currentOpen {
-                WorkspaceFileEditor(file: data)
-
-                .toolbar(id: "Content") {
-                    ToolbarItem(id: "TestButto2n", showsByDefault: false) {
-                        Button("Hello2") {
-
+                ToolbarItem(id: "SourceControl", placement: .navigation, showsByDefault: true) {
+                    HStack {
+                        Image(systemName: "plus")
+                            .fontWeight(.black)
+                        VStack(alignment: .leading) {
+                            Text("Git Control")
+                                .fontWeight(.bold)
+                            Text("Main")
+                                .font(.caption)
                         }
-                        .focusable()
+                    }
+                }
+
+                ToolbarItem(id: "FakeSpacer") {
+                    Divider()
+                }
+
+                ToolbarItem(id: "CenterSection", showsByDefault: true) {
+
+
+                    HStack {
+
+                        Button("EXample") {
+                            showPopover.toggle()
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.leading, 4)
+
+                        .popover(isPresented: $showPopover, arrowEdge: .bottom) {
+                            VStack {
+                                Text("HEllo")
+                            }
+                            .padding(10)
+                        }
+
+                        Spacer()
+
+                        Image(nsImage: NSApp.applicationIconImage)
+                            .resizable()
+                            .scaledToFit()
+                            .padding(2)
+
+                    }
+                    .background {
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(.gray.opacity(0.2))
                     }
 
-                    ToolbarItem(id: "TestButton", placement: .primaryAction) {
-                        Button("Hello") {
+                }
+
+                ToolbarItem(id: "WarningAndErrorButtons") {
+                    HStack {
+                        Button {
+
+                        } label: {
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundColor(.yellow)
+                                Text("1")
+                            }
 
                         }
-                        .focusable()
+                        Button {
+
+                        } label: {
+                            HStack {
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(.red)
+                                Text("1")
+                            }
+                        }
                     }
+                }
+
+                ToolbarItem(id: "FakeSpacer") {
+                    Divider()
                 }
             }
         } detail: {
@@ -71,21 +138,21 @@ struct WorkspaceSplitView: View {
                 Divider()
             }
             .formStyle(.grouped)
-            .toolbar(id: "Detail") {
-                ToolbarItem(id: "flexibleSpace", placement: .automatic) {
+            .toolbar(id: "Inspector") {
+                ToolbarItem(id: "Spacer") {
                     Spacer()
                 }
 
-                ToolbarItem(id: "ShowInspector") {
+                ToolbarItem(id: "ToggleInspectorButton") {
                     Button {
                         toggleInspector()
                     } label: {
                         Image(systemName: "sidebar.right")
                     }
+                    .controlSize(.large)
                 }
             }
         }
-
     }
 }
 

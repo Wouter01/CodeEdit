@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol OutlineTableViewCellDelegate: AnyObject {
-    func moveFile(file: WorkspaceClient.FileItem, to destination: URL)
+    func moveFile(file: File, to destination: URL)
 }
 
 /// A `NSTableCellView` showing an ``icon`` and a ``label``
@@ -16,7 +16,7 @@ final class OutlineTableViewCell: NSTableCellView {
 
     var label: NSTextField!
     var icon: NSImageView!
-    private var fileItem: WorkspaceClient.FileItem!
+    private var fileItem: File!
     private var delegate: OutlineTableViewCellDelegate?
 
     private let prefs = AppPreferencesModel.shared.preferences.general
@@ -27,7 +27,7 @@ final class OutlineTableViewCell: NSTableCellView {
     ///   - frameRect: The frame of the cell.
     ///   - item: The file item the cell represents.
     ///   - isEditable: Set to true if the user should be able to edit the file name.
-    init(frame frameRect: NSRect, item: WorkspaceClient.FileItem?,
+    init(frame frameRect: NSRect, item: File?,
          isEditable: Bool = true,
          delegate: OutlineTableViewCellDelegate? = nil) {
         super.init(frame: frameRect)
@@ -73,12 +73,12 @@ final class OutlineTableViewCell: NSTableCellView {
         self.label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 
         if let item = item {
-            let image = NSImage(systemSymbolName: item.systemImage, accessibilityDescription: nil)!
+//            let image = NSImage(systemSymbolName: item.systemImage, accessibilityDescription: nil)!
             fileItem = item
-            icon.image = image
-            icon.contentTintColor = color(for: item)
+            icon.image = item.icon ?? .init()
+//            icon.contentTintColor = color(for: item)
 
-            label.stringValue = label(for: item)
+            label.stringValue = item.fileName
         }
     }
 
@@ -150,7 +150,8 @@ extension OutlineTableViewCell: NSTextFieldDelegate {
             let destinationURL = fileItem.url
                 .deletingLastPathComponent()
                 .appendingPathComponent(label?.stringValue ?? "")
-            delegate?.moveFile(file: fileItem, to: destinationURL)
+            // TODO: move file
+//            delegate?.moveFile(file: fileItem, to: destinationURL)
         } else {
             label?.stringValue = fileItem.fileName
         }

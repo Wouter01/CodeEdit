@@ -12,5 +12,10 @@ struct WorkspaceScene: Scene {
         DocumentGroup(viewing: ReferenceWorkspaceFileDocument.self) { config in
             WorkspaceMainView(files: .init(root: config.document.baseRoot, rootURL: config.fileURL!))
         }
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .commands {
+            ToolbarCommands()
+        }
+//        .windowStyle(.hiddenTitleBar)
     }
 }
