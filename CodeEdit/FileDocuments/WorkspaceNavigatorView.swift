@@ -51,14 +51,6 @@ struct NavigatorView: View {
     }
 }
 
-extension OutlineViewController {
-
-    func contextMenu() {
-        outlineView.menu = .init(title: "Hello")
-        outlineView.menu?.items.append(.init(title: "HEllo", action: nil, keyEquivalent: ""))
-    }
-}
-
 //public extension OutlineView {
 //
 //    /// Sets the style for the `OutlineView`.

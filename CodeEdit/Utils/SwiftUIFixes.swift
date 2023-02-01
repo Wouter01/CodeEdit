@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AppKit
+import UniformTypeIdentifiers
 
 // This will make the gray center bar have a reliable minimum and maximum size.
 extension NSToolbar {
@@ -94,5 +96,37 @@ extension NSObject {
         let swizzledMethodSet = class_getInstanceMethod(self as AnyClass, replacement)
 
         method_exchangeImplementations(originalMethodSet!, swizzledMethodSet!)
+    }
+}
+
+extension NSDocumentController {
+    static var isFirstLaunch = true
+
+    @objc func swizzled_beginOpenPanel(
+        _ openPanel: NSOpenPanel,
+        forTypes inTypes: [String]?,
+        completionHandler: @escaping (Int) -> Void
+    ) {
+        // Bugfix that prevented opening folders
+        if let inTypes, inTypes.contains(UTType.folder.identifier) {
+            openPanel.canChooseDirectories = true
+        }
+
+        // Don't open the file selector view on launch
+        // TODO: improve isFirstLaunch checking
+        guard !Self.isFirstLaunch else {
+            Self.isFirstLaunch = false
+            completionHandler(NSApplication.ModalResponse.cancel.rawValue)
+            return
+        }
+
+        self.swizzled_beginOpenPanel(openPanel, forTypes: inTypes, completionHandler: completionHandler)
+    }
+
+    static func swizzle() {
+        swizzle(
+            #selector (NSDocumentController.beginOpenPanel(_:forTypes:completionHandler:)),
+            #selector (NSDocumentController.swizzled_beginOpenPanel(_:forTypes:completionHandler:))
+        )
     }
 }

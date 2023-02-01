@@ -16,7 +16,8 @@ final class ReferenceWorkspaceFileDocument: ReferenceFileDocument {
     var baseRoot: FileWrapper
 
     init() {
-        fatalError("Cannot create temporary folder yet.")
+        baseRoot = FileWrapper()
+//        fatalError("Cannot create temporary folder yet.")
     }
 
     init(configuration: ReadConfiguration) throws {

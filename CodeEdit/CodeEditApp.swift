@@ -6,6 +6,11 @@
 //
 
 import SwiftUI
+import Defaults
+
+extension Defaults.Keys {
+    static let alwaysKeepWindows = Key<Bool>("NSQuitAlwaysKeepsWindows", default: true)
+}
 
 @main
 struct CodeEditApp: App {
@@ -15,14 +20,24 @@ struct CodeEditApp: App {
         NSToolbar.swizzle()
         NSSplitViewController.swizzle()
         NSVisualEffectView.swizzle()
+        NSDocumentController.swizzle()
+
+        // This enables window restoring on normal quit (instead of only on force-quit).
+        Defaults[.alwaysKeepWindows] = true
     }
 
     var body: some Scene {
+
+        WelcomeWindow()
+
         WorkspaceScene()
-        
+
         Settings {
             VStack {
                 Text("PlaceHolder")
+                Button("Old Settings...") {
+                    appdelegate.openPreferences(self)
+                }
             }
         }
     }
