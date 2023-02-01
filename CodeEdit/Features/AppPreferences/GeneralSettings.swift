@@ -9,5 +9,4 @@ import Foundation
 import Defaults
 
 extension Defaults.Keys {
-    static let restoreWorkspaces = Key<Set<URL>>("restoreWorkspaces", default: [])
 }

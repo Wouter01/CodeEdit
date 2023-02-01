@@ -11,11 +11,9 @@ import Defaults
 struct WorkspaceMainView: View {
 
     @StateObject var files: WorkspaceFiles
-    @Default(.restoreWorkspaces) var restoreWorkspaces
 
     init(files: WorkspaceFiles) {
         self._files = .init(wrappedValue: files)
-        restoreWorkspaces.insert(files.root.url)
     }
 
     var body: some View {

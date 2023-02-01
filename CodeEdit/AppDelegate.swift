@@ -25,20 +25,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         AppPreferencesModel.shared.preferences.general.appAppearance.applyAppearance()
         checkForFilesToOpen()
 
-//        Task {
-//            do {
-//                try await Defaults[.restoreWorkspaces].concurrentForEach {
-//                    NSDocumentController.shared.reopenDocument(for: $0, withContentsOf: $0, display: true) { doc, _, _ in
-//                        doc?.windowControllers.first?.synchronizeWindowTitleWithDocumentName()
-//                    }
-////                    let (document, _) = try await NSDocumentController.shared.reopenDocument(for: $0, withContentsOf: $0, display: true)
-//                }
-////                NSApp.windows.forEach { print("TEst", $0.identifier, $0.frameAutosaveName) }
-//            } catch {
-//
-//            }
-//        }
-
         DispatchQueue.main.async {
             var needToHandleOpen = true
 
