@@ -35,6 +35,10 @@ class DataFile: ObservableObject, Identifiable {
             .store(in: &cancellables)
     }
 
+    deinit {
+        try? self.updateFile()
+    }
+
     convenience init(fileWrapper: FileWrapper, parent: FolderFile) {
         self.init(fileWrapper: fileWrapper, parent: .child(parent: parent))
     }

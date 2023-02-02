@@ -28,53 +28,32 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         DispatchQueue.main.async {
             var needToHandleOpen = true
 
+            for index in 0..<CommandLine.arguments.count {
+                if CommandLine.arguments[index] == "--open" && (index + 1) < CommandLine.arguments.count {
+                    let path = CommandLine.arguments[index+1]
+                    let url = URL(fileURLWithPath: path)
 
-//            if NSApp.windows.isEmpty {
-//                if let projects = UserDefaults.standard.array(forKey: AppDelegate.recoverWorkspacesKey) as? [String],
-//                   !projects.isEmpty {
-//                    projects.forEach { path in
-//                        let url = URL(fileURLWithPath: path)
-            
-//                        CodeEditDocumentController.shared.reopenDocument(for: url,
-//                                                                        withContentsOf: url,
-//                                                                        display: true) { document, _, _ in
-//                            document?.windowControllers.first?.synchronizeWindowTitleWithDocumentName()
-//                        }
-//                    }
-//
-//                    needToHandleOpen = false
-//                }
-//            }
-//
-//            for index in 0..<CommandLine.arguments.count {
-//                if CommandLine.arguments[index] == "--open" && (index + 1) < CommandLine.arguments.count {
-//                    let path = CommandLine.arguments[index+1]
-//                    let url = URL(fileURLWithPath: path)
-//
-//                    CodeEditDocumentController.shared.reopenDocument(for: url,
-//                                                                    withContentsOf: url,
-//                                                                    display: true) { document, _, _ in
-//                        document?.windowControllers.first?.synchronizeWindowTitleWithDocumentName()
-//                    }
-//
-//                    needToHandleOpen = false
-//                }
-//            }
-//
-//            if needToHandleOpen {
-//                self.handleOpen()
-//            }
+                    CodeEditDocumentController.shared.reopenDocument(for: url,
+                                                                    withContentsOf: url,
+                                                                    display: true) { document, _, _ in
+                        document?.windowControllers.first?.synchronizeWindowTitleWithDocumentName()
+                    }
+
+                    needToHandleOpen = false
+                }
+            }
+
+            if needToHandleOpen {
+                self.handleOpen()
+            }
         }
 
         ExtensionManager.shared.refreshBundles()
     }
 
-//    func applicationWillTerminate(_ aNotification: Notification) {
-//    }
-//
-//    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-//        true
-//    }
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        true
+    }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if flag {
@@ -86,9 +65,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         return false
     }
 
-//    func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
-//        false
-//    }
+    func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
+        false
+    }
 
     func handleOpen() {
         let behavior = AppPreferencesModel.shared.preferences.general.reopenBehavior
@@ -124,28 +103,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         }
     }
 
-//    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-//        let projects: [String] = CodeEditDocumentController.shared.documents
-//            .map { doc in
-//                (doc as? WorkspaceDocument)?.fileURL?.path
-//            }
-//            .filter { $0 != nil }
-//            .map { $0! }
-//
-//        UserDefaults.standard.set(projects, forKey: AppDelegate.recoverWorkspacesKey)
-//
-//        let areAllDocumentsClean = CodeEditDocumentController.shared.documents.allSatisfy { !$0.isDocumentEdited }
-//        guard areAllDocumentsClean else {
-//            CodeEditDocumentController.shared.closeAllDocuments(
-//                withDelegate: self,
-//                didCloseAllSelector: #selector(documentController(_:didCloseAll:contextInfo:)),
-//                contextInfo: nil
-//            )
-//            return .terminateLater
-//        }
-//
-//        return .terminateNow
-//    }
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        let areAllDocumentsClean = CodeEditDocumentController.shared.documents.allSatisfy { !$0.isDocumentEdited }
+        guard areAllDocumentsClean else {
+            CodeEditDocumentController.shared.closeAllDocuments(
+                withDelegate: self,
+                didCloseAllSelector: #selector(documentController(_:didCloseAll:contextInfo:)),
+                contextInfo: nil
+            )
+            return .terminateLater
+        }
+
+        return .terminateNow
+    }
 
     // MARK: - Open windows
 
@@ -315,9 +285,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     // MARK: NSDocumentController delegate
 
-//    @objc func documentController(_ docController: NSDocumentController, didCloseAll: Bool, contextInfo: Any) {
-//        NSApplication.shared.reply(toApplicationShouldTerminate: didCloseAll)
-//    }
+    @objc func documentController(_ docController: NSDocumentController, didCloseAll: Bool, contextInfo: Any) {
+        NSApplication.shared.reply(toApplicationShouldTerminate: didCloseAll)
+    }
 }
 
 extension AppDelegate {

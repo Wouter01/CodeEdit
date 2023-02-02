@@ -9,7 +9,7 @@ import SwiftUI
 import Defaults
 
 extension Defaults.Keys {
-    static let alwaysKeepWindows = Key<Bool>("NSQuitAlwaysKeepsWindows", default: true)
+    static let alwaysKeepWindows = Key<Bool>("NSQuitAlwaysKeepsWindows", default: false)
 }
 
 @main
