@@ -35,6 +35,7 @@ struct TerminalThemeView: View {
     private var topToggles: some View {
         VStack(alignment: .leading) {
             Toggle("Always use dark terminal appearance", isOn: $prefs.preferences.terminal.darkAppearance)
+            Toggle("Use theme background ", isOn: $prefs.preferences.terminal.useThemeBackground)
         }
     }
 
@@ -48,19 +49,29 @@ struct TerminalThemeView: View {
                 if let selectedTheme = themeModel.selectedTheme,
                    let index = themeModel.themes.firstIndex(of: selectedTheme) {
                     VStack(alignment: .leading, spacing: 10) {
-                        PreferencesColorPicker($themeModel.themes[index].terminal.text.swiftColor,
-                                               label: "Text")
-                        PreferencesColorPicker($themeModel.themes[index].terminal.boldText.swiftColor,
-                                               label: "Bold Text")
-                        PreferencesColorPicker($themeModel.themes[index].terminal.cursor.swiftColor,
-                                               label: "Cursor")
+                        PreferencesColorPicker(
+                            $themeModel.themes[index].terminal.text.swiftColor,
+                            label: "Text"
+                        )
+                        PreferencesColorPicker(
+                            $themeModel.themes[index].terminal.boldText.swiftColor,
+                            label: "Bold Text"
+                        )
+                        PreferencesColorPicker(
+                            $themeModel.themes[index].terminal.cursor.swiftColor,
+                            label: "Cursor"
+                        )
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     VStack(alignment: .leading, spacing: 10) {
-                        PreferencesColorPicker($themeModel.themes[index].terminal.background.swiftColor,
-                                               label: "Background")
-                        PreferencesColorPicker($themeModel.themes[index].terminal.selection.swiftColor,
-                                               label: "Selection")
+                        PreferencesColorPicker(
+                            $themeModel.themes[index].terminal.background.swiftColor,
+                            label: "Background"
+                        )
+                        PreferencesColorPicker(
+                            $themeModel.themes[index].terminal.selection.swiftColor,
+                            label: "Selection"
+                        )
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }

@@ -15,6 +15,7 @@ struct GitLabHostedLoginView: View {
     @Environment(\.openURL) var createToken
 
     @Binding var dismissDialog: Bool
+    @Binding var dismissParentDialog: Bool
 
     @StateObject
     private var prefs: AppPreferencesModel = .shared
@@ -38,8 +39,10 @@ struct GitLabHostedLoginView: View {
                 }
                 HStack {
                     Text("Token:")
-                    SecureField("Enter your Personal Access Token",
-                                text: $accountToken)
+                    SecureField(
+                        "Enter your Personal Access Token",
+                        text: $accountToken
+                    )
                     .frame(width: 300)
                 }
             }
@@ -75,26 +78,34 @@ struct GitLabHostedLoginView: View {
     private func loginGitLabSelfHosted(gitAccountName: String) {
         let gitAccounts = prefs.preferences.accounts.sourceControlAccounts.gitAccount
 
-        let config = GitLabTokenConfiguration(accountToken,
-                                              url: eneterpriseLink )
+        let config = GitLabTokenConfiguration(accountToken, url: eneterpriseLink)
         GitLabAccount(config).me { response in
             switch response {
             case .success(let user):
-                if gitAccounts.contains(where: { $0.id == gitAccountName.lowercased() }) {
-                    print("Account with the username already exists!")
+                if gitAccounts.contains(
+                    where: {
+                        $0.gitProviderLink == eneterpriseLink &&
+                        $0.gitAccountName.lowercased() == gitAccountName.lowercased()
+                    }
+                ) {
+                    print("Account with the username and provider already exists!")
                 } else {
                     print(user)
                     prefs.preferences.accounts.sourceControlAccounts.gitAccount.append(
-                        SourceControlAccounts(id: gitAccountName.lowercased(),
-                                              gitProvider: "GitLab",
-                                              gitProviderLink: eneterpriseLink,
-                                              gitProviderDescription: "GitLab",
-                                              gitAccountName: gitAccountName,
-                                              gitCloningProtocol: true,
-                                              gitSSHKey: "",
-                                              isTokenValid: true))
+                        SourceControlAccounts(
+                            id: "\(eneterpriseLink)_\(gitAccountName.lowercased())",
+                            gitProvider: "GitLab",
+                            gitProviderLink: eneterpriseLink,
+                            gitProviderDescription: "GitLab",
+                            gitAccountName: gitAccountName,
+                            gitCloningProtocol: true,
+                            gitSSHKey: "",
+                            isTokenValid: true
+                        )
+                    )
                     keychain.set(accountToken, forKey: "gitlab_\(gitAccountName)_hosted")
                     dismissDialog = false
+                    dismissParentDialog = false
                 }
             case .failure(let error):
                 print(error)

@@ -16,6 +16,7 @@ struct GitHubEnterpriseLoginView: View {
     @Environment(\.openURL) var createToken
 
     @Binding var dismissDialog: Bool
+    @Binding var dismissParentDialog: Bool
 
     @StateObject
     private var prefs: AppPreferencesModel = .shared
@@ -39,8 +40,10 @@ struct GitHubEnterpriseLoginView: View {
                 }
                 HStack {
                     Text("Token:")
-                    SecureField("Enter your Personal Access Token",
-                                text: $accountToken)
+                    SecureField(
+                        "Enter your Personal Access Token",
+                        text: $accountToken
+                    )
                     .frame(width: 300)
                 }
             }
@@ -76,26 +79,37 @@ struct GitHubEnterpriseLoginView: View {
     private func loginGitHubEnterprise(gitAccountName: String) {
         let gitAccounts = prefs.preferences.accounts.sourceControlAccounts.gitAccount
 
-        let config = GitHubTokenConfiguration(accountToken,
-                                              url: eneterpriseLink )
+        let config = GitHubTokenConfiguration(
+            accountToken,
+            url: eneterpriseLink
+        )
         GitHubAccount(config).me { response in
             switch response {
             case .success(let user):
-                if gitAccounts.contains(where: { $0.id == gitAccountName.lowercased() }) {
-                    print("Account with the username already exists!")
+                if gitAccounts.contains(
+                    where: {
+                        $0.gitProviderLink == eneterpriseLink &&
+                        $0.gitAccountName.lowercased() == gitAccountName.lowercased()
+                    }
+                ) {
+                    print("Account with the username and provider already exists!")
                 } else {
                     print(user)
                     prefs.preferences.accounts.sourceControlAccounts.gitAccount.append(
-                        SourceControlAccounts(id: gitAccountName.lowercased(),
-                                              gitProvider: "GitHub",
-                                              gitProviderLink: eneterpriseLink,
-                                              gitProviderDescription: "GitHub",
-                                              gitAccountName: gitAccountName,
-                                              gitCloningProtocol: true,
-                                              gitSSHKey: "",
-                                              isTokenValid: true))
+                        SourceControlAccounts(
+                            id: "\(eneterpriseLink)_\(gitAccountName.lowercased())",
+                            gitProvider: "GitHub",
+                            gitProviderLink: eneterpriseLink,
+                            gitProviderDescription: "GitHub",
+                            gitAccountName: gitAccountName,
+                            gitCloningProtocol: true,
+                            gitSSHKey: "",
+                            isTokenValid: true
+                        )
+                    )
                     keychain.set(accountToken, forKey: "github_\(accountName)_enterprise")
                     dismissDialog = false
+                    dismissParentDialog = false
                 }
             case .failure(let error):
                 print(error)

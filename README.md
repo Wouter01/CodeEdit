@@ -142,6 +142,9 @@ Be part of the next revolution in code editing by contributing to the project. T
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/bombardier200"><img src="https://avatars.githubusercontent.com/u/25121427?v=4?s=100" width="100px;" alt="bombardier200"/><br /><sub><b>bombardier200</b></sub></a><br /><a href="https://github.com/CodeEditApp/CodeEdit/commits?author=bombardier200" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/yapryntsev"><img src="https://avatars.githubusercontent.com/u/18378212?v=4?s=100" width="100px;" alt="Alex Yapryntsev"/><br /><sub><b>Alex Yapryntsev</b></sub></a><br /><a href="https://github.com/CodeEditApp/CodeEdit/commits?author=yapryntsev" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Code-DJ"><img src="https://avatars.githubusercontent.com/u/8212554?v=4?s=100" width="100px;" alt="Code-DJ"/><br /><sub><b>Code-DJ</b></sub></a><br /><a href="https://github.com/CodeEditApp/CodeEdit/commits?author=Code-DJ" title="Code">💻</a> <a href="https://github.com/CodeEditApp/CodeEdit/issues?q=author%3ACode-DJ" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/neilZon"><img src="https://avatars.githubusercontent.com/u/46465568?v=4?s=100" width="100px;" alt="Neilzon Viloria"/><br /><sub><b>Neilzon Viloria</b></sub></a><br /><a href="https://github.com/CodeEditApp/CodeEdit/issues?q=author%3AneilZon" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Wouter01"><img src="https://avatars.githubusercontent.com/u/62355975?v=4?s=100" width="100px;" alt="Wouter Hennen"/><br /><sub><b>Wouter Hennen</b></sub></a><br /><a href="https://github.com/CodeEditApp/CodeEdit/commits?author=Wouter01" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://cubik65536.top"><img src="https://avatars.githubusercontent.com/u/72877496?v=4?s=100" width="100px;" alt="Cubik"/><br /><sub><b>Cubik</b></sub></a><br /><a href="https://github.com/CodeEditApp/CodeEdit/issues?q=author%3ACubik65536" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
@@ -160,6 +163,7 @@ Support CodeEdit's development by [becoming a sponsor](https://github.com/sponso
 <a title="GitBook" href="https://www.gitbook.com/" target="_blank"><img src="https://user-images.githubusercontent.com/806104/162766464-c10dc9fc-088a-4945-a0e1-17bd42705b70.png" width="128"></a>
 <a title="panascais" href="https://github.com/panascais" target="_blank"><img src="https://avatars.githubusercontent.com/u/19628635?s=200&v=4" width="128"></a>
 <a title="DevUtilsApp" href="https://devutils.app/?utm_source=codeedit&utm_campaign=oss" target="_blank"><img src="https://devutils.app/512.png" width="128"></a>
+<a title="Proxyman" href="https://proxyman.io/" target="_blank"><img src="https://user-images.githubusercontent.com/35942988/215859653-0d3622e4-a214-4691-acbe-cd96ca833193.png" width="128"></a>
 
 ## Backers
 

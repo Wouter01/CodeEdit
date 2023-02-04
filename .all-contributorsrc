@@ -491,6 +491,33 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "neilZon",
+      "name": "Neilzon Viloria",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46465568?v=4",
+      "profile": "https://github.com/neilZon",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "Wouter01",
+      "name": "Wouter Hennen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62355975?v=4",
+      "profile": "https://github.com/Wouter01",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Cubik65536",
+      "name": "Cubik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72877496?v=4",
+      "profile": "https://cubik65536.top",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -48,8 +48,10 @@ struct AccountPreferencesView: View {
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            List($prefs.preferences.accounts.sourceControlAccounts.gitAccount,
-                 selection: $accountSelection) { gitAccount in
+            List(
+                $prefs.preferences.accounts.sourceControlAccounts.gitAccount,
+                selection: $accountSelection
+            ) { gitAccount in
                 GitAccountItemView(sourceControlAccount: gitAccount)
             }
                  .background(
@@ -86,6 +88,8 @@ struct AccountPreferencesView: View {
                     .padding(.bottom, 5)
 
                 PreferencesSection("Clone Using", width: 100) {
+                    let account = getSourceControlAccount(selectedAccountId: accountSelection ?? "")
+
                     Picker("", selection: $cloneUsing) {
                         Text("HTTPS")
                             .tag(false) // temporary
@@ -94,7 +98,8 @@ struct AccountPreferencesView: View {
                     }
                     .pickerStyle(.radioGroup)
 
-                    Text("New repositories will be cloned from Github using HTTPS.")
+                    Text("New repositories will be cloned from \(account?.gitProviderDescription ?? "")"
+                         + " using \(cloneUsing ? "SSH" : "HTTPS").")
                         .lineLimit(2)
                         .font(.system(size: 11))
                         .foregroundColor(Color.secondary)

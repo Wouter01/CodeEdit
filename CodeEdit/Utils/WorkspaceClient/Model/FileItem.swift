@@ -200,9 +200,11 @@ extension WorkspaceClient {
 
             // create the folder
             do {
-                try FileItem.fileManger.createDirectory(at: folderUrl,
-                                                        withIntermediateDirectories: true,
-                                                        attributes: [:])
+                try FileItem.fileManger.createDirectory(
+                    at: folderUrl,
+                    withIntermediateDirectories: true,
+                    attributes: [:]
+                )
             } catch {
                 fatalError(error.localizedDescription)
             }
@@ -285,7 +287,14 @@ extension WorkspaceClient {
                 try FileItem.fileManger.moveItem(at: self.url, to: newLocation)
                 self.url = newLocation
             } catch {
-                fatalError(error.localizedDescription)
+                let errorCode = (error as NSError).code
+                let errorAlert = NSAlert()
+                errorAlert.messageText = """
+                The operation can’t be completed because an unexpected error occurred (error code \(String(errorCode))).
+                """
+                errorAlert.alertStyle = .critical
+                errorAlert.addButton(withTitle: "OK")
+                errorAlert.runModal()
             }
         }
     }

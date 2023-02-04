@@ -11,6 +11,7 @@
 		043BCF05281DA19A000AC47C /* WorkspaceDocument+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */; };
 		043C321427E31FF6006AE443 /* CodeEditDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */; };
 		043C321627E3201F006AE443 /* WorkspaceDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C321527E3201F006AE443 /* WorkspaceDocument.swift */; };
+		043C321A27E32295006AE443 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043C321927E32295006AE443 /* MainMenu.xib */; };
 		04540D5E27DD08C300E91B77 /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B658FB3127DA9E0F00EA4DBD /* WorkspaceView.swift */; };
 		0463E51127FCC1DF00806D5C /* CodeEditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463E51027FCC1DF00806D5C /* CodeEditAPI.swift */; };
 		0463E51327FCC1FB00806D5C /* CodeEditTargetsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463E51227FCC1FB00806D5C /* CodeEditTargetsAPI.swift */; };
@@ -46,20 +47,30 @@
 		20EBB50D280C383700F3A5DA /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBB50C280C383700F3A5DA /* LanguageType.swift */; };
 		20EBB50F280C389300F3A5DA /* FileInspectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EBB50E280C389300F3A5DA /* FileInspectorModel.swift */; };
 		2801BB8A290D5A8E00EBF552 /* CodeEditKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2801BB89290D5A8E00EBF552 /* CodeEditKit */; };
+		2806E9022979588B000040F4 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9012979588B000040F4 /* Contributor.swift */; };
+		2806E904297958B9000040F4 /* ContributorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E903297958B9000040F4 /* ContributorRowView.swift */; };
 		2813F93827ECC4AA00E305E4 /* FindNavigatorResultList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E201B327E9989900CB86D0 /* FindNavigatorResultList.swift */; };
 		2813F93927ECC4C300E305E4 /* NavigatorSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287776E627E3413200D46668 /* NavigatorSidebarView.swift */; };
 		2816F594280CF50500DD548B /* CodeEditSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 2816F593280CF50500DD548B /* CodeEditSymbols */; };
+		283BDCBD2972EEBD002AFF81 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 283BDCBC2972EEBD002AFF81 /* Package.resolved */; };
+		283BDCC52972F236002AFF81 /* AcknowledgementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283BDCC42972F236002AFF81 /* AcknowledgementsTests.swift */; };
 		2847019E27FDDF7600F87B6B /* OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2847019D27FDDF7600F87B6B /* OutlineView.swift */; };
+		284DC84D2978B61400BF2770 /* ContributorsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284DC84C2978B61400BF2770 /* ContributorsWindowController.swift */; };
+		284DC84F2978B7B400BF2770 /* ContributorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284DC84E2978B7B400BF2770 /* ContributorsView.swift */; };
+		284DC8512978BA2600BF2770 /* .all-contributorsrc in Resources */ = {isa = PBXBuildFile; fileRef = 284DC8502978BA2600BF2770 /* .all-contributorsrc */; };
 		285FEC7027FE4B9800E57D53 /* OutlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285FEC6F27FE4B9800E57D53 /* OutlineTableViewCell.swift */; };
 		286471AB27ED51FD0039369D /* ProjectNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286471AA27ED51FD0039369D /* ProjectNavigatorView.swift */; };
 		287776E927E34BC700D46668 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287776E827E34BC700D46668 /* TabBarView.swift */; };
 		287776EF27E3515300D46668 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287776EE27E3515300D46668 /* TabBarItemView.swift */; };
+		2897E1C72979A29200741E32 /* OffsettableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897E1C62979A29200741E32 /* OffsettableScrollView.swift */; };
 		28A51001281673530087B0CC /* codeedit-xcode-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A50FFF281673530087B0CC /* codeedit-xcode-dark.json */; };
 		28A51002281673530087B0CC /* codeedit-xcode-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A51000281673530087B0CC /* codeedit-xcode-light.json */; };
 		28A51005281701B40087B0CC /* codeedit-github-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A51003281701B40087B0CC /* codeedit-github-light.json */; };
 		28A51006281701B40087B0CC /* codeedit-github-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 28A51004281701B40087B0CC /* codeedit-github-dark.json */; };
 		28B0A19827E385C300B73177 /* NavigatorSidebarToolbarTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0A19727E385C300B73177 /* NavigatorSidebarToolbarTop.swift */; };
 		28B8F884280FFE4600596236 /* NSTableView+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B8F883280FFE4600596236 /* NSTableView+Background.swift */; };
+		28F43DE029738792008BBA45 /* codeedit-solarized-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 28F43DDF29738792008BBA45 /* codeedit-solarized-dark.json */; };
+		28F43DE2297388C5008BBA45 /* codeedit-solarized-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 28F43DE1297388C5008BBA45 /* codeedit-solarized-light.json */; };
 		28FFE1BF27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFE1BE27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift */; };
 		2B7A583527E4BA0100D25D4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468438427DC76E200F8E88E /* AppDelegate.swift */; };
 		2B7AC06B282452FB0082A5B8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B7AC06A282452FB0082A5B8 /* Media.xcassets */; };
@@ -304,35 +315,23 @@
 		6C05A8AF284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C05A8AE284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift */; };
 		6C14CEB028777D3C001468FE /* FindNavigatorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEAF28777D3C001468FE /* FindNavigatorListViewController.swift */; };
 		6C14CEB32877A68F001468FE /* FindNavigatorMatchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */; };
+		6C4104E3297C87A000F472BA /* BlurButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */; };
+		6C4104E6297C884F00F472BA /* AboutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E5297C884F00F472BA /* AboutDetailView.swift */; };
+		6C4104E9297C970F00F472BA /* AboutDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E8297C970F00F472BA /* AboutDefaultView.swift */; };
 		6C48D8F22972DAFC00D6D205 /* Env+IsFullscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D8F12972DAFC00D6D205 /* Env+IsFullscreen.swift */; };
 		6C48D8F42972DB1A00D6D205 /* Env+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D8F32972DB1A00D6D205 /* Env+Window.swift */; };
 		6C48D8F72972E5F300D6D205 /* WindowObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D8F62972E5F300D6D205 /* WindowObserver.swift */; };
-		6C48D9002973471300D6D205 /* CodeEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D8FF2973471300D6D205 /* CodeEditApp.swift */; };
-		6C48D9032973479C00D6D205 /* FolderFileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9022973479C00D6D205 /* FolderFileDocument.swift */; };
-		6C48D905297347DE00D6D205 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D904297347DE00D6D205 /* File.swift */; };
-		6C48D90829739D5100D6D205 /* WorkspaceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D90729739D5100D6D205 /* WorkspaceScene.swift */; };
-		6C48D90B29739DC500D6D205 /* WorkspaceSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D90A29739DC500D6D205 /* WorkspaceSplitView.swift */; };
-		6C48D90E29739E1C00D6D205 /* Env+InspectorToggler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D90D29739E1C00D6D205 /* Env+InspectorToggler.swift */; };
-		6C48D91129739F6A00D6D205 /* SwiftUIFixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D91029739F6A00D6D205 /* SwiftUIFixes.swift */; };
-		6C48D9132973A47700D6D205 /* WorkspaceFileEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9122973A47700D6D205 /* WorkspaceFileEditor.swift */; };
-		6C48D9162973AF3A00D6D205 /* WorkspaceFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9152973AF3A00D6D205 /* WorkspaceFileManager.swift */; };
-		6C48D9192973AFFB00D6D205 /* WorkspaceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9182973AFFB00D6D205 /* WorkspaceMainView.swift */; };
-		6C48D91B2973B06600D6D205 /* WorkspaceNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D91A2973B06600D6D205 /* WorkspaceNavigatorView.swift */; };
-		6C48D91E2973B09A00D6D205 /* NavigatorSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D91D2973B09A00D6D205 /* NavigatorSwitcher.swift */; };
-		6C48D9232973BC4F00D6D205 /* DataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9222973BC4F00D6D205 /* DataFile.swift */; };
-		6C48D9252973BC6900D6D205 /* FolderFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9242973BC6900D6D205 /* FolderFile.swift */; };
-		6C48D9272973BC7B00D6D205 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C48D9262973BC7B00D6D205 /* FileType.swift */; };
-		6C536407298A86D500A5AEFF /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C536406298A86D500A5AEFF /* WelcomeWindow.swift */; };
-		6C53640A298A8CAD00A5AEFF /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 6C536409298A8CAD00A5AEFF /* WindowManagement */; };
-		6C53640E298ABB1800A5AEFF /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 6C53640D298ABB1800A5AEFF /* Defaults */; };
-		6C536411298ABB6A00A5AEFF /* GeneralSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C536410298ABB6A00A5AEFF /* GeneralSettings.swift */; };
-		6C536414298AC3AF00A5AEFF /* CollectionConcurrencyKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6C536413298AC3AF00A5AEFF /* CollectionConcurrencyKit */; };
-		6C970FA22974A029009D1A36 /* SymlinkFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C970FA12974A029009D1A36 /* SymlinkFile.swift */; };
-		6CDA84AB284C0E4A00C1CC3A /* TabBarItemButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDA84AA284C0E4A00C1CC3A /* TabBarItemButtonStyle.swift */; };
+		6C97EBCC2978760400302F95 /* AcknowledgementsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */; };
+		6C97EBCF297876E500302F95 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97EBCE297876E500302F95 /* AboutWindowController.swift */; };
+		6CBD1BC62978DE53006639D5 /* Font+Caption3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBD1BC52978DE53006639D5 /* Font+Caption3.swift */; };
 		6CDA84AD284C1BA000C1CC3A /* TabBarContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDA84AC284C1BA000C1CC3A /* TabBarContextMenu.swift */; };
+		B60BE8BD297A167600841125 /* AcknowledgementRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60BE8BC297A167600841125 /* AcknowledgementRowView.swift */; };
 		B62617282964924E00E866AB /* CodeEditKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 2801BB89290D5A8E00EBF552 /* CodeEditKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B658FB3427DA9E1000EA4DBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B658FB3327DA9E1000EA4DBD /* Assets.xcassets */; };
 		B658FB3727DA9E1000EA4DBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B658FB3627DA9E1000EA4DBD /* Preview Assets.xcassets */; };
+		B6C6A42A297716A500A3D28F /* TabBarItemCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A429297716A500A3D28F /* TabBarItemCloseButton.swift */; };
+		B6C6A42E29771A8D00A3D28F /* TabBarItemButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A42D29771A8D00A3D28F /* TabBarItemButtonStyle.swift */; };
+		B6C6A43029771F7100A3D28F /* TabBarItemBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A42F29771F7100A3D28F /* TabBarItemBackground.swift */; };
 		B6D7EA592971078500301FAC /* InspectorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7EA582971078500301FAC /* InspectorSection.swift */; };
 		B6D7EA5C297107DD00301FAC /* InspectorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7EA5B297107DD00301FAC /* InspectorField.swift */; };
 		B6EE989027E8879A00CDD8AB /* InspectorSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE988F27E8879A00CDD8AB /* InspectorSidebarView.swift */; };
@@ -403,6 +402,7 @@
 		043BCF04281DA19A000AC47C /* WorkspaceDocument+Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Selection.swift"; sourceTree = "<group>"; };
 		043C321327E31FF6006AE443 /* CodeEditDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditDocumentController.swift; sourceTree = "<group>"; };
 		043C321527E3201F006AE443 /* WorkspaceDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceDocument.swift; sourceTree = "<group>"; };
+		043C321927E32295006AE443 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		0463E51027FCC1DF00806D5C /* CodeEditAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditAPI.swift; sourceTree = "<group>"; };
 		0463E51227FCC1FB00806D5C /* CodeEditTargetsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditTargetsAPI.swift; sourceTree = "<group>"; };
 		04660F6027E3A68A00477777 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -436,7 +436,18 @@
 		20EBB506280C32D300F3A5DA /* QuickHelpInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickHelpInspectorView.swift; sourceTree = "<group>"; };
 		20EBB50C280C383700F3A5DA /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
 		20EBB50E280C389300F3A5DA /* FileInspectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInspectorModel.swift; sourceTree = "<group>"; };
+		28052DFB29730DE300F4F90A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		28052DFC29730DF600F4F90A /* Alpha.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Alpha.xcconfig; sourceTree = "<group>"; };
+		28052DFD29730E0300F4F90A /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
+		28052DFE29730E0B00F4F90A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		2806E9012979588B000040F4 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
+		2806E903297958B9000040F4 /* ContributorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorRowView.swift; sourceTree = "<group>"; };
+		283BDCBC2972EEBD002AFF81 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; name = Package.resolved; path = CodeEdit.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved; sourceTree = "<group>"; };
+		283BDCC42972F236002AFF81 /* AcknowledgementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsTests.swift; sourceTree = "<group>"; };
 		2847019D27FDDF7600F87B6B /* OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineView.swift; sourceTree = "<group>"; };
+		284DC84C2978B61400BF2770 /* ContributorsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorsWindowController.swift; sourceTree = "<group>"; };
+		284DC84E2978B7B400BF2770 /* ContributorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributorsView.swift; sourceTree = "<group>"; };
+		284DC8502978BA2600BF2770 /* .all-contributorsrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".all-contributorsrc"; sourceTree = "<group>"; };
 		285FEC6D27FE4B4A00E57D53 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		285FEC6F27FE4B9800E57D53 /* OutlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTableViewCell.swift; sourceTree = "<group>"; };
 		285FEC7127FE4EEF00E57D53 /* OutlineMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineMenu.swift; sourceTree = "<group>"; };
@@ -444,12 +455,15 @@
 		287776E627E3413200D46668 /* NavigatorSidebarView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = NavigatorSidebarView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		287776E827E34BC700D46668 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		287776EE27E3515300D46668 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
+		2897E1C62979A29200741E32 /* OffsettableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsettableScrollView.swift; sourceTree = "<group>"; };
 		28A50FFF281673530087B0CC /* codeedit-xcode-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "codeedit-xcode-dark.json"; sourceTree = "<group>"; };
 		28A51000281673530087B0CC /* codeedit-xcode-light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "codeedit-xcode-light.json"; sourceTree = "<group>"; };
 		28A51003281701B40087B0CC /* codeedit-github-light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "codeedit-github-light.json"; sourceTree = "<group>"; };
 		28A51004281701B40087B0CC /* codeedit-github-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "codeedit-github-dark.json"; sourceTree = "<group>"; };
 		28B0A19727E385C300B73177 /* NavigatorSidebarToolbarTop.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = NavigatorSidebarToolbarTop.swift; sourceTree = "<group>"; tabWidth = 4; };
 		28B8F883280FFE4600596236 /* NSTableView+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Background.swift"; sourceTree = "<group>"; };
+		28F43DDF29738792008BBA45 /* codeedit-solarized-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.json; path = "codeedit-solarized-dark.json"; sourceTree = "<group>"; tabWidth = 2; };
+		28F43DE1297388C5008BBA45 /* codeedit-solarized-light.json */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.json; path = "codeedit-solarized-light.json"; sourceTree = "<group>"; tabWidth = 2; };
 		28FFE1BE27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = NavigatorSidebarToolbarBottom.swift; sourceTree = "<group>"; tabWidth = 4; };
 		2B15CA0028254139004E8F22 /* OpenWithCodeEdit.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OpenWithCodeEdit.entitlements; sourceTree = "<group>"; };
 		2B7AC06A282452FB0082A5B8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -691,29 +705,17 @@
 		6C05A8AE284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Listeners.swift"; sourceTree = "<group>"; };
 		6C14CEAF28777D3C001468FE /* FindNavigatorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNavigatorListViewController.swift; sourceTree = "<group>"; };
 		6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNavigatorMatchListCell.swift; sourceTree = "<group>"; };
+		6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurButtonStyle.swift; sourceTree = "<group>"; };
+		6C4104E5297C884F00F472BA /* AboutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailView.swift; sourceTree = "<group>"; };
+		6C4104E8297C970F00F472BA /* AboutDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDefaultView.swift; sourceTree = "<group>"; };
 		6C48D8F12972DAFC00D6D205 /* Env+IsFullscreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Env+IsFullscreen.swift"; sourceTree = "<group>"; };
 		6C48D8F32972DB1A00D6D205 /* Env+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Env+Window.swift"; sourceTree = "<group>"; };
 		6C48D8F62972E5F300D6D205 /* WindowObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowObserver.swift; sourceTree = "<group>"; };
-		6C48D8FF2973471300D6D205 /* CodeEditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditApp.swift; sourceTree = "<group>"; };
-		6C48D9022973479C00D6D205 /* FolderFileDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFileDocument.swift; sourceTree = "<group>"; };
-		6C48D904297347DE00D6D205 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		6C48D90729739D5100D6D205 /* WorkspaceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceScene.swift; sourceTree = "<group>"; };
-		6C48D90A29739DC500D6D205 /* WorkspaceSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceSplitView.swift; sourceTree = "<group>"; };
-		6C48D90D29739E1C00D6D205 /* Env+InspectorToggler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Env+InspectorToggler.swift"; sourceTree = "<group>"; };
-		6C48D91029739F6A00D6D205 /* SwiftUIFixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFixes.swift; sourceTree = "<group>"; };
-		6C48D9122973A47700D6D205 /* WorkspaceFileEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFileEditor.swift; sourceTree = "<group>"; };
-		6C48D9152973AF3A00D6D205 /* WorkspaceFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFileManager.swift; sourceTree = "<group>"; };
-		6C48D9182973AFFB00D6D205 /* WorkspaceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceMainView.swift; sourceTree = "<group>"; };
-		6C48D91A2973B06600D6D205 /* WorkspaceNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceNavigatorView.swift; sourceTree = "<group>"; };
-		6C48D91D2973B09A00D6D205 /* NavigatorSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorSwitcher.swift; sourceTree = "<group>"; };
-		6C48D9222973BC4F00D6D205 /* DataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFile.swift; sourceTree = "<group>"; };
-		6C48D9242973BC6900D6D205 /* FolderFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFile.swift; sourceTree = "<group>"; };
-		6C48D9262973BC7B00D6D205 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
-		6C536406298A86D500A5AEFF /* WelcomeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
-		6C536410298ABB6A00A5AEFF /* GeneralSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettings.swift; sourceTree = "<group>"; };
-		6C970FA12974A029009D1A36 /* SymlinkFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymlinkFile.swift; sourceTree = "<group>"; };
-		6CDA84AA284C0E4A00C1CC3A /* TabBarItemButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemButtonStyle.swift; sourceTree = "<group>"; };
+		6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsWindowController.swift; sourceTree = "<group>"; };
+		6C97EBCE297876E500302F95 /* AboutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		6CBD1BC52978DE53006639D5 /* Font+Caption3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Caption3.swift"; sourceTree = "<group>"; };
 		6CDA84AC284C1BA000C1CC3A /* TabBarContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContextMenu.swift; sourceTree = "<group>"; };
+		B60BE8BC297A167600841125 /* AcknowledgementRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementRowView.swift; sourceTree = "<group>"; };
 		B658FB2C27DA9E0F00EA4DBD /* CodeEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B658FB3127DA9E0F00EA4DBD /* WorkspaceView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		B658FB3327DA9E1000EA4DBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -721,6 +723,9 @@
 		B658FB3827DA9E1000EA4DBD /* CodeEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CodeEdit.entitlements; sourceTree = "<group>"; };
 		B658FB3D27DA9E1000EA4DBD /* CodeEditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeEditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B658FB4727DA9E1000EA4DBD /* CodeEditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeEditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6C6A429297716A500A3D28F /* TabBarItemCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemCloseButton.swift; sourceTree = "<group>"; };
+		B6C6A42D29771A8D00A3D28F /* TabBarItemButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemButtonStyle.swift; sourceTree = "<group>"; };
+		B6C6A42F29771F7100A3D28F /* TabBarItemBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemBackground.swift; sourceTree = "<group>"; };
 		B6D7EA582971078500301FAC /* InspectorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorSection.swift; sourceTree = "<group>"; };
 		B6D7EA5B297107DD00301FAC /* InspectorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorField.swift; sourceTree = "<group>"; };
 		B6EE988F27E8879A00CDD8AB /* InspectorSidebarView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = InspectorSidebarView.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -750,12 +755,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C536414298AC3AF00A5AEFF /* CollectionConcurrencyKit in Frameworks */,
 				58F2EB1A292FB91C004A9BDE /* Preferences in Frameworks */,
 				2801BB8A290D5A8E00EBF552 /* CodeEditKit in Frameworks */,
 				58F2EB17292FB74D004A9BDE /* CodeEditTextView in Frameworks */,
-				6C53640A298A8CAD00A5AEFF /* WindowManagement in Frameworks */,
-				6C53640E298ABB1800A5AEFF /* Defaults in Frameworks */,
 				5879826F292EC9870085B254 /* GRDB in Frameworks */,
 				58F2EB1E292FB954004A9BDE /* Sparkle in Frameworks */,
 				5879826B292EC7B00085B254 /* Light-Swift-Untar in Frameworks */,
@@ -898,9 +900,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		28052E0129730F2F00F4F90A /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				28052DFB29730DE300F4F90A /* Debug.xcconfig */,
+				28052DFC29730DF600F4F90A /* Alpha.xcconfig */,
+				28052DFD29730E0300F4F90A /* Beta.xcconfig */,
+				28052DFE29730E0B00F4F90A /* Release.xcconfig */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		28069DA527F5BD320016BC47 /* DefaultThemes */ = {
 			isa = PBXGroup;
 			children = (
+				28F43DDF29738792008BBA45 /* codeedit-solarized-dark.json */,
+				28F43DE1297388C5008BBA45 /* codeedit-solarized-light.json */,
 				28A50FFF281673530087B0CC /* codeedit-xcode-dark.json */,
 				28A51000281673530087B0CC /* codeedit-xcode-light.json */,
 				28A51004281701B40087B0CC /* codeedit-github-dark.json */,
@@ -908,6 +923,33 @@
 				474397C42893AC4B00518C8C /* codeedit-midnight.json */,
 			);
 			path = DefaultThemes;
+			sourceTree = "<group>";
+		};
+		2806E8FE2979587A000040F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2806E9012979588B000040F4 /* Contributor.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		283BDCC22972F211002AFF81 /* Acknowledgements */ = {
+			isa = PBXGroup;
+			children = (
+				283BDCC42972F236002AFF81 /* AcknowledgementsTests.swift */,
+			);
+			path = Acknowledgements;
+			sourceTree = "<group>";
+		};
+		284DC84B2978B5EB00BF2770 /* Contributors */ = {
+			isa = PBXGroup;
+			children = (
+				2806E8FE2979587A000040F4 /* Model */,
+				284DC84E2978B7B400BF2770 /* ContributorsView.swift */,
+				2806E903297958B9000040F4 /* ContributorRowView.swift */,
+				284DC84C2978B61400BF2770 /* ContributorsWindowController.swift */,
+			);
+			path = Contributors;
 			sourceTree = "<group>";
 		};
 		285FEC6C27FE4AC700E57D53 /* OutlineView */ = {
@@ -997,7 +1039,6 @@
 				581BFB5C2926431000D251EC /* WelcomeActionView.swift */,
 				581BFB5D2926431000D251EC /* RecentProjectsView.swift */,
 				581BFB5E2926431000D251EC /* RecentProjectItem.swift */,
-				6C536406298A86D500A5AEFF /* WelcomeWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1014,6 +1055,10 @@
 			isa = PBXGroup;
 			children = (
 				582213EF291834A500EFE361 /* AboutView.swift */,
+				6C4104E8297C970F00F472BA /* AboutDefaultView.swift */,
+				6C4104E5297C884F00F472BA /* AboutDetailView.swift */,
+				6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */,
+				6C97EBCE297876E500302F95 /* AboutWindowController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1023,6 +1068,7 @@
 			children = (
 				582213EE2918345500EFE361 /* About */,
 				5878DA7D291862BC00DD95A3 /* Acknowledgements */,
+				284DC84B2978B5EB00BF2770 /* Contributors */,
 				58F2EA9E292FB2B0004A9BDE /* AppPreferences */,
 				5878DAAB291D627C00DD95A3 /* Breadcrumbs */,
 				587B9D50292FC27A00AC7927 /* CodeEditExtension */,
@@ -1218,6 +1264,8 @@
 			isa = PBXGroup;
 			children = (
 				5878DA81291863F900DD95A3 /* AcknowledgementsView.swift */,
+				B60BE8BC297A167600841125 /* AcknowledgementRowView.swift */,
+				6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */,
 				5878DA832918642000DD95A3 /* ParsePackagesResolved.swift */,
 			);
 			path = Views;
@@ -1443,6 +1491,7 @@
 		587B60FE293416C900D5CD8F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				283BDCC22972F211002AFF81 /* Acknowledgements */,
 				4EE96EC82960562000FFBEA8 /* Documents */,
 				583E527429361B39001AB554 /* CodeEditUI */,
 				583E526929361B39001AB554 /* Welcome */,
@@ -1490,6 +1539,7 @@
 				587B9D8829300ABD00AC7927 /* SegmentedControl.swift */,
 				587B9D8C29300ABD00AC7927 /* SettingsTextEditor.swift */,
 				587B9D8F29300ABD00AC7927 /* ToolbarBranchPicker.swift */,
+				2897E1C62979A29200741E32 /* OffsettableScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1802,12 +1852,14 @@
 			children = (
 				287776E827E34BC700D46668 /* TabBarView.swift */,
 				287776EE27E3515300D46668 /* TabBarItemView.swift */,
+				B6C6A429297716A500A3D28F /* TabBarItemCloseButton.swift */,
 				6CDA84AC284C1BA000C1CC3A /* TabBarContextMenu.swift */,
-				6CDA84AA284C0E4A00C1CC3A /* TabBarItemButtonStyle.swift */,
+				B6C6A42D29771A8D00A3D28F /* TabBarItemButtonStyle.swift */,
 				DE6F77862813625500D00A76 /* TabBarDivider.swift */,
 				DE6405A52817734700881FDF /* TabBarNative.swift */,
 				DE513F51281B672D002260B9 /* TabBarAccessory.swift */,
 				DE513F53281DE5D0002260B9 /* TabBarXcode.swift */,
+				B6C6A42F29771F7100A3D28F /* TabBarItemBackground.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1824,7 +1876,6 @@
 		58D01C85293167DC00C5B6B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6C48D91029739F6A00D6D205 /* SwiftUIFixes.swift */,
 				6C48D8EF2972DAC300D6D205 /* Environment */,
 				58D01C87293167DC00C5B6B4 /* Extensions */,
 				58D01C8F293167DC00C5B6B4 /* KeyChain */,
@@ -1838,6 +1889,7 @@
 		58D01C87293167DC00C5B6B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6CBD1BC42978DE3E006639D5 /* Text */,
 				5831E3D02934036D00D5A6D2 /* NSTableView */,
 				5831E3CA2933E86F00D5A6D2 /* View */,
 				5831E3C72933E7F700D5A6D2 /* Bundle */,
@@ -1878,7 +1930,6 @@
 				58F2EAA0292FB2B0004A9BDE /* Sections */,
 				58F2EAE6292FB2B0004A9BDE /* PreferencesPlaceholderView.swift */,
 				58F2EAE1292FB2B0004A9BDE /* SoftwareUpdater.swift */,
-				6C536410298ABB6A00A5AEFF /* GeneralSettings.swift */,
 			);
 			path = AppPreferences;
 			sourceTree = "<group>";
@@ -2165,48 +2216,30 @@
 		6C48D8EF2972DAC300D6D205 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				6C48D90D29739E1C00D6D205 /* Env+InspectorToggler.swift */,
 				6C48D8F12972DAFC00D6D205 /* Env+IsFullscreen.swift */,
 				6C48D8F32972DB1A00D6D205 /* Env+Window.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		6C48D9012973478200D6D205 /* FileDocuments */ = {
+		6CBD1BC42978DE3E006639D5 /* Text */ = {
 			isa = PBXGroup;
 			children = (
-				6C48D9022973479C00D6D205 /* FolderFileDocument.swift */,
-				6C48D9152973AF3A00D6D205 /* WorkspaceFileManager.swift */,
-				6C48D90729739D5100D6D205 /* WorkspaceScene.swift */,
-				6C48D90A29739DC500D6D205 /* WorkspaceSplitView.swift */,
-				6C48D91A2973B06600D6D205 /* WorkspaceNavigatorView.swift */,
-				6C48D91D2973B09A00D6D205 /* NavigatorSwitcher.swift */,
-				6C48D9182973AFFB00D6D205 /* WorkspaceMainView.swift */,
-				6C48D9122973A47700D6D205 /* WorkspaceFileEditor.swift */,
-				6C48D9202973BC4500D6D205 /* Files */,
+				6CBD1BC52978DE53006639D5 /* Font+Caption3.swift */,
 			);
-			path = FileDocuments;
-			sourceTree = "<group>";
-		};
-		6C48D9202973BC4500D6D205 /* Files */ = {
-			isa = PBXGroup;
-			children = (
-				6C48D904297347DE00D6D205 /* File.swift */,
-				6C970FA12974A029009D1A36 /* SymlinkFile.swift */,
-				6C48D9222973BC4F00D6D205 /* DataFile.swift */,
-				6C48D9242973BC6900D6D205 /* FolderFile.swift */,
-				6C48D9262973BC7B00D6D205 /* FileType.swift */,
-			);
-			path = Files;
+			path = Text;
 			sourceTree = "<group>";
 		};
 		B658FB2327DA9E0F00EA4DBD = {
 			isa = PBXGroup;
 			children = (
-				58F2EACE292FB2B0004A9BDE /* Documentation.docc */,
 				B658FB2E27DA9E0F00EA4DBD /* CodeEdit */,
 				587B60F329340A8000D5CD8F /* CodeEditTests */,
+				28052E0129730F2F00F4F90A /* Configs */,
+				58F2EACE292FB2B0004A9BDE /* Documentation.docc */,
 				2BE487ED28245162003F3F64 /* OpenWithCodeEdit */,
+				284DC8502978BA2600BF2770 /* .all-contributorsrc */,
+				283BDCBC2972EEBD002AFF81 /* Package.resolved */,
 				B658FB2D27DA9E0F00EA4DBD /* Products */,
 				5C403B8D27E20F8000788241 /* Frameworks */,
 			);
@@ -2233,12 +2266,11 @@
 				B658FB3527DA9E1000EA4DBD /* Preview Content */,
 				58D01C85293167DC00C5B6B4 /* Utils */,
 				0468438427DC76E200F8E88E /* AppDelegate.swift */,
-				6C48D8FF2973471300D6D205 /* CodeEditApp.swift */,
-				6C48D9012973478200D6D205 /* FileDocuments */,
 				5C4BB1E028212B1E00A92FB2 /* World.swift */,
 				B658FB3327DA9E1000EA4DBD /* Assets.xcassets */,
 				B658FB3827DA9E1000EA4DBD /* CodeEdit.entitlements */,
 				04660F6027E3A68A00477777 /* Info.plist */,
+				043C321927E32295006AE443 /* MainMenu.xib */,
 				B658FB3127DA9E0F00EA4DBD /* WorkspaceView.swift */,
 				6C48D8F62972E5F300D6D205 /* WindowObserver.swift */,
 				28069DA527F5BD320016BC47 /* DefaultThemes */,
@@ -2311,7 +2343,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B658FB5127DA9E1000EA4DBD /* Build configuration list for PBXNativeTarget "CodeEdit" */;
 			buildPhases = (
-				FDF7C12027FAE90F0039BA76 /* Copy Package.resolved into Project Directory */,
 				B658FB2827DA9E0F00EA4DBD /* Sources */,
 				B658FB2927DA9E0F00EA4DBD /* Frameworks */,
 				B658FB2A27DA9E0F00EA4DBD /* Resources */,
@@ -2336,9 +2367,6 @@
 				58F2EB16292FB74D004A9BDE /* CodeEditTextView */,
 				58F2EB19292FB91C004A9BDE /* Preferences */,
 				58F2EB1D292FB954004A9BDE /* Sparkle */,
-				6C536409298A8CAD00A5AEFF /* WindowManagement */,
-				6C53640D298ABB1800A5AEFF /* Defaults */,
-				6C536413298AC3AF00A5AEFF /* CollectionConcurrencyKit */,
 			);
 			productName = CodeEdit;
 			productReference = B658FB2C27DA9E0F00EA4DBD /* CodeEdit.app */;
@@ -2432,9 +2460,6 @@
 				58F2EB18292FB91C004A9BDE /* XCRemoteSwiftPackageReference "Preferences" */,
 				58F2EB1C292FB954004A9BDE /* XCRemoteSwiftPackageReference "Sparkle" */,
 				583E529A29361BAB001AB554 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
-				6C536408298A8CAD00A5AEFF /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
-				6C53640C298ABB1800A5AEFF /* XCRemoteSwiftPackageReference "Defaults" */,
-				6C536412298AC3AE00A5AEFF /* XCRemoteSwiftPackageReference "collectionconcurrencykit" */,
 			);
 			productRefGroup = B658FB2D27DA9E0F00EA4DBD /* Products */;
 			projectDirPath = "";
@@ -2461,15 +2486,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				283BDCBD2972EEBD002AFF81 /* Package.resolved in Resources */,
 				B658FB3727DA9E1000EA4DBD /* Preview Assets.xcassets in Resources */,
 				28A51006281701B40087B0CC /* codeedit-github-dark.json in Resources */,
+				28F43DE029738792008BBA45 /* codeedit-solarized-dark.json in Resources */,
 				58A5DFA529339F6400D1BD5D /* default_keybindings.json in Resources */,
 				28A51002281673530087B0CC /* codeedit-xcode-light.json in Resources */,
 				28A51005281701B40087B0CC /* codeedit-github-light.json in Resources */,
 				D7211D4727E06BFE008F2ED7 /* Localizable.strings in Resources */,
+				28F43DE2297388C5008BBA45 /* codeedit-solarized-light.json in Resources */,
 				28A51001281673530087B0CC /* codeedit-xcode-dark.json in Resources */,
+				284DC8512978BA2600BF2770 /* .all-contributorsrc in Resources */,
 				B658FB3427DA9E1000EA4DBD /* Assets.xcassets in Resources */,
 				474397C52893AC4B00518C8C /* codeedit-midnight.json in Resources */,
+				043C321A27E32295006AE443 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2546,25 +2576,6 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"\\/\\/ swiftlint:disable all\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ error: Usage of \\$1 is prohibited/\"\n";
 		};
-		FDF7C12027FAE90F0039BA76 /* Copy Package.resolved into Project Directory */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Package.resolved into Project Directory";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# The following script copies the generated Package.resolved file into the project directory, ignoring any errors.\ncp ${PROJECT_DIR}/CodeEdit.xcworkspace/xcshareddata/swiftpm/Package.resolved ${PROJECT_DIR} || :\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2587,7 +2598,6 @@
 				587B9E8429301D8F00AC7927 /* GitHubUser.swift in Sources */,
 				2072FA13280D74ED00C7F8D4 /* HistoryInspectorModel.swift in Sources */,
 				587B9DA029300ABD00AC7927 /* PanelDivider.swift in Sources */,
-				6C48D9272973BC7B00D6D205 /* FileType.swift in Sources */,
 				58822534292C280D00E83CDE /* CursorLocation.swift in Sources */,
 				201169E52837B40300F92B46 /* SourceControlNavigatorRepositoriesView.swift in Sources */,
 				587B9E6A29301D8F00AC7927 /* GitLabPermissions.swift in Sources */,
@@ -2601,22 +2611,21 @@
 				58798277292ECFD40085B254 /* LSPClient.swift in Sources */,
 				6C14CEB028777D3C001468FE /* FindNavigatorListViewController.swift in Sources */,
 				587B9E7F29301D8F00AC7927 /* GitHubUserRouter.swift in Sources */,
-				6C48D90829739D5100D6D205 /* WorkspaceScene.swift in Sources */,
 				20EBB50D280C383700F3A5DA /* LanguageType.swift in Sources */,
 				587B9E9729301D8F00AC7927 /* BitBucketAccount+Token.swift in Sources */,
 				581BFB6A2926431000D251EC /* RecentProjectsView.swift in Sources */,
-				6C48D9232973BC4F00D6D205 /* DataFile.swift in Sources */,
 				587B9E7729301D8F00AC7927 /* String+PercentEncoding.swift in Sources */,
 				587B9E5B29301D8F00AC7927 /* GitCheckoutBranchView.swift in Sources */,
 				2813F93827ECC4AA00E305E4 /* FindNavigatorResultList.swift in Sources */,
 				587B9E8829301D8F00AC7927 /* GitHubFiles.swift in Sources */,
+				284DC84D2978B61400BF2770 /* ContributorsWindowController.swift in Sources */,
 				201169D92837B31200F92B46 /* SourceControlSearchToolbar.swift in Sources */,
 				0483E35027FDB17700354AC0 /* ExtensionNavigatorView.swift in Sources */,
 				587B9DA729300ABD00AC7927 /* HelpButton.swift in Sources */,
 				58F2EB08292FB2B0004A9BDE /* TextEditingPreferences.swift in Sources */,
 				201169DB2837B34000F92B46 /* SourceControlNavigatorChangedFileView.swift in Sources */,
-				6C48D9162973AF3A00D6D205 /* WorkspaceFileManager.swift in Sources */,
 				5882252E292C280D00E83CDE /* StatusBarMaximizeButton.swift in Sources */,
+				6C4104E9297C970F00F472BA /* AboutDefaultView.swift in Sources */,
 				587B9E6F29301D8F00AC7927 /* GitLabProjectAccess.swift in Sources */,
 				587B9E6929301D8F00AC7927 /* GitLabEvent.swift in Sources */,
 				587B9E5E29301D8F00AC7927 /* GitLabCommitRouter.swift in Sources */,
@@ -2631,7 +2640,6 @@
 				D7012EE827E757850001E1EF /* FindNavigatorView.swift in Sources */,
 				58A5DF8029325B5A00D1BD5D /* GitClient.swift in Sources */,
 				D7E201AE27E8B3C000CB86D0 /* String+Ranges.swift in Sources */,
-				6C970FA22974A029009D1A36 /* SymlinkFile.swift in Sources */,
 				6C48D8F72972E5F300D6D205 /* WindowObserver.swift in Sources */,
 				587B9E6B29301D8F00AC7927 /* GitLabAvatarURL.swift in Sources */,
 				58798262292EC4080085B254 /* PluginRelease.swift in Sources */,
@@ -2653,7 +2661,6 @@
 				0463E51327FCC1FB00806D5C /* CodeEditTargetsAPI.swift in Sources */,
 				201169DD2837B3AC00F92B46 /* SourceControlToolbarBottom.swift in Sources */,
 				04C3254D27FF331B00C8DA2D /* ExtensionNavigatorItemView.swift in Sources */,
-				6C48D90B29739DC500D6D205 /* WorkspaceSplitView.swift in Sources */,
 				587B9E8B29301D8F00AC7927 /* GitHubAccount+deleteReference.swift in Sources */,
 				D7E201B027E8C07300CB86D0 /* FindNavigatorSearchBar.swift in Sources */,
 				58798237292E30B90085B254 /* FeedbackView.swift in Sources */,
@@ -2661,7 +2668,6 @@
 				587B9E9429301D8F00AC7927 /* BitBucketTokenConfiguration.swift in Sources */,
 				581BFB672926431000D251EC /* WelcomeWindowView.swift in Sources */,
 				58A5DFA329339F6400D1BD5D /* CommandManager.swift in Sources */,
-				6C48D905297347DE00D6D205 /* File.swift in Sources */,
 				58F2EAF5292FB2B0004A9BDE /* Theme.swift in Sources */,
 				2072FA1C280D874000C7F8D4 /* IndentUsing.swift in Sources */,
 				58798284292ED0FB0085B254 /* TerminalEmulatorView.swift in Sources */,
@@ -2671,14 +2677,13 @@
 				201169E72837B5CA00F92B46 /* SourceControlModel.swift in Sources */,
 				58798265292EC4080085B254 /* ExtensionsStoreAPI.swift in Sources */,
 				58822528292C280D00E83CDE /* StatusBarEncodingSelector.swift in Sources */,
+				B6C6A43029771F7100A3D28F /* TabBarItemBackground.swift in Sources */,
 				58F2EB0F292FB2B0004A9BDE /* PreferencesSection.swift in Sources */,
 				587B9E8C29301D8F00AC7927 /* GitHubOpenness.swift in Sources */,
 				587B9E8229301D8F00AC7927 /* GitHubPreviewHeader.swift in Sources */,
 				58F2EB02292FB2B0004A9BDE /* Loopable.swift in Sources */,
 				28B8F884280FFE4600596236 /* NSTableView+Background.swift in Sources */,
 				58F2EB06292FB2B0004A9BDE /* KeybindingsPreferences.swift in Sources */,
-				6C48D9002973471300D6D205 /* CodeEditApp.swift in Sources */,
-				6C48D91129739F6A00D6D205 /* SwiftUIFixes.swift in Sources */,
 				200412EF280F3EAC00BCAF5C /* HistoryInspectorNoHistoryView.swift in Sources */,
 				587B9E8E29301D8F00AC7927 /* BitBucketRepositoryRouter.swift in Sources */,
 				B6D7EA5C297107DD00301FAC /* InspectorField.swift in Sources */,
@@ -2712,6 +2717,7 @@
 				587B9E6429301D8F00AC7927 /* GitLabCommit.swift in Sources */,
 				58A5DFA229339F6400D1BD5D /* KeybindingManager.swift in Sources */,
 				58AFAA2E2933C69E00482B53 /* TabBarItemRepresentable.swift in Sources */,
+				6C4104E6297C884F00F472BA /* AboutDetailView.swift in Sources */,
 				587B9E7A29301D8F00AC7927 /* GitHubReviewsRouter.swift in Sources */,
 				04540D5E27DD08C300E91B77 /* WorkspaceView.swift in Sources */,
 				DE6F77872813625500D00A76 /* TabBarDivider.swift in Sources */,
@@ -2719,7 +2725,6 @@
 				581BFB692926431000D251EC /* WelcomeActionView.swift in Sources */,
 				20D839AE280E0CA700B27357 /* HistoryPopoverView.swift in Sources */,
 				58F2EAFD292FB2B0004A9BDE /* GitHubLoginView.swift in Sources */,
-				6C536411298ABB6A00A5AEFF /* GeneralSettings.swift in Sources */,
 				587D9B782933BF5700BF7490 /* Interface.swift in Sources */,
 				2072FA1E280D891500C7F8D4 /* FileLocation.swift in Sources */,
 				587B9E6729301D8F00AC7927 /* GitLabEventData.swift in Sources */,
@@ -2730,11 +2735,13 @@
 				58822526292C280D00E83CDE /* StatusBarBreakpointButton.swift in Sources */,
 				58D01C96293167DC00C5B6B4 /* Date+Formatted.swift in Sources */,
 				587B9D9E29300ABD00AC7927 /* FontPickerView.swift in Sources */,
+				6C97EBCF297876E500302F95 /* AboutWindowController.swift in Sources */,
 				58822529292C280D00E83CDE /* StatusBarLineEndSelector.swift in Sources */,
 				58F2EAE7292FB2B0004A9BDE /* GeneralPreferencesView.swift in Sources */,
 				5C4BB1E128212B1E00A92FB2 /* World.swift in Sources */,
 				D7E201B227E8D50000CB86D0 /* FindNavigatorModeSelector.swift in Sources */,
 				287776E927E34BC700D46668 /* TabBarView.swift in Sources */,
+				B60BE8BD297A167600841125 /* AcknowledgementRowView.swift in Sources */,
 				587B9E6329301D8F00AC7927 /* GitLabAccount.swift in Sources */,
 				285FEC7027FE4B9800E57D53 /* OutlineTableViewCell.swift in Sources */,
 				58F2EAF8292FB2B0004A9BDE /* AccountListItemView.swift in Sources */,
@@ -2744,6 +2751,7 @@
 				58F2EAEE292FB2B0004A9BDE /* TextEditingPreferencesView.swift in Sources */,
 				58D01C95293167DC00C5B6B4 /* Bundle+Info.swift in Sources */,
 				587D9B762933BF5700BF7490 /* Mocks.swift in Sources */,
+				B6C6A42A297716A500A3D28F /* TabBarItemCloseButton.swift in Sources */,
 				58A5DF7D2931787A00D1BD5D /* ShellClient.swift in Sources */,
 				5879821A292D92370085B254 /* SearchResultModel.swift in Sources */,
 				587B9E8929301D8F00AC7927 /* GitHubGist.swift in Sources */,
@@ -2753,7 +2761,6 @@
 				587D9B752933BF5700BF7490 /* FileItem.swift in Sources */,
 				587B9E7929301D8F00AC7927 /* GitHubIssueRouter.swift in Sources */,
 				587B9E8029301D8F00AC7927 /* GitHubConfiguration.swift in Sources */,
-				6C536407298A86D500A5AEFF /* WelcomeWindow.swift in Sources */,
 				58822524292C280D00E83CDE /* StatusBarView.swift in Sources */,
 				587B9E7E29301D8F00AC7927 /* GitHubGistRouter.swift in Sources */,
 				581BFB682926431000D251EC /* WelcomeView.swift in Sources */,
@@ -2761,25 +2768,25 @@
 				5882252C292C280D00E83CDE /* StatusBarDrawer.swift in Sources */,
 				2847019E27FDDF7600F87B6B /* OutlineView.swift in Sources */,
 				6C14CEB32877A68F001468FE /* FindNavigatorMatchListCell.swift in Sources */,
-				6C48D91B2973B06600D6D205 /* WorkspaceNavigatorView.swift in Sources */,
 				58F2EAF6292FB2B0004A9BDE /* AccountPreferencesView.swift in Sources */,
 				20EBB501280C325D00F3A5DA /* FileInspectorView.swift in Sources */,
 				58822531292C280D00E83CDE /* View+isHovering.swift in Sources */,
 				587B9E9929301D8F00AC7927 /* GitChangedFile.swift in Sources */,
 				58F2EAF2292FB2B0004A9BDE /* EditorThemeView.swift in Sources */,
+				2897E1C72979A29200741E32 /* OffsettableScrollView.swift in Sources */,
 				58F2EB0E292FB2B0004A9BDE /* SoftwareUpdater.swift in Sources */,
 				587B9E9529301D8F00AC7927 /* BitBucketUser.swift in Sources */,
-				6C48D9252973BC6900D6D205 /* FolderFile.swift in Sources */,
 				587B9E7C29301D8F00AC7927 /* GitHubRepositoryRouter.swift in Sources */,
 				286471AB27ED51FD0039369D /* ProjectNavigatorView.swift in Sources */,
 				58798264292EC4080085B254 /* Plugin.swift in Sources */,
 				587B9DA629300ABD00AC7927 /* ToolbarBranchPicker.swift in Sources */,
-				6C48D9192973AFFB00D6D205 /* WorkspaceMainView.swift in Sources */,
 				58F2EB05292FB2B0004A9BDE /* AppPreferencesModel.swift in Sources */,
+				6CBD1BC62978DE53006639D5 /* Font+Caption3.swift in Sources */,
 				58F2EAF1292FB2B0004A9BDE /* TerminalThemeView.swift in Sources */,
 				04C3254B27FF23B000C8DA2D /* ExtensionNavigatorData.swift in Sources */,
 				58798261292EC4080085B254 /* ExtensionsManager.swift in Sources */,
 				287776EF27E3515300D46668 /* TabBarItemView.swift in Sources */,
+				2806E9022979588B000040F4 /* Contributor.swift in Sources */,
 				58D01C98293167DC00C5B6B4 /* String+RemoveOccurrences.swift in Sources */,
 				5878DAA8291AE76700DD95A3 /* QuickOpenItem.swift in Sources */,
 				58FD7608291EA1CB0051D6E4 /* CommandPaletteViewModel.swift in Sources */,
@@ -2801,6 +2808,7 @@
 				58F2EB07292FB2B0004A9BDE /* GeneralPreferences.swift in Sources */,
 				587B9E9A29301D8F00AC7927 /* GitType.swift in Sources */,
 				58D01C97293167DC00C5B6B4 /* String+SHA256.swift in Sources */,
+				2806E904297958B9000040F4 /* ContributorRowView.swift in Sources */,
 				587B9E7629301D8F00AC7927 /* GitTime.swift in Sources */,
 				2072FA16280D83A500C7F8D4 /* FileTypeList.swift in Sources */,
 				587B9E5D29301D8F00AC7927 /* GitLabUserRouter.swift in Sources */,
@@ -2808,15 +2816,14 @@
 				58822530292C280D00E83CDE /* FilterTextField.swift in Sources */,
 				58798266292EC4080085B254 /* APIResponse.swift in Sources */,
 				B6D7EA592971078500301FAC /* InspectorSection.swift in Sources */,
-				6C48D91E2973B09A00D6D205 /* NavigatorSwitcher.swift in Sources */,
 				58F2EAEF292FB2B0004A9BDE /* ThemePreferencesView.swift in Sources */,
 				B6EE989027E8879A00CDD8AB /* InspectorSidebarView.swift in Sources */,
 				587B9DA229300ABD00AC7927 /* EffectView.swift in Sources */,
-				6C48D9032973479C00D6D205 /* FolderFileDocument.swift in Sources */,
+				6C97EBCC2978760400302F95 /* AcknowledgementsWindowController.swift in Sources */,
+				284DC84F2978B7B400BF2770 /* ContributorsView.swift in Sources */,
 				58798250292E78D80085B254 /* CodeFile.swift in Sources */,
 				5878DAA5291AE76700DD95A3 /* QuickOpenView.swift in Sources */,
 				201169D72837B2E300F92B46 /* SourceControlNavigatorView.swift in Sources */,
-				6C48D9132973A47700D6D205 /* WorkspaceFileEditor.swift in Sources */,
 				587B9E8329301D8F00AC7927 /* GitHubPullRequest.swift in Sources */,
 				5878DA82291863F900DD95A3 /* AcknowledgementsView.swift in Sources */,
 				587B9E8529301D8F00AC7927 /* GitHubReview.swift in Sources */,
@@ -2847,6 +2854,7 @@
 				587B9E8629301D8F00AC7927 /* GitHubComment.swift in Sources */,
 				58F2EAE9292FB2B0004A9BDE /* SourceControlPreferencesView.swift in Sources */,
 				587B9E9029301D8F00AC7927 /* BitBucketTokenRouter.swift in Sources */,
+				B6C6A42E29771A8D00A3D28F /* TabBarItemButtonStyle.swift in Sources */,
 				58822525292C280D00E83CDE /* StatusBarMenuLabel.swift in Sources */,
 				58F2EB11292FB2B0004A9BDE /* PreferencesToolbar.swift in Sources */,
 				58F2EAF0292FB2B0004A9BDE /* PreviewThemeView.swift in Sources */,
@@ -2856,7 +2864,6 @@
 				587B9E8129301D8F00AC7927 /* PublicKey.swift in Sources */,
 				58F2EB0B292FB2B0004A9BDE /* AccountsPreferences.swift in Sources */,
 				58F2EB00292FB2B0004A9BDE /* LocationsPreferencesView.swift in Sources */,
-				6C48D90E29739E1C00D6D205 /* Env+InspectorToggler.swift in Sources */,
 				58798267292EC4080085B254 /* APIPage.swift in Sources */,
 				5882252A292C280D00E83CDE /* StatusBarToggleDrawerButton.swift in Sources */,
 				04C3255B2801F86400C8DA2D /* OutlineViewController.swift in Sources */,
@@ -2867,8 +2874,8 @@
 				58F2EAF9292FB2B0004A9BDE /* AccountSelectionDialog.swift in Sources */,
 				58F2EAE8292FB2B0004A9BDE /* TerminalPreferencesView.swift in Sources */,
 				58AFAA2F2933C69E00482B53 /* TabBarItemID.swift in Sources */,
-				6CDA84AB284C0E4A00C1CC3A /* TabBarItemButtonStyle.swift in Sources */,
 				28FFE1BF27E3A441001939DB /* NavigatorSidebarToolbarBottom.swift in Sources */,
+				6C4104E3297C87A000F472BA /* BlurButtonStyle.swift in Sources */,
 				58F2EAFA292FB2B0004A9BDE /* GitLabHostedLoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2881,6 +2888,7 @@
 				583E528C29361B39001AB554 /* CodeEditUITests.swift in Sources */,
 				587B60F82934124200D5CD8F /* WorkspaceClientTests.swift in Sources */,
 				587B61012934170A00D5CD8F /* UnitTests_Extensions.swift in Sources */,
+				283BDCC52972F236002AFF81 /* AcknowledgementsTests.swift in Sources */,
 				4EE96ECB2960565E00FFBEA8 /* DocumentsUnitTests.swift in Sources */,
 				4EE96ECE296059E000FFBEA8 /* NSHapticFeedbackPerformerMock.swift in Sources */,
 				587B612E293419B700D5CD8F /* CodeFileTests.swift in Sources */,
@@ -2930,72 +2938,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2BE487F628245162003F3F64 /* Debug */ = {
+		28052DEA2973045200F4F90A /* Alpha */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OpenWithCodeEdit/OpenWithCodeEdit.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2MMGJGVTB4;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OpenWithCodeEdit/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = OpenWithCodeEdit;
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit.OpenWithCodeEdit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		2BE487F728245162003F3F64 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OpenWithCodeEdit/OpenWithCodeEdit.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2MMGJGVTB4;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OpenWithCodeEdit/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = OpenWithCodeEdit;
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit.OpenWithCodeEdit;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		B658FB4F27DA9E1000EA4DBD /* Debug */ = {
-			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFC29730DF600F4F90A /* Alpha.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -3029,7 +2974,443 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-D ALPHA";
+				RUN_DOCUMENTATION_COMPILER = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Alpha;
+		};
+		28052DEB2973045200F4F90A /* Alpha */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFC29730DF600F4F90A /* Alpha.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${CE_APPICON_NAME}";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CodeEdit/CodeEdit.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"CodeEdit/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CodeEdit/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2023 CodeEdit";
+				INFOPLIST_KEY_NSPrincipalClass = CodeEdit.CodeEditApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = "Change in Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_DOCUMENTATION_COMPILER = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Alpha;
+		};
+		28052DEC2973045200F4F90A /* Alpha */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFC29730DF600F4F90A /* Alpha.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEditTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeEdit.app/Contents/MacOS/CodeEdit";
+			};
+			name = Alpha;
+		};
+		28052DED2973045200F4F90A /* Alpha */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFC29730DF600F4F90A /* Alpha.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEditUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "CodeEditUITests/Features/CodeEditUI/CodeEditUITests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CodeEdit;
+			};
+			name = Alpha;
+		};
+		28052DEE2973045200F4F90A /* Alpha */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFC29730DF600F4F90A /* Alpha.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OpenWithCodeEdit/OpenWithCodeEdit.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = OpenWithCodeEdit/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenWithCodeEdit;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit.OpenWithCodeEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Alpha;
+		};
+		28052DEF2973045C00F4F90A /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFD29730E0300F4F90A /* Beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-D BETA";
+				RUN_DOCUMENTATION_COMPILER = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Beta;
+		};
+		28052DF02973045C00F4F90A /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFD29730E0300F4F90A /* Beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${CE_APPICON_NAME}";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CodeEdit/CodeEdit.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"CodeEdit/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CodeEdit/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2023 CodeEdit";
+				INFOPLIST_KEY_NSPrincipalClass = CodeEdit.CodeEditApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = "Change in Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUN_DOCUMENTATION_COMPILER = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Beta;
+		};
+		28052DF12973045C00F4F90A /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFD29730E0300F4F90A /* Beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEditTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodeEdit.app/Contents/MacOS/CodeEdit";
+			};
+			name = Beta;
+		};
+		28052DF22973045C00F4F90A /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFD29730E0300F4F90A /* Beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEditUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "CodeEditUITests/Features/CodeEditUI/CodeEditUITests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CodeEdit;
+			};
+			name = Beta;
+		};
+		28052DF32973045C00F4F90A /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFD29730E0300F4F90A /* Beta.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OpenWithCodeEdit/OpenWithCodeEdit.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = OpenWithCodeEdit/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenWithCodeEdit;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit.OpenWithCodeEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Beta;
+		};
+		2BE487F628245162003F3F64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFB29730DE300F4F90A /* Debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OpenWithCodeEdit/OpenWithCodeEdit.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = OpenWithCodeEdit/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenWithCodeEdit;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit.OpenWithCodeEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2BE487F728245162003F3F64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFE29730E0B00F4F90A /* Release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OpenWithCodeEdit/OpenWithCodeEdit.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 25;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = OpenWithCodeEdit/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenWithCodeEdit;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit.OpenWithCodeEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B658FB4F27DA9E1000EA4DBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFB29730DE300F4F90A /* Debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3063,6 +3444,7 @@
 		};
 		B658FB5027DA9E1000EA4DBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFE29730E0B00F4F90A /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -3096,7 +3478,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3123,9 +3505,10 @@
 		};
 		B658FB5227DA9E1000EA4DBD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFB29730DE300F4F90A /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${CE_APPICON_NAME}";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CodeEdit/CodeEdit.entitlements;
 				CODE_SIGN_IDENTITY = "-";
@@ -3133,18 +3516,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"CodeEdit/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MMGJGVTB4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = CodeEdit/Info.plist;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2022 CodeEdit";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2023 CodeEdit";
+				INFOPLIST_KEY_NSPrincipalClass = CodeEdit.CodeEditApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = "Change in Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3156,9 +3540,10 @@
 		};
 		B658FB5327DA9E1000EA4DBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFE29730E0B00F4F90A /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconAlpha;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "${CE_APPICON_NAME}";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CodeEdit/CodeEdit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3166,18 +3551,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"CodeEdit/Preview Content\"";
-				DEVELOPMENT_TEAM = 2MMGJGVTB4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = CodeEdit/Info.plist;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2022 CodeEdit";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022-2023 CodeEdit";
+				INFOPLIST_KEY_NSPrincipalClass = CodeEdit.CodeEditApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = "Change in Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = austincondiff.CodeEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3189,12 +3575,13 @@
 		};
 		B658FB5527DA9E1000EA4DBD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFB29730DE300F4F90A /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3215,12 +3602,13 @@
 		};
 		B658FB5627DA9E1000EA4DBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFE29730E0B00F4F90A /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3241,12 +3629,13 @@
 		};
 		B658FB5827DA9E1000EA4DBD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFB29730DE300F4F90A /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3269,12 +3658,13 @@
 		};
 		B658FB5927DA9E1000EA4DBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28052DFE29730E0B00F4F90A /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3302,6 +3692,8 @@
 			buildConfigurations = (
 				2BE487F628245162003F3F64 /* Debug */,
 				2BE487F728245162003F3F64 /* Release */,
+				28052DEE2973045200F4F90A /* Alpha */,
+				28052DF32973045C00F4F90A /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3311,6 +3703,8 @@
 			buildConfigurations = (
 				B658FB4F27DA9E1000EA4DBD /* Debug */,
 				B658FB5027DA9E1000EA4DBD /* Release */,
+				28052DEA2973045200F4F90A /* Alpha */,
+				28052DEF2973045C00F4F90A /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3320,6 +3714,8 @@
 			buildConfigurations = (
 				B658FB5227DA9E1000EA4DBD /* Debug */,
 				B658FB5327DA9E1000EA4DBD /* Release */,
+				28052DEB2973045200F4F90A /* Alpha */,
+				28052DF02973045C00F4F90A /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3329,6 +3725,8 @@
 			buildConfigurations = (
 				B658FB5527DA9E1000EA4DBD /* Debug */,
 				B658FB5627DA9E1000EA4DBD /* Release */,
+				28052DEC2973045200F4F90A /* Alpha */,
+				28052DF12973045C00F4F90A /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3338,6 +3736,8 @@
 			buildConfigurations = (
 				B658FB5827DA9E1000EA4DBD /* Debug */,
 				B658FB5927DA9E1000EA4DBD /* Release */,
+				28052DED2973045200F4F90A /* Alpha */,
+				28052DF22973045C00F4F90A /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3358,15 +3758,15 @@
 			repositoryURL = "https://github.com/CodeEditApp/CodeEditSymbols";
 			requirement = {
 				kind = exactVersion;
-				version = 0.1.0;
+				version = 0.1.2;
 			};
 		};
 		287136B1292A407E00E9F5F4 /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lukepistrol/SwiftLintPlugin";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
 			};
 		};
 		583E529A29361BAB001AB554 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
@@ -3406,7 +3806,7 @@
 			repositoryURL = "https://github.com/CodeEditApp/CodeEditTextView.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.3.1;
+				version = 0.3.5;
 			};
 		};
 		58F2EB18292FB91C004A9BDE /* XCRemoteSwiftPackageReference "Preferences" */ = {
@@ -3423,30 +3823,6 @@
 			requirement = {
 				kind = exactVersion;
 				version = 2.3.0;
-			};
-		};
-		6C536408298A8CAD00A5AEFF /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		6C53640C298ABB1800A5AEFF /* XCRemoteSwiftPackageReference "Defaults" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/Defaults";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-		6C536412298AC3AE00A5AEFF /* XCRemoteSwiftPackageReference "collectionconcurrencykit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/johnsundell/collectionconcurrencykit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3501,21 +3877,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58F2EB1C292FB954004A9BDE /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
-		};
-		6C536409298A8CAD00A5AEFF /* WindowManagement */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C536408298A8CAD00A5AEFF /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */;
-			productName = WindowManagement;
-		};
-		6C53640D298ABB1800A5AEFF /* Defaults */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C53640C298ABB1800A5AEFF /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
-		};
-		6C536413298AC3AF00A5AEFF /* CollectionConcurrencyKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6C536412298AC3AE00A5AEFF /* XCRemoteSwiftPackageReference "collectionconcurrencykit" */;
-			productName = CollectionConcurrencyKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
