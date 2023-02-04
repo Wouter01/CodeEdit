@@ -10,8 +10,8 @@ import CodeEditSymbols
 
 /// A view that pops up a branch picker.
 struct ToolbarBranchPicker: View {
-    private var workspace: WorkspaceClient?
-    private var gitClient: GitClient?
+    private var folderURL: URL
+    private var gitClient: GitClient
 
     @Environment(\.controlActiveState)
     private var controlActive
@@ -30,13 +30,11 @@ struct ToolbarBranchPicker: View {
     /// - Parameter workspace: An instance of the current `WorkspaceClient`
     init(
         shellClient: ShellClient,
-        workspace: WorkspaceClient?
+        folderURL: URL
     ) {
-        self.workspace = workspace
-        if let folderURL = workspace?.folderURL() {
-            self.gitClient = GitClient(directoryURL: folderURL, shellClient: shellClient)
-        }
-        self._currentBranch = State(initialValue: try? gitClient?.getCurrentBranchName())
+        self.folderURL = folderURL
+        self.gitClient = GitClient(directoryURL: folderURL, shellClient: shellClient)
+        self._currentBranch = State(initialValue: try? gitClient.getCurrentBranchName())
     }
 
     var body: some View {
@@ -85,7 +83,7 @@ struct ToolbarBranchPicker: View {
             PopoverView(gitClient: gitClient, currentBranch: $currentBranch)
         }
         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { (_) in
-            currentBranch = try? gitClient?.getCurrentBranchName()
+            currentBranch = try? gitClient.getCurrentBranchName()
         }
     }
 
@@ -94,7 +92,7 @@ struct ToolbarBranchPicker: View {
     }
 
     private var title: String {
-        workspace?.folderURL()?.lastPathComponent ?? "Empty"
+        folderURL.lastPathComponent
     }
 
     // MARK: Popover View

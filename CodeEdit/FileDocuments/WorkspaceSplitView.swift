@@ -50,16 +50,10 @@ struct WorkspaceSplitView: View {
             .toolbar(id: "Editor") {
 
                 ToolbarItem(id: "SourceControl", placement: .navigation, showsByDefault: true) {
-                    HStack {
-                        Image(systemName: "plus")
-                            .fontWeight(.black)
-                        VStack(alignment: .leading) {
-                            Text("Git Control")
-                                .fontWeight(.bold)
-                            Text("Main")
-                                .font(.caption)
-                        }
-                    }
+                    ToolbarBranchPicker(
+                        shellClient: currentWorld.shellClient,
+                        folderURL: files.root.url
+                    )
                 }
 
                 ToolbarItem(id: "FakeSpacer") {

@@ -194,13 +194,13 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate {
             return toolbarItem
         case .branchPicker:
             let toolbarItem = NSToolbarItem(itemIdentifier: .branchPicker)
-            let view = NSHostingView(
-                rootView: ToolbarBranchPicker(
-                    shellClient: currentWorld.shellClient,
-                    workspace: workspace?.workspaceClient
-                )
-            )
-            toolbarItem.view = view
+//            let view = NSHostingView(
+//                rootView: ToolbarBranchPicker(
+//                    shellClient: currentWorld.shellClient,
+//                    workspace: workspace?.workspaceClient
+//                )
+//            )
+//            toolbarItem.view = view
 
             return toolbarItem
         default:

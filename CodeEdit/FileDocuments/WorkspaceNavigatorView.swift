@@ -34,6 +34,7 @@ struct NavigatorView: View {
             switch selection {
             case .project:
                 OutlineView()
+
             case .sourceControl:
                 Text("Source Control")
             case .search:
