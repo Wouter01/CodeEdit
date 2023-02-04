@@ -9,12 +9,12 @@ import SwiftUI
 import Combine
 
 class DataFile: ObservableObject, Identifiable {
-    private var fileWrapper: FileWrapper
+    var fileWrapper: FileWrapper
 
     @Published
     var contents: String = ""
 
-    private var cancellables: Set<AnyCancellable> = []
+    private var fileUpdaterCancellable: AnyCancellable?
 
     var parent: FileType
 
@@ -25,14 +25,7 @@ class DataFile: ObservableObject, Identifiable {
         self.fileWrapper = fileWrapper
         self.parent = parent
 
-        self.$contents
-            .dropFirst(10)
-            .throttle(for: .seconds(5), scheduler: DispatchQueue.main, latest: true)
-            .sink { [weak self] _ in
-                print("Updating filewrapper")
-                try? self?.updateFile()
-            }
-            .store(in: &cancellables)
+
     }
 
     deinit {
@@ -74,16 +67,26 @@ class DataFile: ObservableObject, Identifiable {
             throw CocoaError(.fileReadUnknownStringEncoding)
         }
 
-        //        DispatchQueue.main.async {
         self.contents = string
-        print("contents updated:", contents.count)
-        //        }
+
+        // Cancellable can only be activated when contents have been read,
+        // and only one cancellable may be active at a time.
+        if fileUpdaterCancellable == nil {
+            fileUpdaterCancellable = self.$contents
+                .throttle(for: .seconds(5), scheduler: DispatchQueue.main, latest: true)
+                .sink { [self] res in
+                    // strong self reference is needed,
+                    // so the latest changes aren't discarded when the object would be deallocated
+                    try? self.updateFile()
+                }
+        }
     }
 
     func updateFile() throws {
         guard let data = contents.data(using: .utf8) else {
             fatalError("Datafile wanted to update but contents is nil")
         }
+
         let newFileWrapper = FileWrapper(regularFileWithContents: data)
         newFileWrapper.preferredFilename = fileWrapper.filename
         newFileWrapper.filename = fileWrapper.filename
@@ -92,9 +95,12 @@ class DataFile: ObservableObject, Identifiable {
 
         switch parent {
         case .child(let parent):
-            try parent.updateChild(with: fileWrapper.filename!, replacement: newFileWrapper)
+            parent.fileWrapper.removeFileWrapper(fileWrapper)
+            parent.fileWrapper.addFileWrapper(newFileWrapper)
         case .root(let url):
             fatalError("Not yet implemented")
         }
+
+        fileWrapper = newFileWrapper
     }
 }
