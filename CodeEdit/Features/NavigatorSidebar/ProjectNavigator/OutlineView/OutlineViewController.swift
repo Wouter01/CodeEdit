@@ -182,7 +182,7 @@ extension OutlineViewController: NSOutlineViewDataSource {
         guard let fileItem = item as? Item else { return [] }
         // -1 index indicates that we are hovering over a row in outline view (folder or file)
         if index == -1 {
-            if !fileItem.isFolder {
+            if case .file = fileItem {
                 outlineView.setDropItem(fileItem.parent, dropChildIndex: index)
             }
             return .move
@@ -211,7 +211,7 @@ extension OutlineViewController: NSOutlineViewDataSource {
             }
 
             // Needs to come before call to .removeItem or else race condition occurs
-            guard let srcFileItem = try? workspace?.workspaceClient?.getFileItem(fileItemURL.relativePath) else {
+            guard let srcFileItem = workspace2.searchFile(with: fileItemURL) else {
                 return false
             }
 
@@ -401,12 +401,12 @@ extension OutlineViewController: OutlineTableViewCellDelegate {
 
 
     func moveFile(file: Item, to destination: URL) {
-        if !file.isFolder {
-            workspace?.closeTab(item: .codeEditor(file.id))
-        }
-        file.move(to: destination)
-        if !file.isFolder {
-            workspace?.openTab(item: file)
-        }
+//        if !file.isFolder {
+//            workspace?.closeTab(item: .codeEditor(file.id))
+//        }
+//        file.move(to: destination)
+//        if !file.isFolder {
+//            workspace?.openTab(item: file)
+//        }
     }
 }
