@@ -87,6 +87,7 @@ class DataFile: ObservableObject, Identifiable {
         let newFileWrapper = FileWrapper(regularFileWithContents: data)
         newFileWrapper.preferredFilename = fileWrapper.filename
         newFileWrapper.filename = fileWrapper.filename
+        newFileWrapper.fileAttributes = fileWrapper.fileAttributes
         newFileWrapper.icon = fileWrapper.icon
 
         switch parent {
