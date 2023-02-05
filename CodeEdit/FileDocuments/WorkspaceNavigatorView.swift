@@ -54,46 +54,16 @@ struct NavigatorView: View {
 
     @SceneStorage("SelectionState") var selectionScene: File.ID?
 
-//    init(currentOpen: Binding<File?>) {
-//        self._currentOpen = currentOpen
-//        self._selectionScene = .init("SelectionState")
-//        if let selectionScene {
-//            self.navSelection = files.searchFile(with: selectionScene)
-//        }
-//    }
-
-    func createChildCell(item: File) -> NSTextField {
-        let field = NSTextField(string: item.fileName)
-        field.isEditable = true
-        field.isSelectable = true
-        field.isBezeled = false
-        field.drawsBackground = false
-        field.usesSingleLineMode = false
-        field.cell?.wraps = true
-        field.cell?.isScrollable = false
-        field.translatesAutoresizingMaskIntoConstraints = false
-        field.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-//        NSLayoutConstraint.activate([
-//            field.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            field.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            field.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-//            field.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
-//        ])
-
-        return field
-    }
-
     var body: some View {
 
         VStack {
             switch selection {
             case .project:
 //                Outline2View()
-
-                OutlineView([files.root], children: \.children, selection: $currentOpen) { item in
+//                OutlineView.init
+                OutlineView([files.root], children: \.children, selection: $files.selection) { item in
 //                    createChildCell(item: item)
                     OutlineTableViewCell(frame: .init(origin: .zero, size: .init(width: 0, height: 22)), item: item, isEditable: true, delegate: nil)
-//                    FileItemView(fileItem: item)
                 }
                 .dragDataSource { item in
                     let pasteboardItem = NSPasteboardItem()
@@ -117,17 +87,6 @@ struct NavigatorView: View {
         }
     }
 }
-
-//public extension OutlineView {
-//
-//    /// Sets the style for the `OutlineView`.
-//    @available(macOS 11.0, *)
-//    func contentMenu(_ style: NSOutlineView.Style) -> Self {
-//        var mutableSelf = self
-//        mutableSelf.
-//        return mutableSelf
-//    }
-//}
 
 class MyDropReceiver: DropReceiver {
     

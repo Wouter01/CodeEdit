@@ -13,7 +13,7 @@ import UniformTypeIdentifiers
 extension NSToolbar {
 
     @objc var itemsSwizzled: [NSToolbarItem] {
-        return self.itemsSwizzled
+        self.itemsSwizzled
             .map {
                 if $0.itemIdentifier.rawValue == "CenterSection" {
                     $0.minSize = .init(width: 100, height: 25)
@@ -34,7 +34,7 @@ extension NSToolbar {
 // To fix this, dummy spacers defined in SwiftUI are replaced with default flexible space.
 // Also, SwiftUI's default sidebar toggle is filtered out.
 extension NSObject {
-    @objc func defaultSwizzle(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+    @objc fileprivate func defaultSwizzle(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         defaultSwizzle(toolbar)
             .replacing([.init("FakeSpacer")], with: [.flexibleSpace])
             .filter { $0.rawValue != "com.apple.SwiftUI.navigationSplitView.toggleSidebar" }

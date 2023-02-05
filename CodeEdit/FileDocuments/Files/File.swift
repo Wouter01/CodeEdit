@@ -41,13 +41,13 @@ enum File: Identifiable, Hashable {
         switch self {
         case .file(let dataFile):
             guard let type = dataFile.fileType else {
-                return "questionmark.square.dashed"
+                return "doc"
             }
             return FileIcon.fileIcon(fileType: type)
 
         case .symlink(let symlinkFile):
             guard let type = symlinkFile.fileType else {
-                return "questionmark.square.dashed"
+                return "doc"
             }
             return FileIcon.fileIcon(fileType: type)
 
