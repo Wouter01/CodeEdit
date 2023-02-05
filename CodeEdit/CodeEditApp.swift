@@ -39,6 +39,7 @@ struct CodeEditApp: App {
                     appdelegate.openPreferences(self)
                 }
             }
+            .frame(width: 200, height: 200)
         }
     }
 }

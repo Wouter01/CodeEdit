@@ -47,6 +47,10 @@ final class OutlineTableViewCell: NSTableCellView {
         self.label.font = .labelFont(ofSize: fontSize)
         self.label.lineBreakMode = .byTruncatingMiddle
 
+        self.label.usesSingleLineMode = false
+        self.label.cell?.wraps = true
+        self.label.cell?.isScrollable = false
+
         self.addSubview(label)
         self.textField = label
 
@@ -68,15 +72,21 @@ final class OutlineTableViewCell: NSTableCellView {
 
         // Label constraints
 
-        self.label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 1).isActive = true
-        self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 1).isActive = true
-        self.label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        self.label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 1).isActive = true
+//        self.label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 1).isActive = true
+//        self.label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 
+        NSLayoutConstraint.activate([
+            self.label.leadingAnchor.constraint(equalTo: icon.trailingAnchor),
+            self.label.trailingAnchor.constraint(equalTo: trailingAnchor),
+            self.label.topAnchor.constraint(equalTo: topAnchor, constant: 4),
+            self.label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
+        ])
         if let item = item {
-//            let image = NSImage(systemSymbolName: item.systemImage, accessibilityDescription: nil)!
+            let image = NSImage(systemSymbolName: item.systemImage, accessibilityDescription: nil)!
             fileItem = item
-            icon.image = item.icon ?? .init()
-//            icon.contentTintColor = color(for: item)
+            icon.image = image
+            icon.contentTintColor = NSColor(item.iconColor)
 
             label.stringValue = item.fileName
         }

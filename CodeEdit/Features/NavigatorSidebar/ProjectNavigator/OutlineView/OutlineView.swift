@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// Wraps an ``OutlineViewController`` inside a `NSViewControllerRepresentable`
-struct OutlineView: NSViewControllerRepresentable {
+struct Outline2View: NSViewControllerRepresentable {
 
 //    @EnvironmentObject
 //    var workspace: WorkspaceDocument

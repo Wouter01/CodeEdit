@@ -6,6 +6,40 @@
 //
 
 import SwiftUI
+import OutlineView
+
+//class FileItemView: NSTextField {
+//    
+//    init(fileItem: File) {
+//        super.ini
+//        super.init(string: fileItem.fileName)
+//        isEditable = true
+//        isSelectable = true
+//        field.isEditable = true
+//        field.isSelectable = true
+//        field.isBezeled = false
+//        field.drawsBackground = false
+//        field.usesSingleLineMode = false
+//        field.cell?.wraps = true
+//        field.cell?.isScrollable = false
+////        field.preferredMaxLayoutWidth = 20
+////        super.init(frame: .zero)
+//
+//        addSubview(field)
+//        field.translatesAutoresizingMaskIntoConstraints = false
+//        field.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+//        NSLayoutConstraint.activate([
+//            field.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            field.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            field.topAnchor.constraint(equalTo: topAnchor, constant: 4),
+//            field.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
+//        ])
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//}
 
 struct NavigatorView: View {
 
@@ -28,13 +62,45 @@ struct NavigatorView: View {
 //        }
 //    }
 
+    func createChildCell(item: File) -> NSTextField {
+        let field = NSTextField(string: item.fileName)
+        field.isEditable = true
+        field.isSelectable = true
+        field.isBezeled = false
+        field.drawsBackground = false
+        field.usesSingleLineMode = false
+        field.cell?.wraps = true
+        field.cell?.isScrollable = false
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+//        NSLayoutConstraint.activate([
+//            field.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            field.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            field.topAnchor.constraint(equalTo: topAnchor, constant: 4),
+//            field.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
+//        ])
+
+        return field
+    }
+
     var body: some View {
 
         VStack {
             switch selection {
             case .project:
-                OutlineView()
+//                Outline2View()
 
+                OutlineView([files.root], children: \.children, selection: $currentOpen) { item in
+//                    createChildCell(item: item)
+                    OutlineTableViewCell(frame: .init(origin: .zero, size: .init(width: 0, height: 22)), item: item, isEditable: true, delegate: nil)
+//                    FileItemView(fileItem: item)
+                }
+                .dragDataSource { item in
+                    let pasteboardItem = NSPasteboardItem()
+                    pasteboardItem.setData(item.url.dataRepresentation, forType: .fileURL)
+                    return pasteboardItem
+                }
+                .onDrop(of: [.fileURL], receiver: MyDropReceiver())
             case .sourceControl:
                 Text("Source Control")
             case .search:
@@ -62,3 +128,47 @@ struct NavigatorView: View {
 //        return mutableSelf
 //    }
 //}
+
+class MyDropReceiver: DropReceiver {
+    
+    typealias DataElement = File
+
+    func readPasteboard(item: NSPasteboardItem) -> DraggedItem<DataElement>? {
+        guard let pasteboardType = item.availableType(from: [.fileURL]) else { return nil }
+
+        switch pasteboardType {
+        case .fileURL:
+//            if let draggedUrlString = item.string(forType: .fileURL),
+//               draggedUrl = URL(string: draggedUrlString)
+//            {
+////                let newFileItem = File.file(<#T##DataFile#>)/* instance of OutlineView.Data.Element from draggedUrl */
+////                return (newFileItem, .fileUrl)
+//                return nil
+//            } else {
+//                return nil
+//            }
+            return nil
+        default:
+            return nil
+        }
+    }
+
+    func validateDrop(target: DropTarget<DataElement>) -> ValidationResult<DataElement> {
+//        let draggedItems = target.draggedItems
+        print(target)
+        if target.childIndex != nil {
+            return .deny
+        }
+        switch target.intoElement {
+        case .file, .symlink, .none:
+            return .deny
+        case .folder:
+            return .move
+        }
+    }
+
+    func acceptDrop(target: DropTarget<DataElement>) -> Bool {
+        // update data source to reflect that drop was successful or not
+        return true
+    }
+}

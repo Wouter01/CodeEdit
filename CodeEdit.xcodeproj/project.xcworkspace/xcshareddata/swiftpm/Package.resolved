@@ -73,6 +73,15 @@
       }
     },
     {
+      "identity" : "outlineview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Sameesunkaria/OutlineView",
+      "state" : {
+        "branch" : "main",
+        "revision" : "661a32c6f6db1bbb4349048e3d0fcb6afa5a9d26"
+      }
+    },
+    {
       "identity" : "preferences",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/Preferences.git",

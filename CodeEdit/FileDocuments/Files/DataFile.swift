@@ -57,6 +57,11 @@ class DataFile: ObservableObject, Identifiable {
         fileWrapper.filename!
     }
 
+    var fileType: FileIcon.FileType? {
+        guard let type = fileName.split(separator: ".").last else { return nil }
+        return .init(rawValue: String(type))
+    }
+
     var id: URL { url }
 
     func readFile() throws {

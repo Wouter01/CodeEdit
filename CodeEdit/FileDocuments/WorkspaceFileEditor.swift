@@ -33,6 +33,6 @@ struct WorkspaceFileEditor: View {
             try? file.readFile()
         }
         
-        .frame(width: 600, height: 600)
+//        .frame(width: 600, height: 600)
     }
 }

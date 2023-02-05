@@ -37,6 +37,48 @@ enum File: Identifiable, Hashable {
         }
     }
 
+    var systemImage: String {
+        switch self {
+        case .file(let dataFile):
+            guard let type = dataFile.fileType else {
+                return "questionmark.square.dashed"
+            }
+            return FileIcon.fileIcon(fileType: type)
+
+        case .symlink(let symlinkFile):
+            guard let type = symlinkFile.fileType else {
+                return "questionmark.square.dashed"
+            }
+            return FileIcon.fileIcon(fileType: type)
+
+        case .folder(let folderFile) where folderFile.fileName == ".codeedit":
+            return "folder.fill.badge.gearshape"
+        case .folder(let folderFile) where folderFile.children.isEmpty:
+            return "folder"
+        case .folder:
+            return "folder.fill"
+        }
+    }
+
+    var iconColor: Color {
+        switch self {
+        case .file(let dataFile):
+            guard let type = dataFile.fileType else {
+                return .accentColor
+            }
+            return FileIcon.iconColor(fileType: type)
+
+        case .symlink(let symlinkFile):
+            guard let type = symlinkFile.fileType else {
+                return .accentColor
+            }
+            return FileIcon.iconColor(fileType: type)
+
+        case .folder:
+            return Color(NSColor(named: "FolderBlue") ?? .systemBlue)
+        }
+    }
+
     var children: [File]? {
         switch self {
         case .file, .symlink:
