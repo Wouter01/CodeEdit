@@ -72,7 +72,7 @@ struct NavigatorView: View {
                 }
                 .onDrop(of: [.fileURL], receiver: MyDropReceiver())
             case .sourceControl:
-                Text("Source Control")
+                SourceControlNavigatorView()
             case .search:
                 Text("Search")
             }

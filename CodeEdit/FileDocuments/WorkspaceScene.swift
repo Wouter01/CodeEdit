@@ -14,6 +14,7 @@ struct WorkspaceScene: Scene {
             ReferenceWorkspaceFileDocument()
         } editor: { config in
             WorkspaceMainView(files: .init(root: config.document.baseRoot, rootURL: config.fileURL!))
+                .environment(\.workspaceURL, config.fileURL)
         }
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
         .commands {

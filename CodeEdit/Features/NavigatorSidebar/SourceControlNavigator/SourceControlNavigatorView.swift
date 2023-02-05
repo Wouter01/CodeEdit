@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SourceControlNavigatorView: View {
 
-    @EnvironmentObject
-    private var workspace: WorkspaceDocument
+    @Environment(\.workspaceURL) var workspaceURL
 
     @State
     private var selectedSection: Int = 0
@@ -31,7 +30,7 @@ struct SourceControlNavigatorView: View {
             }
 
             if selectedSection == 0 {
-                if let urlString = workspace.fileURL {
+                if let urlString = workspaceURL {
                     SourceControlNavigatorChangesView(workspaceURL: urlString)
                 }
             }
