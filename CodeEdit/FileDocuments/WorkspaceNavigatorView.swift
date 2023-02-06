@@ -41,9 +41,60 @@ import OutlineView
 //    }
 //}
 
+struct FolderFileTree: View {
+    @ObservedObject var model: FolderFile
+    @State var expanded = false
+    var body: some View {
+        DisclosureGroup(isExpanded: $expanded) {
+            Group {
+                ForEach(model.children, id: \.self) {
+                    FileTreeView(item: $0, canShowChildren: expanded)
+                }
+            }
+        } label: {
+            Text(model.fileName)
+        }
+    }
+    func createNewFolder() -> FileWrapper {
+        let fw = FileWrapper(directoryWithFileWrappers: [:])
+        fw.filename = "fyjtgukjhlgkfjhcj"
+        fw.preferredFilename = "vfhjbknlbvgchjfxhcgvhbk"
+        return fw
+    }
+}
+
+struct FileTreeView: View {
+    @State var expanded = false
+    var item: File
+    var canShowChildren: Bool = true
+    var body: some View {
+        Group {
+            switch item {
+            case .file(let dataFile):
+                HStack {
+                    Image(systemName: FileIcon.fileIcon(fileType: dataFile.fileType))
+                    Text(dataFile.fileName)
+                }
+                .frame(height: 15)
+            case .folder(let folderFile) where !canShowChildren:
+                DisclosureGroup(folderFile.fileName) {
+                    Text("")
+                }
+            case .folder(let folderFile):
+                FolderFileTree(model: folderFile)
+            case .symlink(let symlinkFile):
+                Text(symlinkFile.fileName)
+            }
+        }
+        .id(item.id)
+    }
+}
+
 struct NavigatorView: View {
 
     @Binding var currentOpen: File?
+
+    @State var selectedItems: Set<File> = []
 
     @State private var selection: Navigator = .project
 
@@ -59,20 +110,28 @@ struct NavigatorView: View {
         VStack {
             switch selection {
             case .project:
+                // Implementation 1
+//                OutlineView([files.root], children: \.children, selection: $currentOpen) { item in
+//                    OutlineTableViewCell(frame: .init(origin: .zero, size: .init(width: 0, height: 22)), item: item, isEditable: true, delegate: nil)
+//                }
+//                .dragDataSource { item in
+//                    let pasteboardItem = NSPasteboardItem()
+//                    pasteboardItem.setData(item.url.dataRepresentation, forType: .fileURL)
+//                    return pasteboardItem
+//                }
+//                .onDrop(of: [.fileURL], receiver: MyDropReceiver())
+
+                // Implementation 2
+                List(selection: $selectedItems) {
+                    FileTreeView(item: files.root)
+                }
+                .environment(\.defaultMinListRowHeight, 15)
+
+                // Implementation 3
 //                Outline2View()
-//                OutlineView.init
-                OutlineView([files.root], children: \.children, selection: $files.selection) { item in
-//                    createChildCell(item: item)
-                    OutlineTableViewCell(frame: .init(origin: .zero, size: .init(width: 0, height: 22)), item: item, isEditable: true, delegate: nil)
-                }
-                .dragDataSource { item in
-                    let pasteboardItem = NSPasteboardItem()
-                    pasteboardItem.setData(item.url.dataRepresentation, forType: .fileURL)
-                    return pasteboardItem
-                }
-                .onDrop(of: [.fileURL], receiver: MyDropReceiver())
             case .sourceControl:
                 SourceControlNavigatorView()
+
             case .search:
                 Text("Search")
             }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class FolderFile: ObservableObject, Identifiable {
 
@@ -48,6 +49,7 @@ class FolderFile: ObservableObject, Identifiable {
 
     var id: URL { url }
 
+    // TODO: should be @Published so view can react to changes.
     lazy var children: [File] = computeChildren()
 
     // Can be expensive, use with care.

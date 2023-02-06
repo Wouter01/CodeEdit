@@ -48,7 +48,7 @@ enum FileIcon {
 
     /// Returns a string describing a SFSymbol for files
     /// If not specified otherwise this will return `"doc"`
-    static func fileIcon(fileType: FileType) -> String {
+    static func fileIcon(fileType: FileType?) -> String {
         switch fileType {
         case .json, .js:
             return "curlybraces"

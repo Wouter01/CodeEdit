@@ -25,6 +25,7 @@ extension WorkspaceDocument {
 
         init(_ workspace: WorkspaceDocument) {
             self.workspace = workspace
+
         }
 
         /// Searches the entire workspace for the given string, using the ``selectedMode`` modifiers

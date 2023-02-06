@@ -91,12 +91,12 @@ final class OutlineViewController: NSViewController {
     ///
     /// Most importantly when the `id` changes from an external view.
     func updateSelection() {
-//        guard let itemID = workspace?.selectionState.selectedId else {
-//            outlineView.deselectRow(outlineView.selectedRow)
-//            return
-//        }
-        
-//        select(by: itemID, from: content)
+        guard let itemID = workspace2.selection?.id else {
+            outlineView.deselectRow(outlineView.selectedRow)
+            return
+        }
+
+        select(by: itemID, from: content)
     }
 
     /// Expand or collapse the folder on double click
@@ -279,8 +279,8 @@ extension OutlineViewController: NSOutlineViewDelegate {
 
         guard let item = outlineView.item(atRow: selectedIndex) as? Item else { return }
 
-        print("Selected \(item.fileName)")
-        workspace2.selection = item
+        print("Selecting \(item.fileName)")
+//        selection = item
 
         // TODO: open tab
 //        if item.children == nil && shouldSendSelectionUpdate {
@@ -310,29 +310,31 @@ extension OutlineViewController: NSOutlineViewDelegate {
     /// - Parameters:
     ///   - id: the id of the item item
     ///   - collection: the array to search for
-//    private func select(by id: TabBarItemID, from collection: [Item]) {
-//        // If the user has set "Reveal file on selection change" to on, we need to reveal the item before
-//        // selecting the row.
+    private func select(by id: Item.ID, from collection: [Item]) {
+        // If the user has set "Reveal file on selection change" to on, we need to reveal the item before
+        // selecting the row.
 //        if AppPreferencesModel.shared.preferences.general.revealFileOnFocusChange,
 //           case let .codeEditor(id) = id,
 //           let fileItem = try? workspace?.workspaceClient?.getFileItem(id as Item.ID) as? Item {
 //            reveal(fileItem)
 //        }
-//
-//        guard let item = collection.first(where: { $0.tabID == id }) else {
-//            for item in collection {
-//                select(by: id, from: item.children ?? [])
-//            }
-//            return
-//        }
-//        let row = outlineView.row(forItem: item)
-//        if row == -1 {
-//            outlineView.deselectRow(outlineView.selectedRow)
-//        }
-//        shouldSendSelectionUpdate = false
-//        outlineView.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
-//        shouldSendSelectionUpdate = true
-//    }
+
+        guard let item = collection.first(where: { $0.id == id }) else {
+            for item in collection {
+                select(by: id, from: item.children ?? [])
+            }
+            return
+        }
+        let row = outlineView.row(forItem: item)
+        if row == -1 {
+            outlineView.deselectRow(outlineView.selectedRow)
+        }
+        shouldSendSelectionUpdate = false
+        outlineView.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
+        print("Setting selection...")
+        workspace2.selection = item
+        shouldSendSelectionUpdate = true
+    }
 
     /// Reveals the given `fileItem` in the outline view by expanding all the parent directories of the file.
     /// If the file is not found, it will present an alert saying so.

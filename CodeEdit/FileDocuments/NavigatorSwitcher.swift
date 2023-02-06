@@ -37,7 +37,7 @@ enum Navigator: CaseIterable, Identifiable, CustomStringConvertible, Hashable {
     }
 
     static var allCases: [Navigator] {
-        [.project, .sourceControl]
+        [.project, .sourceControl, .search]
     }
 }
 

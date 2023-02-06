@@ -315,6 +315,7 @@
 		6C14CEB028777D3C001468FE /* FindNavigatorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEAF28777D3C001468FE /* FindNavigatorListViewController.swift */; };
 		6C14CEB32877A68F001468FE /* FindNavigatorMatchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */; };
 		6C30A889298FCBFA00D79D33 /* Env+WorkspaceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A888298FCBFA00D79D33 /* Env+WorkspaceURL.swift */; };
+		6C30A8912990779000D79D33 /* OutlineView in Frameworks */ = {isa = PBXBuildFile; productRef = 6C30A8902990779000D79D33 /* OutlineView */; };
 		6C4104E3297C87A000F472BA /* BlurButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */; };
 		6C4104E6297C884F00F472BA /* AboutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E5297C884F00F472BA /* AboutDetailView.swift */; };
 		6C4104E9297C970F00F472BA /* AboutDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E8297C970F00F472BA /* AboutDefaultView.swift */; };
@@ -343,7 +344,6 @@
 		6CB99BE8298DDF280048CAC6 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 6CB99BE7298DDF280048CAC6 /* WindowManagement */; };
 		6CB99BEB298DDF650048CAC6 /* CodeEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB99BEA298DDF650048CAC6 /* CodeEditApp.swift */; };
 		6CB99BEE298DDF970048CAC6 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB99BED298DDF970048CAC6 /* WelcomeWindow.swift */; };
-		6CB99BF4298E977B0048CAC6 /* OutlineView in Frameworks */ = {isa = PBXBuildFile; productRef = 6CB99BF3298E977B0048CAC6 /* OutlineView */; };
 		6CBD1BC62978DE53006639D5 /* Font+Caption3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBD1BC52978DE53006639D5 /* Font+Caption3.swift */; };
 		6CDA84AD284C1BA000C1CC3A /* TabBarContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDA84AC284C1BA000C1CC3A /* TabBarContextMenu.swift */; };
 		B60BE8BD297A167600841125 /* AcknowledgementRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60BE8BC297A167600841125 /* AcknowledgementRowView.swift */; };
@@ -799,7 +799,7 @@
 				58F2EB17292FB74D004A9BDE /* CodeEditTextView in Frameworks */,
 				6CB99BDE298DDE930048CAC6 /* Defaults in Frameworks */,
 				5879826F292EC9870085B254 /* GRDB in Frameworks */,
-				6CB99BF4298E977B0048CAC6 /* OutlineView in Frameworks */,
+				6C30A8912990779000D79D33 /* OutlineView in Frameworks */,
 				58F2EB1E292FB954004A9BDE /* Sparkle in Frameworks */,
 				6CB99BE8298DDF280048CAC6 /* WindowManagement in Frameworks */,
 				5879826B292EC7B00085B254 /* Light-Swift-Untar in Frameworks */,
@@ -2445,7 +2445,7 @@
 				6CB99BDD298DDE930048CAC6 /* Defaults */,
 				6CB99BE1298DDEA60048CAC6 /* CollectionConcurrencyKit */,
 				6CB99BE7298DDF280048CAC6 /* WindowManagement */,
-				6CB99BF3298E977B0048CAC6 /* OutlineView */,
+				6C30A8902990779000D79D33 /* OutlineView */,
 			);
 			productName = CodeEdit;
 			productReference = B658FB2C27DA9E0F00EA4DBD /* CodeEdit.app */;
@@ -2542,7 +2542,7 @@
 				6CB99BDC298DDE930048CAC6 /* XCRemoteSwiftPackageReference "Defaults" */,
 				6CB99BE0298DDEA60048CAC6 /* XCRemoteSwiftPackageReference "collectionconcurrencykit" */,
 				6CB99BE6298DDF270048CAC6 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
-				6CB99BF2298E977B0048CAC6 /* XCRemoteSwiftPackageReference "OutlineView" */,
+				6C30A88F2990779000D79D33 /* XCRemoteSwiftPackageReference "OutlineView" */,
 			);
 			productRefGroup = B658FB2D27DA9E0F00EA4DBD /* Products */;
 			projectDirPath = "";
@@ -3925,6 +3925,14 @@
 				version = 2.3.0;
 			};
 		};
+		6C30A88F2990779000D79D33 /* XCRemoteSwiftPackageReference "OutlineView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Sameesunkaria/OutlineView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		6CB99BDC298DDE930048CAC6 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -3944,14 +3952,6 @@
 		6CB99BE6298DDF270048CAC6 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		6CB99BF2298E977B0048CAC6 /* XCRemoteSwiftPackageReference "OutlineView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Sameesunkaria/OutlineView";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -4010,6 +4010,11 @@
 			package = 58F2EB1C292FB954004A9BDE /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
 		};
+		6C30A8902990779000D79D33 /* OutlineView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C30A88F2990779000D79D33 /* XCRemoteSwiftPackageReference "OutlineView" */;
+			productName = OutlineView;
+		};
 		6CB99BDD298DDE930048CAC6 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6CB99BDC298DDE930048CAC6 /* XCRemoteSwiftPackageReference "Defaults" */;
@@ -4024,11 +4029,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6CB99BE6298DDF270048CAC6 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */;
 			productName = WindowManagement;
-		};
-		6CB99BF3298E977B0048CAC6 /* OutlineView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6CB99BF2298E977B0048CAC6 /* XCRemoteSwiftPackageReference "OutlineView" */;
-			productName = OutlineView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
