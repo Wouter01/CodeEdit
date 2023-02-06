@@ -10,10 +10,10 @@ import SwiftUI
 struct FindNavigatorView: View {
 
     @EnvironmentObject
-    private var workspace: WorkspaceDocument
+    private var workspace: WorkspaceFiles
 
     private var state: WorkspaceDocument.SearchState {
-        workspace.searchState ?? .init(workspace)
+        workspace.searchState
     }
 
     @State

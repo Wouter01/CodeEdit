@@ -133,7 +133,7 @@ struct NavigatorView: View {
                 SourceControlNavigatorView()
 
             case .search:
-                Text("Search")
+                FindNavigatorView()
             }
         }
         .frame(maxHeight: .infinity)

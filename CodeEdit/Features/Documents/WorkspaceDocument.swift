@@ -279,7 +279,7 @@ import CodeEditKit
             folderURL: url,
             ignoredFilesAndFolders: ignoredFilesAndDirectory
         )
-        self.searchState = .init(self)
+//        self.searchState = .init(self)
         self.quickOpenViewModel = .init(fileURL: url)
         self.commandsPaletteState = .init()
         self.statusBarModel = .init(workspaceURL: url)

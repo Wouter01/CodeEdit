@@ -11,7 +11,7 @@ import Combine
 struct FindNavigatorResultList: NSViewControllerRepresentable {
 
     @EnvironmentObject
-    var workspace: WorkspaceDocument
+    var workspace: WorkspaceFiles
 
     @StateObject
     var prefs: AppPreferencesModel = .shared

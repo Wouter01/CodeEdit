@@ -12,8 +12,11 @@ class WorkspaceFiles: ObservableObject {
 
     @Published var selection: File?
 
+    var searchState: WorkspaceDocument.SearchState!
+
     init(root: FileWrapper, rootURL: URL) {
         self.root = .folder(.init(fileWrapper: root, root: rootURL))
+        self.searchState = .init(manager: self)
     }
 
     func searchFile(with url: URL) -> File? {
