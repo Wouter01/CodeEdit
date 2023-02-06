@@ -22,6 +22,8 @@ struct CodeEditApp: App {
         NSVisualEffectView.swizzle()
         NSDocumentController.swizzle()
 
+        UserDefaults.standard.removeAll()
+
         // This enables window restoring on normal quit (instead of only on force-quit).
         Defaults[.alwaysKeepWindows] = true
     }

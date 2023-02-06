@@ -316,6 +316,9 @@
 		6C14CEB32877A68F001468FE /* FindNavigatorMatchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */; };
 		6C30A889298FCBFA00D79D33 /* Env+WorkspaceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A888298FCBFA00D79D33 /* Env+WorkspaceURL.swift */; };
 		6C30A8912990779000D79D33 /* OutlineView in Frameworks */ = {isa = PBXBuildFile; productRef = 6C30A8902990779000D79D33 /* OutlineView */; };
+		6C30A8942990861C00D79D33 /* WorkspaceTabGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A8932990861C00D79D33 /* WorkspaceTabGroup.swift */; };
+		6C30A8972990928200D79D33 /* TabGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A8962990928200D79D33 /* TabGroup.swift */; };
+		6C30A89B2990953D00D79D33 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 6C30A89A2990953D00D79D33 /* OrderedCollections */; };
 		6C4104E3297C87A000F472BA /* BlurButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */; };
 		6C4104E6297C884F00F472BA /* AboutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E5297C884F00F472BA /* AboutDetailView.swift */; };
 		6C4104E9297C970F00F472BA /* AboutDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E8297C970F00F472BA /* AboutDefaultView.swift */; };
@@ -726,6 +729,8 @@
 		6C14CEAF28777D3C001468FE /* FindNavigatorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNavigatorListViewController.swift; sourceTree = "<group>"; };
 		6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNavigatorMatchListCell.swift; sourceTree = "<group>"; };
 		6C30A888298FCBFA00D79D33 /* Env+WorkspaceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Env+WorkspaceURL.swift"; sourceTree = "<group>"; };
+		6C30A8932990861C00D79D33 /* WorkspaceTabGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceTabGroup.swift; sourceTree = "<group>"; };
+		6C30A8962990928200D79D33 /* TabGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGroup.swift; sourceTree = "<group>"; };
 		6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurButtonStyle.swift; sourceTree = "<group>"; };
 		6C4104E5297C884F00F472BA /* AboutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailView.swift; sourceTree = "<group>"; };
 		6C4104E8297C970F00F472BA /* AboutDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDefaultView.swift; sourceTree = "<group>"; };
@@ -804,6 +809,7 @@
 				6CB99BE8298DDF280048CAC6 /* WindowManagement in Frameworks */,
 				5879826B292EC7B00085B254 /* Light-Swift-Untar in Frameworks */,
 				5879828A292ED15F0085B254 /* SwiftTerm in Frameworks */,
+				6C30A89B2990953D00D79D33 /* OrderedCollections in Frameworks */,
 				2816F594280CF50500DD548B /* CodeEditSymbols in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2273,11 +2279,13 @@
 			children = (
 				6CB99BBA298DDCA90048CAC6 /* WorkspaceFileManager.swift */,
 				6CB99BBB298DDCA90048CAC6 /* WorkspaceScene.swift */,
+				6C30A8962990928200D79D33 /* TabGroup.swift */,
 				6CB99BBC298DDCA90048CAC6 /* WorkspaceMainView.swift */,
 				6CB99BBD298DDCA90048CAC6 /* NavigatorSwitcher.swift */,
 				6CB99BBE298DDCA90048CAC6 /* WorkspaceNavigatorView.swift */,
 				6CB99BBF298DDCA90048CAC6 /* FolderFileDocument.swift */,
 				6CB99BC0298DDCA90048CAC6 /* WorkspaceFileEditor.swift */,
+				6C30A8932990861C00D79D33 /* WorkspaceTabGroup.swift */,
 				6CB99BC1298DDCA90048CAC6 /* Files */,
 				6CB99BC7298DDCA90048CAC6 /* WorkspaceSplitView.swift */,
 			);
@@ -2446,6 +2454,7 @@
 				6CB99BE1298DDEA60048CAC6 /* CollectionConcurrencyKit */,
 				6CB99BE7298DDF280048CAC6 /* WindowManagement */,
 				6C30A8902990779000D79D33 /* OutlineView */,
+				6C30A89A2990953D00D79D33 /* OrderedCollections */,
 			);
 			productName = CodeEdit;
 			productReference = B658FB2C27DA9E0F00EA4DBD /* CodeEdit.app */;
@@ -2543,6 +2552,7 @@
 				6CB99BE0298DDEA60048CAC6 /* XCRemoteSwiftPackageReference "collectionconcurrencykit" */,
 				6CB99BE6298DDF270048CAC6 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 				6C30A88F2990779000D79D33 /* XCRemoteSwiftPackageReference "OutlineView" */,
+				6C30A8992990953C00D79D33 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = B658FB2D27DA9E0F00EA4DBD /* Products */;
 			projectDirPath = "";
@@ -2869,6 +2879,7 @@
 				58F2EB0E292FB2B0004A9BDE /* SoftwareUpdater.swift in Sources */,
 				587B9E9529301D8F00AC7927 /* BitBucketUser.swift in Sources */,
 				587B9E7C29301D8F00AC7927 /* GitHubRepositoryRouter.swift in Sources */,
+				6C30A8942990861C00D79D33 /* WorkspaceTabGroup.swift in Sources */,
 				286471AB27ED51FD0039369D /* ProjectNavigatorView.swift in Sources */,
 				58798264292EC4080085B254 /* Plugin.swift in Sources */,
 				6CB99BD1298DDCA90048CAC6 /* FileType.swift in Sources */,
@@ -2897,6 +2908,7 @@
 				587B9E5929301D8F00AC7927 /* GitCheckoutBranchView+CheckoutBranch.swift in Sources */,
 				58F2EB09292FB2B0004A9BDE /* TerminalPreferences.swift in Sources */,
 				587D9B742933BF5700BF7490 /* FileItem+Array.swift in Sources */,
+				6C30A8972990928200D79D33 /* TabGroup.swift in Sources */,
 				587D9B772933BF5700BF7490 /* Live.swift in Sources */,
 				6C48D8F42972DB1A00D6D205 /* Env+Window.swift in Sources */,
 				2072FA18280D871200C7F8D4 /* TextEncoding.swift in Sources */,
@@ -3933,6 +3945,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		6C30A8992990953C00D79D33 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		6CB99BDC298DDE930048CAC6 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -4014,6 +4034,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6C30A88F2990779000D79D33 /* XCRemoteSwiftPackageReference "OutlineView" */;
 			productName = OutlineView;
+		};
+		6C30A89A2990953D00D79D33 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C30A8992990953C00D79D33 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
 		};
 		6CB99BDD298DDE930048CAC6 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;

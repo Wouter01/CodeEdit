@@ -109,3 +109,13 @@ class DataFile: ObservableObject, Identifiable {
         fileWrapper = newFileWrapper
     }
 }
+
+extension DataFile: Equatable, Hashable {
+    static func == (lhs: DataFile, rhs: DataFile) -> Bool {
+        lhs.url == rhs.url
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(url)
+    }
+}

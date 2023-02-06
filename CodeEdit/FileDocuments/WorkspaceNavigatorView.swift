@@ -122,13 +122,13 @@ struct NavigatorView: View {
 //                .onDrop(of: [.fileURL], receiver: MyDropReceiver())
 
                 // Implementation 2
-                List(selection: $selectedItems) {
-                    FileTreeView(item: files.root)
-                }
-                .environment(\.defaultMinListRowHeight, 15)
+//                List(selection: $selectedItems) {
+//                    FileTreeView(item: files.root)
+//                }
+//                .environment(\.defaultMinListRowHeight, 15)
 
                 // Implementation 3
-//                Outline2View()
+                Outline2View()
             case .sourceControl:
                 SourceControlNavigatorView()
 

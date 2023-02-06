@@ -278,7 +278,9 @@ extension OutlineViewController: NSOutlineViewDelegate {
         let selectedIndex = outlineView.selectedRow
 
         guard let item = outlineView.item(atRow: selectedIndex) as? Item else { return }
-
+        if case .file(let datafile) = item {
+            workspace2.openTab(for: datafile)
+        }
         print("Selecting \(item.fileName)")
 //        selection = item
 
@@ -332,6 +334,9 @@ extension OutlineViewController: NSOutlineViewDelegate {
         shouldSendSelectionUpdate = false
         outlineView.selectRowIndexes(.init(integer: row), byExtendingSelection: false)
         print("Setting selection...")
+        if case .file(let datafile) = item {
+            workspace2.openTab(for: datafile)
+        }
         workspace2.selection = item
         shouldSendSelectionUpdate = true
     }

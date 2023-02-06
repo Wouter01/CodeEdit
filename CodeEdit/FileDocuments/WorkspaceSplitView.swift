@@ -41,11 +41,13 @@ struct WorkspaceSplitView: View {
                 }
 
         } content: {
-            VStack {
-                if case .file(let data) = files.selection {
-                    WorkspaceFileEditor(file: data)
-                }
+//            VStack {
+//            ScrollView {
+            ZStack {
+                WorkspaceEditorView(tabgroup: files.tabs)
             }
+//            }
+//            }
             .navigationSplitViewColumnWidth(min: 500, ideal: 500)
             .toolbar(id: "Editor") {
 
