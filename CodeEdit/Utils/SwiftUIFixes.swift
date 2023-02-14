@@ -25,7 +25,19 @@ extension NSToolbar {
 
     static func swizzle() {
         swizzle(#selector (getter: items), #selector (getter: itemsSwizzled))
+        swizzle(#selector(NSToolbar.insertItem(withItemIdentifier:at:)), #selector(insertSwizzled))
         NSObject.swizzleSwiftUIToolbar()
+    }
+
+    @objc func insertSwizzled(with itemIdentifier: NSToolbarItem.Identifier, at: Int) {
+        switch itemIdentifier.rawValue {
+        case "FakeSpacer":
+            insertSwizzled(with: .flexibleSpace, at: at)
+        case "com.apple.SwiftUI.navigationSplitView.toggleSidebar":
+            insertSwizzled(with: .space, at: at)
+        default:
+            insertSwizzled(with: itemIdentifier, at: at)
+        }
     }
 }
 
