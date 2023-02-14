@@ -37,6 +37,23 @@ struct TabBarContextMenu: ViewModifier {
     func body(content: Content) -> some View {
         content.contextMenu(menuItems: {
             Group {
+                Button("Split and open on the right") {
+                    tabs.child = .trailing(.init(files: [item], selected: item))
+                    tabs.files.remove(item)
+                }
+                Button("Split and open on the bottom") {
+                    if let child = tabs.child {
+
+                        tabs.child = .top(.init(files: tabs.files.subtracting([item]), selected: tabs.selected, child: tabs.child))
+                        tabs.files = [item]
+                        tabs.selected = item
+
+                    } else {
+                        tabs.child = .bottom(.one(files: [item], selected: item))
+                        tabs.files.remove(item)
+                    }
+
+                }
                 Button("Close Tab") {
                     withAnimation {
                         _ = tabs.files.remove(item)

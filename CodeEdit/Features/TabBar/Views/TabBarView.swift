@@ -456,9 +456,7 @@ struct TabBarView: View {
             .help("Enable Code Review")
             TabBarAccessoryIcon(
                 icon: .init(systemName: "square.split.2x1"),
-                action: {
-                    tabs.child = .horizontal(.init(files: tabs.files, selected: tabs.selected))
-                } // TODO: Implement
+                action: {} // TODO: Implement
             )
             .foregroundColor(.secondary)
             .buttonStyle(.plain)

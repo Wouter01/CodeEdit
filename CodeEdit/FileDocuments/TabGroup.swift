@@ -21,44 +21,15 @@ final class ReferenceTabGroup: ObservableObject {
     }
 
     enum Child {
-        case vertical(ReferenceTabGroup)
-        case horizontal(ReferenceTabGroup)
+        case top(ReferenceTabGroup)
+        case bottom(ReferenceTabGroup)
+        case leading(ReferenceTabGroup)
+        case trailing(ReferenceTabGroup)
+//        case vertical(ReferenceTabGroup)
+//        case horizontal(ReferenceTabGroup)
     }
 
     static func one(files: OrderedSet<DataFile> = [], selected: DataFile? = nil) -> ReferenceTabGroup {
         .init(files: files, selected: selected)
     }
-}
-
-indirect enum TabGroup {
-    case one(TabGroupData)
-    case vertical(TabGroupData, TabGroup)
-    case horizontal(TabGroupData, TabGroup)
-
-    var data: TabGroupData {
-        switch self {
-        case .one(let data):
-            return data
-        case .vertical(let data, _):
-            return data
-        case .horizontal(let data, _):
-            return data
-        }
-    }
-
-    func addTab(for file: DataFile) {
-        switch self {
-        case .one(let data):
-            data.files.append(file)
-        case .horizontal(let data, _):
-            data.files.append(file)
-        case .vertical(let data, _):
-            data.files.append(file)
-        }
-    }
-}
-
-class TabGroupData: ObservableObject {
-    @Published var files: OrderedSet<DataFile> = []
-    @Published var selected: DataFile?
 }

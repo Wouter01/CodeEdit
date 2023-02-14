@@ -15,15 +15,25 @@ struct WorkspaceEditorView: View {
         case .none:
             WorkspaceTabGroupView(tabgroup: tabgroup)
                 .frame(minWidth: 100, minHeight: 100)
-        case .vertical(let otherTabGroup):
+        case .bottom(let otherTabGroup):
             VSplitView {
                 WorkspaceTabGroupView(tabgroup: tabgroup)
                 WorkspaceEditorView(tabgroup: otherTabGroup)
             }
-        case .horizontal(let otherTabGroup):
+        case .top(let otherTabGroup):
+            VSplitView {
+                WorkspaceEditorView(tabgroup: otherTabGroup)
+                WorkspaceTabGroupView(tabgroup: tabgroup)
+            }
+        case .leading(let otherTabGroup):
             HSplitView {
                 WorkspaceTabGroupView(tabgroup: tabgroup)
                 WorkspaceEditorView(tabgroup: otherTabGroup)
+            }
+        case .trailing(let otherTabGroup):
+            HSplitView {
+                WorkspaceEditorView(tabgroup: otherTabGroup)
+                WorkspaceTabGroupView(tabgroup: tabgroup)
             }
         }
     }
@@ -46,8 +56,9 @@ struct WorkspaceTabGroupView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .ignoresSafeArea(.all)
-            .overlay(alignment: .top) {
+//        .ignoresSafeArea(.all)
+            .safeAreaInset(edge: .top, spacing: 0) {
+                VStack(spacing: 0) {
                 TabBarView()
                     .environmentObject(tabgroup)
 
@@ -85,8 +96,8 @@ struct WorkspaceTabGroupView: View {
 //                    .frame(height: 30)
 //                    .padding(.leading)
 //                    .scrollContentBackground(.hidden)
-//                    Divider()
-//                }
+                    Divider()
+                }
                 .background(EffectView(.titlebar, blendingMode: .withinWindow, emphasized: false))
             }
 
