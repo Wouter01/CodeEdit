@@ -108,6 +108,14 @@ class DataFile: ObservableObject, Identifiable {
 
         fileWrapper = newFileWrapper
     }
+
+    var systemImage: String {
+        FileIcon.fileIcon(fileType: fileType)
+    }
+
+    var iconColor: Color {
+        FileIcon.iconColor(fileType: fileType)
+    }
 }
 
 extension DataFile: Equatable, Hashable {

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TabBarItemView: View {
+
+    typealias Item = DataFile
+
     @Environment(\.colorScheme)
     private var colorScheme
 
@@ -44,44 +47,42 @@ struct TabBarItemView: View {
     private var isAppeared: Bool = false
 
     /// The expected tab width in native tab bar style.
-    @Binding
     private var expectedWidth: CGFloat
 
     /// The id associating with the tab that is currently being dragged.
     ///
     /// When `nil`, then there is no tab being dragged.
-    @Binding
-    private var draggingTabId: TabBarItemID?
+    private var draggingTabId: Item.ID?
 
-    @Binding
-    private var onDragTabId: TabBarItemID?
+    private var onDragTabId: Item.ID?
 
     @Binding
     private var closeButtonGestureActive: Bool
 
-    /// The current WorkspaceDocument object.
-    ///
-    /// It contains the workspace-related information like selection states.
     @EnvironmentObject
-    private var workspace: WorkspaceDocument
+    private var tabs: ReferenceTabGroup
 
     /// The item associated with the current tab.
     ///
     /// You can get tab-related information from here, like `label`, `icon`, etc.
-    private var item: TabBarItemRepresentable
+    private var item: Item
+
+    var index: Int
 
     private var isTemporary: Bool {
-        workspace.selectionState.temporaryTab == item.tabID
+        false
+        // TODO: Fix this
+//        workspace.selectionState.temporaryTab == item.tabID
     }
 
     /// Is the current tab the active tab.
     private var isActive: Bool {
-        item.tabID == workspace.selectionState.selectedId
+        item == tabs.selected
     }
 
     /// Is the current tab being dragged.
     private var isDragging: Bool {
-        draggingTabId == item.tabID
+        draggingTabId == item.id
     }
 
     /// Is the current tab being held (by click and hold, not drag).
@@ -94,8 +95,8 @@ struct TabBarItemView: View {
     /// Switch the active tab to current tab.
     private func switchAction() {
         // Only set the `selectedId` when they are not equal to avoid performance issue for now.
-        if workspace.selectionState.selectedId != item.tabID {
-            workspace.selectionState.selectedId = item.tabID
+        if tabs.selected != item {
+            tabs.selected = item
         }
     }
 
@@ -107,21 +108,23 @@ struct TabBarItemView: View {
         withAnimation(
             .easeOut(duration: prefs.preferences.general.tabBarStyle == .native ? 0.15 : 0.20)
         ) {
-            workspace.closeTab(item: item.tabID)
+            tabs.files.remove(item)
         }
     }
 
     init(
-        expectedWidth: Binding<CGFloat>,
-        item: TabBarItemRepresentable,
-        draggingTabId: Binding<TabBarItemID?>,
-        onDragTabId: Binding<TabBarItemID?>,
+        expectedWidth: CGFloat,
+        item: Item,
+        index: Int,
+        draggingTabId: Item.ID?,
+        onDragTabId: Item.ID?,
         closeButtonGestureActive: Binding<Bool>
     ) {
-        self._expectedWidth = expectedWidth
+        self.expectedWidth = expectedWidth
         self.item = item
-        self._draggingTabId = draggingTabId
-        self._onDragTabId = onDragTabId
+        self.index = index
+        self.draggingTabId = draggingTabId
+        self.onDragTabId = onDragTabId
         self._closeButtonGestureActive = closeButtonGestureActive
     }
 
@@ -136,7 +139,7 @@ struct TabBarItemView: View {
                 .padding(.top, isActive && prefs.preferences.general.tabBarStyle == .native ? 1.22 : 0)
             // Tab content (icon and text).
             HStack(alignment: .center, spacing: 5) {
-                item.icon
+                Image(systemName: item.systemImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(
@@ -145,7 +148,7 @@ struct TabBarItemView: View {
                         : .secondary
                     )
                     .frame(width: 12, height: 12)
-                Text(item.title)
+                Text(item.fileName)
                     .font(
                         isTemporary
                         ? .system(size: 11.0).italic()
@@ -185,7 +188,7 @@ struct TabBarItemView: View {
                     )
                     .frame(width: 0, height: 0)
                     .keyboardShortcut(
-                        workspace.getTabKeyEquivalent(item: item),
+                        KeyEquivalent(Character(String(index))),
                         modifiers: [.command]
                     )
                     .hidden()
@@ -288,7 +291,8 @@ struct TabBarItemView: View {
             TapGesture(count: 2)
                 .onEnded { _ in
                     if isTemporary {
-                        workspace.convertTemporaryTab()
+                        // TODO: Fix this
+//                        workspace.convertTemporaryTab()
                     }
                 }
         )
@@ -300,7 +304,7 @@ struct TabBarItemView: View {
             x: isAppeared || prefs.preferences.general.tabBarStyle == .native ? 0 : -14,
             y: 0
         )
-        .opacity(isAppeared && onDragTabId != item.tabID ? 1.0 : 0.0)
+        .opacity(isAppeared && onDragTabId != item.id ? 1.0 : 0.0)
         .zIndex(
             isActive
             ? (prefs.preferences.general.tabBarStyle == .native ? -1 : 2)
@@ -315,31 +319,21 @@ struct TabBarItemView: View {
             )
         )
         .onAppear {
-            if (isTemporary && workspace.selectionState.previousTemporaryTab == nil)
-                || !(isTemporary && workspace.selectionState.previousTemporaryTab != item.tabID) {
+            // TODO: Fix this
+//            if (isTemporary && workspace.selectionState.previousTemporaryTab == nil)
+//                || !(isTemporary && workspace.selectionState.previousTemporaryTab != item.tabID) {
                 withAnimation(
                     .easeOut(duration: prefs.preferences.general.tabBarStyle == .native ? 0.15 : 0.20)
                 ) {
                     isAppeared = true
                 }
-            } else {
-                withAnimation(.linear(duration: 0.0)) {
-                    isAppeared = true
-                }
-            }
+//            } else {
+//                withAnimation(.linear(duration: 0.0)) {
+//                    isAppeared = true
+//                }
+//            }
         }
-        .id(item.tabID)
+        .id(item.id)
         .tabBarContextMenu(item: item, isTemporary: isTemporary)
-    }
-}
-// swiftlint:enable type_body_length
-
-fileprivate extension WorkspaceDocument {
-    func getTabKeyEquivalent(item: TabBarItemRepresentable) -> KeyEquivalent {
-        for counter in 0..<9 where self.selectionState.openFileItems.count > counter &&
-        self.selectionState.openFileItems[counter].tabID == item.tabID {
-            return KeyEquivalent.init(Character.init("\(counter + 1)"))
-        }
-        return "0"
     }
 }

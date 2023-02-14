@@ -45,44 +45,48 @@ struct WorkspaceTabGroupView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
         .ignoresSafeArea(.all)
             .overlay(alignment: .top) {
-                VStack(spacing: 0) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(tabgroup.files, id: \.url) { file in
+                TabBarView()
+                    .environmentObject(tabgroup)
 
-                                Button(file.fileName) {
-                                    tabgroup.selected = file
-                                }
-                                .buttonStyle(.plain)
-                                .contextMenu {
-                                    Button("Split right") {
-                                        tabgroup.child = .horizontal(.init(files: [file], selected: file))
-                                    }
-                                    Button("Split left") {
-                                        tabgroup.child = .horizontal(.init(files: tabgroup.files, selected: tabgroup.selected))
-                                        tabgroup.files = [file]
-                                        tabgroup.selected = file
-                                    }
-                                    Button("Split top") {
-                                        tabgroup.child = .vertical(.init(files: [file], selected: file))
-                                    }
-                                    Button("Split bottom") {
-                                        tabgroup.child = .vertical(.init(files: tabgroup.files, selected: tabgroup.selected))
-                                        tabgroup.files = [file]
-                                        tabgroup.selected = file
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                    .frame(height: 30)
-                    .padding(.leading)
-                    .scrollContentBackground(.hidden)
-                    Divider()
-                }
+//                VStack(spacing: 0) {
+//                    ScrollView(.horizontal, showsIndicators: false) {
+//                        HStack {
+//                            ForEach(tabgroup.files, id: \.url) { file in
+//
+//                                Button(file.fileName) {
+//                                    tabgroup.selected = file
+//                                }
+//                                .buttonStyle(.plain)
+//                                .contextMenu {
+//                                    Button("Split right") {
+//                                        tabgroup.child = .horizontal(.init(files: [file], selected: file))
+//                                    }
+//                                    Button("Split left") {
+//                                        tabgroup.child = .horizontal(.init(files: tabgroup.files, selected: tabgroup.selected))
+//                                        tabgroup.files = [file]
+//                                        tabgroup.selected = file
+//                                    }
+//                                    Button("Split top") {
+//                                        tabgroup.child = .vertical(.init(files: [file], selected: file))
+//                                    }
+//                                    Button("Split bottom") {
+//                                        tabgroup.child = .vertical(.init(files: tabgroup.files, selected: tabgroup.selected))
+//                                        tabgroup.files = [file]
+//                                        tabgroup.selected = file
+//                                    }
+//                                }
+//
+//                            }
+//                        }
+//                    }
+//                    .frame(height: 30)
+//                    .padding(.leading)
+//                    .scrollContentBackground(.hidden)
+//                    Divider()
+//                }
                 .background(EffectView(.titlebar, blendingMode: .withinWindow, emphasized: false))
             }
 

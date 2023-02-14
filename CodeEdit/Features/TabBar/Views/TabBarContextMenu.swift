@@ -7,16 +7,17 @@
 
 import Foundation
 import SwiftUI
+import OrderedCollections
 
 extension View {
-    func tabBarContextMenu(item: TabBarItemRepresentable, isTemporary: Bool) -> some View {
+    func tabBarContextMenu(item: DataFile, isTemporary: Bool) -> some View {
         modifier(TabBarContextMenu(item: item, isTemporary: isTemporary))
     }
 }
 
 struct TabBarContextMenu: ViewModifier {
     init(
-        item: TabBarItemRepresentable,
+        item: DataFile,
         isTemporary: Bool
     ) {
         self.item = item
@@ -24,9 +25,12 @@ struct TabBarContextMenu: ViewModifier {
     }
 
     @EnvironmentObject
-    var workspace: WorkspaceDocument
+    var tabs: ReferenceTabGroup
 
-    private var item: TabBarItemRepresentable
+    @EnvironmentObject
+    var workspace: WorkspaceFiles
+
+    private var item: DataFile
     private var isTemporary: Bool
 
     // swiftlint:disable:next function_body_length
@@ -35,33 +39,34 @@ struct TabBarContextMenu: ViewModifier {
             Group {
                 Button("Close Tab") {
                     withAnimation {
-                        workspace.closeTab(item: item.tabID)
+                        _ = tabs.files.remove(item)
                     }
                 }
                 .keyboardShortcut("w", modifiers: [.command])
 
                 Button("Close Other Tabs") {
                     withAnimation {
-                        workspace.closeTab(where: { $0 != item.tabID })
+                        tabs.files = [item]
                     }
                 }
                 Button("Close Tabs to the Right") {
                     withAnimation {
-                        workspace.closeTabs(after: item.tabID)
+                        tabs.files = OrderedSet(tabs.files.prefix { $0 == item })
                     }
                 }
                 // Disable this option when current tab is the last one.
-                .disabled(workspace.selectionState.openedTabs.last?.id == item.tabID.id)
+                .disabled(tabs.files.last == item)
 
                 Button("Close All") {
                     withAnimation {
-                        workspace.closeTabs(items: workspace.selectionState.openedTabs)
+                        tabs.files = []
                     }
                 }
 
                 if isTemporary {
                     Button("Keep Open") {
-                        workspace.convertTemporaryTab()
+                        // TODO: Fix this
+//                        workspace.convertTemporaryTab()
                     }
                 }
             }
@@ -87,7 +92,8 @@ struct TabBarContextMenu: ViewModifier {
                     }
 
                     Button("Reveal in Project Navigator") {
-                        workspace.listenerModel.highlightedFileItem = item
+                        // TODO: Fix this
+//                        workspace.listenerModel.highlightedFileItem = item
                     }
 
                     Button("Open in New Window") {
@@ -111,9 +117,8 @@ struct TabBarContextMenu: ViewModifier {
     /// Copies the relative path from the workspace folder to the given file item to the pasteboard.
     /// - Parameter item: The `FileItem` to use.
     private func copyRelativePath(item: WorkspaceClient.FileItem) {
-        guard let rootPath = workspace.workspaceClient?.folderURL() else {
-            return
-        }
+        let rootPath = workspace.root.url
+
         // Calculate the relative path
         var rootComponents = rootPath.standardizedFileURL.pathComponents
         var destinationComponents = item.url.standardizedFileURL.pathComponents
