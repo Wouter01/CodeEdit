@@ -26,10 +26,17 @@ struct WorkspaceFileEditor: View {
                     contentInsets: .some(.init(top: TabBarView.height, left: 0, bottom: 10, right: 0))
                 )
                 .id(file.id)
+            } else {
+                Spacer()
+                VStack(spacing: 10) {
+                    ProgressView()
+                    Text("Opening \(file.fileName)...")
+                }
+                Spacer()
             }
         }
         .task(id: file.id) {
-            print("Loading file...")
+            print("Loading file \(file.id)")
             try? file.readFile()
         }
     }
