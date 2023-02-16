@@ -60,7 +60,7 @@ struct TabBarItemView: View {
     private var closeButtonGestureActive: Bool
 
     @EnvironmentObject
-    private var tabs: ReferenceTabGroup
+    private var tabs: TabGroupData
 
     /// The item associated with the current tab.
     ///

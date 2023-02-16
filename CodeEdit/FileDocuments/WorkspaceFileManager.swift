@@ -16,7 +16,7 @@ class WorkspaceFiles: ObservableObject {
 
     @Published var tabs: TabGroup
 
-    var activeTab: ReferenceTabGroup
+    var activeTab: TabGroupData
 
     init(root: FileWrapper, rootURL: URL) {
         self.root = .folder(.init(fileWrapper: root, root: rootURL))

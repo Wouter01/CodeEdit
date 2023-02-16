@@ -41,7 +41,7 @@ struct WorkspaceSplitView: View {
                 }
 
         } content: {
-            WorkspaceEditorAltView(tabgroup: files.tabs)
+            WorkspaceEditorView(tabgroup: files.tabs)
                 .navigationSplitViewColumnWidth(min: 500, ideal: 500)
                 .toolbar(id: "Editor") {
 

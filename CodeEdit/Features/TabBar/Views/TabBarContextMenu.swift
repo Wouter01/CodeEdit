@@ -25,7 +25,7 @@ struct TabBarContextMenu: ViewModifier {
     }
 
     @EnvironmentObject
-    var tabs: ReferenceTabGroup
+    var tabs: TabGroupData
 
     @EnvironmentObject
     var workspace: WorkspaceFiles
@@ -120,7 +120,7 @@ struct TabBarContextMenu: ViewModifier {
     }
 
     func moveToNewSplit(_ edge: Edge) {
-        let newTabGroup = ReferenceTabGroup(files: [item], selected: item)
+        let newTabGroup = TabGroupData(files: [item], selected: item)
         splitEditor(edge, newTabGroup)
         tabs.files.remove(item)
     }

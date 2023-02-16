@@ -314,9 +314,14 @@
 		6C05A8AF284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C05A8AE284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift */; };
 		6C14CEB028777D3C001468FE /* FindNavigatorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEAF28777D3C001468FE /* FindNavigatorListViewController.swift */; };
 		6C14CEB32877A68F001468FE /* FindNavigatorMatchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */; };
+		6C2BBBBF299E769100984859 /* WorkspaceSplitViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2BBBBE299E769100984859 /* WorkspaceSplitViewData.swift */; };
+		6C2BBBC1299E76B400984859 /* Environment+SplitEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2BBBC0299E76B400984859 /* Environment+SplitEditor.swift */; };
+		6C2BBBC3299E772A00984859 /* WorkspaceTabGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2BBBC2299E772A00984859 /* WorkspaceTabGroupView.swift */; };
+		6C2BBBC6299E780D00984859 /* TabGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2BBBC5299E780D00984859 /* TabGroupData.swift */; };
+		6C2BBBC8299E783C00984859 /* SplitEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C2BBBC7299E783C00984859 /* SplitEditorView.swift */; };
 		6C30A889298FCBFA00D79D33 /* Env+WorkspaceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A888298FCBFA00D79D33 /* Env+WorkspaceURL.swift */; };
 		6C30A8912990779000D79D33 /* OutlineView in Frameworks */ = {isa = PBXBuildFile; productRef = 6C30A8902990779000D79D33 /* OutlineView */; };
-		6C30A8942990861C00D79D33 /* WorkspaceTabGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A8932990861C00D79D33 /* WorkspaceTabGroup.swift */; };
+		6C30A8942990861C00D79D33 /* WorkspaceEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A8932990861C00D79D33 /* WorkspaceEditorView.swift */; };
 		6C30A8972990928200D79D33 /* TabGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C30A8962990928200D79D33 /* TabGroup.swift */; };
 		6C30A89B2990953D00D79D33 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 6C30A89A2990953D00D79D33 /* OrderedCollections */; };
 		6C4104E3297C87A000F472BA /* BlurButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */; };
@@ -728,8 +733,13 @@
 		6C05A8AE284D0CA3007F4EAA /* WorkspaceDocument+Listeners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceDocument+Listeners.swift"; sourceTree = "<group>"; };
 		6C14CEAF28777D3C001468FE /* FindNavigatorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNavigatorListViewController.swift; sourceTree = "<group>"; };
 		6C14CEB22877A68F001468FE /* FindNavigatorMatchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNavigatorMatchListCell.swift; sourceTree = "<group>"; };
+		6C2BBBBE299E769100984859 /* WorkspaceSplitViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceSplitViewData.swift; sourceTree = "<group>"; };
+		6C2BBBC0299E76B400984859 /* Environment+SplitEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+SplitEditor.swift"; sourceTree = "<group>"; };
+		6C2BBBC2299E772A00984859 /* WorkspaceTabGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceTabGroupView.swift; sourceTree = "<group>"; };
+		6C2BBBC5299E780D00984859 /* TabGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGroupData.swift; sourceTree = "<group>"; };
+		6C2BBBC7299E783C00984859 /* SplitEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitEditorView.swift; sourceTree = "<group>"; };
 		6C30A888298FCBFA00D79D33 /* Env+WorkspaceURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Env+WorkspaceURL.swift"; sourceTree = "<group>"; };
-		6C30A8932990861C00D79D33 /* WorkspaceTabGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceTabGroup.swift; sourceTree = "<group>"; };
+		6C30A8932990861C00D79D33 /* WorkspaceEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceEditorView.swift; sourceTree = "<group>"; };
 		6C30A8962990928200D79D33 /* TabGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGroup.swift; sourceTree = "<group>"; };
 		6C4104E2297C87A000F472BA /* BlurButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurButtonStyle.swift; sourceTree = "<group>"; };
 		6C4104E5297C884F00F472BA /* AboutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailView.swift; sourceTree = "<group>"; };
@@ -2263,6 +2273,26 @@
 			path = FindNavigatorResultList;
 			sourceTree = "<group>";
 		};
+		6C2BBBBB299E764800984859 /* TabGroups */ = {
+			isa = PBXGroup;
+			children = (
+				6C30A8962990928200D79D33 /* TabGroup.swift */,
+				6C2BBBC5299E780D00984859 /* TabGroupData.swift */,
+				6C2BBBC2299E772A00984859 /* WorkspaceTabGroupView.swift */,
+			);
+			path = TabGroups;
+			sourceTree = "<group>";
+		};
+		6C2BBBBD299E767E00984859 /* SplitView */ = {
+			isa = PBXGroup;
+			children = (
+				6C2BBBBE299E769100984859 /* WorkspaceSplitViewData.swift */,
+				6C2BBBC0299E76B400984859 /* Environment+SplitEditor.swift */,
+				6C2BBBC7299E783C00984859 /* SplitEditorView.swift */,
+			);
+			path = SplitView;
+			sourceTree = "<group>";
+		};
 		6C48D8EF2972DAC300D6D205 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -2277,16 +2307,17 @@
 		6CB99BB9298DDCA90048CAC6 /* FileDocuments */ = {
 			isa = PBXGroup;
 			children = (
+				6C2BBBBD299E767E00984859 /* SplitView */,
+				6C2BBBBB299E764800984859 /* TabGroups */,
+				6CB99BC1298DDCA90048CAC6 /* Files */,
 				6CB99BBA298DDCA90048CAC6 /* WorkspaceFileManager.swift */,
 				6CB99BBB298DDCA90048CAC6 /* WorkspaceScene.swift */,
-				6C30A8962990928200D79D33 /* TabGroup.swift */,
 				6CB99BBC298DDCA90048CAC6 /* WorkspaceMainView.swift */,
 				6CB99BBD298DDCA90048CAC6 /* NavigatorSwitcher.swift */,
 				6CB99BBE298DDCA90048CAC6 /* WorkspaceNavigatorView.swift */,
 				6CB99BBF298DDCA90048CAC6 /* FolderFileDocument.swift */,
 				6CB99BC0298DDCA90048CAC6 /* WorkspaceFileEditor.swift */,
-				6C30A8932990861C00D79D33 /* WorkspaceTabGroup.swift */,
-				6CB99BC1298DDCA90048CAC6 /* Files */,
+				6C30A8932990861C00D79D33 /* WorkspaceEditorView.swift */,
 				6CB99BC7298DDCA90048CAC6 /* WorkspaceSplitView.swift */,
 			);
 			path = FileDocuments;
@@ -2810,6 +2841,7 @@
 				20EBB507280C32D300F3A5DA /* QuickHelpInspectorView.swift in Sources */,
 				DE6405A62817734700881FDF /* TabBarNative.swift in Sources */,
 				587B9E5C29301D8F00AC7927 /* Parameters.swift in Sources */,
+				6C2BBBC1299E76B400984859 /* Environment+SplitEditor.swift in Sources */,
 				58798235292E30B90085B254 /* FeedbackModel.swift in Sources */,
 				587B9D56292FC27A00AC7927 /* ExtensionManager.swift in Sources */,
 				04C3255C2801F86900C8DA2D /* OutlineMenu.swift in Sources */,
@@ -2831,7 +2863,9 @@
 				6CB99BCD298DDCA90048CAC6 /* FolderFileDocument.swift in Sources */,
 				58F2EB04292FB2B0004A9BDE /* SourceControlPreferences.swift in Sources */,
 				582213F0291834A500EFE361 /* AboutView.swift in Sources */,
+				6C2BBBC6299E780D00984859 /* TabGroupData.swift in Sources */,
 				58F2EB12292FB2B0004A9BDE /* PreferencesPlaceholderView.swift in Sources */,
+				6C2BBBC8299E783C00984859 /* SplitEditorView.swift in Sources */,
 				58822526292C280D00E83CDE /* StatusBarBreakpointButton.swift in Sources */,
 				58D01C96293167DC00C5B6B4 /* Date+Formatted.swift in Sources */,
 				587B9D9E29300ABD00AC7927 /* FontPickerView.swift in Sources */,
@@ -2879,7 +2913,7 @@
 				58F2EB0E292FB2B0004A9BDE /* SoftwareUpdater.swift in Sources */,
 				587B9E9529301D8F00AC7927 /* BitBucketUser.swift in Sources */,
 				587B9E7C29301D8F00AC7927 /* GitHubRepositoryRouter.swift in Sources */,
-				6C30A8942990861C00D79D33 /* WorkspaceTabGroup.swift in Sources */,
+				6C30A8942990861C00D79D33 /* WorkspaceEditorView.swift in Sources */,
 				286471AB27ED51FD0039369D /* ProjectNavigatorView.swift in Sources */,
 				58798264292EC4080085B254 /* Plugin.swift in Sources */,
 				6CB99BD1298DDCA90048CAC6 /* FileType.swift in Sources */,
@@ -2896,6 +2930,7 @@
 				5878DAA8291AE76700DD95A3 /* QuickOpenItem.swift in Sources */,
 				58FD7608291EA1CB0051D6E4 /* CommandPaletteViewModel.swift in Sources */,
 				5878DA872918642F00DD95A3 /* AcknowledgementsViewModel.swift in Sources */,
+				6C2BBBBF299E769100984859 /* WorkspaceSplitViewData.swift in Sources */,
 				587B9E7029301D8F00AC7927 /* GitLabUser.swift in Sources */,
 				6CB99BEE298DDF970048CAC6 /* WelcomeWindow.swift in Sources */,
 				04660F6A27E51E5C00477777 /* CodeEditWindowController.swift in Sources */,
@@ -2952,6 +2987,7 @@
 				58822532292C280D00E83CDE /* StatusBarViewModel.swift in Sources */,
 				043BCF03281DA18A000AC47C /* WorkspaceDocument+Search.swift in Sources */,
 				58822527292C280D00E83CDE /* StatusBarIndentSelector.swift in Sources */,
+				6C2BBBC3299E772A00984859 /* WorkspaceTabGroupView.swift in Sources */,
 				6CB99BEB298DDF650048CAC6 /* CodeEditApp.swift in Sources */,
 				587B9E9629301D8F00AC7927 /* BitBucketRepositories.swift in Sources */,
 				5878DAA6291AE76700DD95A3 /* QuickOpenPreviewView.swift in Sources */,

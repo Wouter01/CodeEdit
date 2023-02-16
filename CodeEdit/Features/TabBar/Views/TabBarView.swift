@@ -31,7 +31,7 @@ struct TabBarView: View {
 //    private var workspace: WorkspaceFiles
 
     @EnvironmentObject
-    private var tabs: ReferenceTabGroup
+    private var tabs: TabGroupData
 
     /// The app preference.
     @StateObject

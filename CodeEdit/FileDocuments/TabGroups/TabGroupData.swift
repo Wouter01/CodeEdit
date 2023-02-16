@@ -1,20 +1,14 @@
 //
-//  TabGroup.swift
+//  TabGroupData.swift
 //  CodeEdit
 //
-//  Created by Wouter Hennen on 06/02/2023.
+//  Created by Wouter Hennen on 16/02/2023.
 //
 
 import Foundation
 import OrderedCollections
 
-indirect enum TabGroup {
-    case one(ReferenceTabGroup)
-    case vertical(WorkspaceSplitViewData)
-    case horizontal(WorkspaceSplitViewData)
-}
-
-final class ReferenceTabGroup: ObservableObject {
+final class TabGroupData: ObservableObject {
     @Published var files: OrderedSet<DataFile> = []
     @Published var selected: DataFile?
 
