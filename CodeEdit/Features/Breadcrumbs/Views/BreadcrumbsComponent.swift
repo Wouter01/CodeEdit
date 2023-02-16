@@ -35,13 +35,6 @@ struct BreadcrumbsComponent: View {
         self.tappedOpenFile = tappedOpenFile
     }
 
-    private var image: String {
-        fileItem.parent == nil ? "square.dashed.inset.filled" : fileItem.systemImage
-    }
-
-    /// If current `fileItem` has no parent, it's the workspace root directory
-    /// else if current `fileItem` has no children, it's the opened file
-    /// else it's a folder
     private var color: Color {
         switch fileItem {
         case .file(let dataFile):
@@ -90,12 +83,12 @@ struct BreadcrumbsComponent: View {
             setPopUpFromSelection(nsView, selection: selection)
         }
 
-        func setPopUpFromSelection(_ button:NSPopUpButton, selection:ItemType)
-        {
+        func setPopUpFromSelection(_ button: NSPopUpButton, selection: ItemType) {
             let itemsList = button.itemArray
-            let matchedMenuItem = itemsList.filter{($0.representedObject as? ItemType) == selection}.first
-            if matchedMenuItem != nil
-            {
+            let matchedMenuItem = itemsList.filter {
+                ($0.representedObject as? ItemType) == selection
+            }.first
+            if matchedMenuItem != nil {
                 button.select(matchedMenuItem)
             }
         }
@@ -104,21 +97,21 @@ struct BreadcrumbsComponent: View {
             return Coordinator(self)
         }
 
-        class Coordinator:NSObject {
+        class Coordinator: NSObject {
             var parent: NSPopUpButtonView!
 
-            init(_ parent: NSPopUpButtonView)
-            {
+            init(_ parent: NSPopUpButtonView) {
                 super.init()
                 self.parent = parent
-                NotificationCenter.default.addObserver(self,
-                                                       selector: #selector(dropdownItemSelected),
-                                                       name: NSMenu.didSendActionNotification,
-                                                       object: nil)
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(dropdownItemSelected),
+                    name: NSMenu.didSendActionNotification,
+                    object: nil
+                )
             }
 
-            @objc func dropdownItemSelected(_ notification: NSNotification)
-            {
+            @objc func dropdownItemSelected(_ notification: NSNotification) {
                 let menuItem = (notification.userInfo?["MenuItem"])! as? NSMenuItem
                 if let selection = menuItem?.representedObject as? ItemType {
                     parent.selection = selection
