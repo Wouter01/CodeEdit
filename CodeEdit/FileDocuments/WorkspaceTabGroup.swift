@@ -12,8 +12,6 @@ class WorkspaceSplitViewData: ObservableObject {
 
     var direction: Direction
 
-    let uuid = UUID()
-
     init(_ direction: Direction, tabgroups: [TabGroup] = []) {
         self.tabgroups = tabgroups
         self.direction = direction
@@ -87,7 +85,7 @@ struct SplitEditorView: View {
     }
 
     var splitView: some View {
-        ForEach(Array(data.tabgroups.enumerated()), id: \.element.id) { index, item in
+        ForEach(Array(data.tabgroups.enumerated()), id: \.offset) { index, item in
             WorkspaceEditorAltView(tabgroup: item)
                 .environment(\.splitEditor) { edge, newTabGroup in
                     data.split(edge, at: index, new: newTabGroup)
