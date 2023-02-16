@@ -100,7 +100,6 @@ struct WorkspaceTabGroupView: View {
     @ObservedObject var tabgroup: ReferenceTabGroup
 
     var body: some View {
-        let _ = Self._printChanges()
         Group {
             if let selected = tabgroup.selected {
                 WorkspaceFileEditor(file: selected)

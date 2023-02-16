@@ -255,7 +255,6 @@ struct TabBarItemView: View {
     }
 
     var body: some View {
-        let _ = Self._printChanges()
         Button(action: switchAction) {
             ZStack {
                 content

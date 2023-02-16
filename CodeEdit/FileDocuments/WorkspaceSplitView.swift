@@ -64,8 +64,6 @@ struct WorkspaceSplitView: View {
                 }
 
                 ToolbarItem(id: "CenterSection", showsByDefault: true) {
-
-
                     HStack {
 
                         Button("EXample") {

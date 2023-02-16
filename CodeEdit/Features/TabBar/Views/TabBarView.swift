@@ -292,7 +292,6 @@ struct TabBarView: View {
     }
 
     var body: some View {
-        let _ = Self._printChanges()
         HStack(alignment: .center, spacing: 0) {
             // Tab bar navigation control.
             leadingAccessories

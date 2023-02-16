@@ -11,12 +11,8 @@ import CodeEditTextView
 struct WorkspaceFileEditor: View {
     @ObservedObject var file: DataFile
 
-
-    @ViewBuilder
     var body: some View {
         VStack {
-            //        VStack {
-
             if !file.contents.isEmpty {
                 CodeEditTextView(
                     $file.contents,
@@ -36,5 +32,5 @@ struct WorkspaceFileEditor: View {
             print("Loading file...")
             try? file.readFile()
         }
-                }
+    }
 }
