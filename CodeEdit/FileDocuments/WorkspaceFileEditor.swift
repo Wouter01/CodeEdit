@@ -11,10 +11,12 @@ import CodeEditTextView
 struct WorkspaceFileEditor: View {
     @ObservedObject var file: DataFile
 
+
     @ViewBuilder
     var body: some View {
-//        VStack {
-            
+        VStack {
+            //        VStack {
+
             if !file.contents.isEmpty {
                 CodeEditTextView(
                     $file.contents,
@@ -28,16 +30,11 @@ struct WorkspaceFileEditor: View {
                     contentInsets: .some(.init(top: TabBarView.height, left: 0, bottom: 10, right: 0))
                 )
                 .id(file.id)
-            } else {
-                VStack {}
-                    .task(id: file.id) {
-                        print("Loading file...")
-                        try? file.readFile()
-                    }
             }
-//        }
-
-        
-//        .frame(width: 600, height: 600)
-    }
+        }
+        .task(id: file.id) {
+            print("Loading file...")
+            try? file.readFile()
+        }
+                }
 }
