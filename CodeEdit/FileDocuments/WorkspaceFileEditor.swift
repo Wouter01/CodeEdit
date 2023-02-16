@@ -24,7 +24,8 @@ struct WorkspaceFileEditor: View {
                     tabWidth: .constant(4),
                     lineHeight: .constant(1),
                     wrapLines: .constant(true),
-                    cursorPosition: .none
+                    cursorPosition: .none,
+                    contentInsets: .some(.init(top: TabBarView.height, left: 0, bottom: 10, right: 0))
                 )
                 .id(file.id)
             } else {

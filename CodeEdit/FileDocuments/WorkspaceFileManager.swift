@@ -14,14 +14,14 @@ class WorkspaceFiles: ObservableObject {
 
     var searchState: WorkspaceDocument.SearchState!
 
-    @Published var tabs: ReferenceTabGroup
+    @Published var tabs: TabGroup
 
     var activeTab: ReferenceTabGroup
 
     init(root: FileWrapper, rootURL: URL) {
         self.root = .folder(.init(fileWrapper: root, root: rootURL))
         self.activeTab = .init()
-        self.tabs = activeTab
+        self.tabs = .horizontal(.init(.horizontal, tabgroups: [.one(activeTab)]))
         self.searchState = .init(manager: self)
     }
 

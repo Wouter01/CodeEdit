@@ -7,34 +7,91 @@
 
 import SwiftUI
 
-struct WorkspaceEditorView: View {
-    @ObservedObject var tabgroup: ReferenceTabGroup
+class WorkspaceSplitViewData: ObservableObject {
+    @Published var tabgroups: [TabGroup]
+
+    var direction: Direction
+
+    let uuid = UUID()
+
+    init(_ direction: Direction, tabgroups: [TabGroup] = []) {
+        self.tabgroups = tabgroups
+        self.direction = direction
+    }
+
+    func split(_ direction: Edge, at index: Int, new tabgroup: ReferenceTabGroup) {
+        switch (self.direction, direction) {
+        case (.horizontal, .trailing), (.vertical, .bottom):
+            tabgroups.insert(.one(tabgroup), at: index+1)
+
+        case (.horizontal, .leading), (.vertical, .top):
+            tabgroups.insert(.one(tabgroup), at: index)
+
+        case (.horizontal, .top):
+            tabgroups[index] = .vertical(.init(.vertical, tabgroups: [.one(tabgroup), tabgroups[index]]))
+
+        case (.horizontal, .bottom):
+            tabgroups[index] = .vertical(.init(.vertical, tabgroups: [tabgroups[index], .one(tabgroup)]))
+
+        case (.vertical, .leading):
+            tabgroups[index] = .horizontal(.init(.horizontal, tabgroups: [.one(tabgroup), tabgroups[index]]))
+
+        case (.vertical, .trailing):
+            tabgroups[index] = .horizontal(.init(.horizontal, tabgroups: [tabgroups[index], .one(tabgroup)]))
+        }
+    }
+
+    enum Direction {
+        case horizontal, vertical
+    }
+}
+
+struct SplitEditorEnvironmentKey: EnvironmentKey {
+    static var defaultValue: (Edge, ReferenceTabGroup) -> Void = { _, _ in }
+}
+
+extension EnvironmentValues {
+    var splitEditor: SplitEditorEnvironmentKey.Value {
+        get { self[SplitEditorEnvironmentKey.self] }
+        set { self[SplitEditorEnvironmentKey.self] = newValue }
+    }
+}
+
+struct WorkspaceEditorAltView: View {
+    var tabgroup: TabGroup
 
     var body: some View {
-        switch tabgroup.child {
-        case .none:
-            WorkspaceTabGroupView(tabgroup: tabgroup)
-                .frame(minWidth: 100, minHeight: 100)
-        case .bottom(let otherTabGroup):
+        switch tabgroup {
+        case .one(let detailTabGroup):
+            WorkspaceTabGroupView(tabgroup: detailTabGroup)
+        case .vertical(let data), .horizontal(let data):
+            SplitEditorView(data: data)
+        }
+    }
+}
+
+struct SplitEditorView: View {
+    @ObservedObject var data: WorkspaceSplitViewData
+
+    var body: some View {
+        switch data.direction {
+        case .vertical:
             VSplitView {
-                WorkspaceTabGroupView(tabgroup: tabgroup)
-                WorkspaceEditorView(tabgroup: otherTabGroup)
+                splitView
             }
-        case .top(let otherTabGroup):
-            VSplitView {
-                WorkspaceEditorView(tabgroup: otherTabGroup)
-                WorkspaceTabGroupView(tabgroup: tabgroup)
-            }
-        case .leading(let otherTabGroup):
+        case .horizontal:
             HSplitView {
-                WorkspaceTabGroupView(tabgroup: tabgroup)
-                WorkspaceEditorView(tabgroup: otherTabGroup)
+                splitView
             }
-        case .trailing(let otherTabGroup):
-            HSplitView {
-                WorkspaceEditorView(tabgroup: otherTabGroup)
-                WorkspaceTabGroupView(tabgroup: tabgroup)
-            }
+        }
+    }
+
+    var splitView: some View {
+        ForEach(Array(data.tabgroups.enumerated()), id: \.element.id) { index, item in
+            WorkspaceEditorAltView(tabgroup: item)
+                .environment(\.splitEditor) { edge, newTabGroup in
+                    data.split(edge, at: index, new: newTabGroup)
+                }
         }
     }
 }
@@ -43,10 +100,10 @@ struct WorkspaceTabGroupView: View {
     @ObservedObject var tabgroup: ReferenceTabGroup
 
     var body: some View {
+        let _ = Self._printChanges()
         Group {
             if let selected = tabgroup.selected {
                 WorkspaceFileEditor(file: selected)
-                    
             } else {
                 VStack {
                     Spacer()
@@ -56,50 +113,14 @@ struct WorkspaceTabGroupView: View {
             }
         }
         .frame(maxWidth: .infinity)
-//        .ignoresSafeArea(.all)
-            .safeAreaInset(edge: .top, spacing: 0) {
-                VStack(spacing: 0) {
+        .ignoresSafeArea(.all)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            VStack(spacing: 0) {
                 TabBarView()
                     .environmentObject(tabgroup)
-
-//                VStack(spacing: 0) {
-//                    ScrollView(.horizontal, showsIndicators: false) {
-//                        HStack {
-//                            ForEach(tabgroup.files, id: \.url) { file in
-//
-//                                Button(file.fileName) {
-//                                    tabgroup.selected = file
-//                                }
-//                                .buttonStyle(.plain)
-//                                .contextMenu {
-//                                    Button("Split right") {
-//                                        tabgroup.child = .horizontal(.init(files: [file], selected: file))
-//                                    }
-//                                    Button("Split left") {
-//                                        tabgroup.child = .horizontal(.init(files: tabgroup.files, selected: tabgroup.selected))
-//                                        tabgroup.files = [file]
-//                                        tabgroup.selected = file
-//                                    }
-//                                    Button("Split top") {
-//                                        tabgroup.child = .vertical(.init(files: [file], selected: file))
-//                                    }
-//                                    Button("Split bottom") {
-//                                        tabgroup.child = .vertical(.init(files: tabgroup.files, selected: tabgroup.selected))
-//                                        tabgroup.files = [file]
-//                                        tabgroup.selected = file
-//                                    }
-//                                }
-//
-//                            }
-//                        }
-//                    }
-//                    .frame(height: 30)
-//                    .padding(.leading)
-//                    .scrollContentBackground(.hidden)
-                    Divider()
-                }
-                .background(EffectView(.titlebar, blendingMode: .withinWindow, emphasized: false))
+                Divider()
             }
-
+            .background(EffectView(.titlebar, blendingMode: .withinWindow, emphasized: false))
+        }
     }
 }

@@ -44,7 +44,8 @@ struct WorkspaceSplitView: View {
 //            VStack {
 //            ScrollView {
             ZStack {
-                WorkspaceEditorView(tabgroup: files.tabs)
+//                WorkspaceEditorView(tabgroup: files.tabs)
+                WorkspaceEditorAltView(tabgroup: files.tabs)
             }
 //            }
 //            }
