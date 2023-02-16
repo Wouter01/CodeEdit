@@ -185,7 +185,7 @@ extension OutlineViewController: NSOutlineViewDataSource {
             if case .file = fileItem {
                 outlineView.setDropItem(fileItem.parent, dropChildIndex: index)
             }
-            return .move
+            return info.draggingSourceOperationMask == .copy ? .copy : .move
         }
         return []
     }
@@ -226,8 +226,11 @@ extension OutlineViewController: NSOutlineViewDataSource {
                     fatalError(error.localizedDescription)
                 }
             }
-
-            self.moveFile(file: srcFileItem, to: destURL)
+            if info.draggingSourceOperationMask == .copy {
+                self.copyFile(file: srcFileItem, to: destURL)
+            } else {
+                self.moveFile(file: srcFileItem, to: destURL)
+            }
         }
         return true
     }
@@ -399,21 +402,5 @@ extension OutlineViewController: NSMenuDelegate {
             }
         }
         menu.update()
-    }
-}
-
-// MARK: - OutlineTableViewCellDelegate
-
-extension OutlineViewController: OutlineTableViewCellDelegate {
-
-
-    func moveFile(file: Item, to destination: URL) {
-//        if !file.isFolder {
-//            workspace?.closeTab(item: .codeEditor(file.id))
-//        }
-//        file.move(to: destination)
-//        if !file.isFolder {
-//            workspace?.openTab(item: file)
-//        }
     }
 }

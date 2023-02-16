@@ -11,4 +11,15 @@ enum TabGroup {
     case one(TabGroupData)
     case vertical(WorkspaceSplitViewData)
     case horizontal(WorkspaceSplitViewData)
+
+    func closeAllTabs(of file: DataFile) {
+        switch self {
+        case .one(let tabGroupData):
+            tabGroupData.files.remove(file)
+        case .vertical(let data), .horizontal(let data):
+            data.tabgroups.forEach {
+                $0.closeAllTabs(of: file)
+            }
+        }
+    }
 }
