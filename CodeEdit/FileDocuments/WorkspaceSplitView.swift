@@ -42,79 +42,79 @@ struct WorkspaceSplitView: View {
 
         } content: {
             WorkspaceEditorAltView(tabgroup: files.tabs)
-            .navigationSplitViewColumnWidth(min: 500, ideal: 500)
-            .toolbar(id: "Editor") {
+                .navigationSplitViewColumnWidth(min: 500, ideal: 500)
+                .toolbar(id: "Editor") {
 
-                ToolbarItem(id: "SourceControl", placement: .navigation, showsByDefault: true) {
-                    ToolbarBranchPicker(
-                        shellClient: currentWorld.shellClient,
-                        folderURL: files.root.url
-                    )
-                }
-
-                ToolbarItem(id: "FakeSpacer") {
-                    Divider()
-                }
-
-                ToolbarItem(id: "CenterSection", showsByDefault: true) {
-                    HStack {
-
-                        Button("EXample") {
-                            showPopover.toggle()
-                        }
-                        .buttonStyle(.plain)
-                        .padding(.leading, 4)
-
-                        .popover(isPresented: $showPopover, arrowEdge: .bottom) {
-                            VStack {
-                                Text("HEllo")
-                            }
-                            .padding(10)
-                        }
-
-                        Spacer()
-
-                        Image(nsImage: NSApp.applicationIconImage)
-                            .resizable()
-                            .scaledToFit()
-                            .padding(2)
-
-                    }
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(.gray.opacity(0.2))
+                    ToolbarItem(id: "SourceControl", placement: .navigation, showsByDefault: true) {
+                        ToolbarBranchPicker(
+                            shellClient: currentWorld.shellClient,
+                            folderURL: files.root.url
+                        )
                     }
 
-                }
+                    ToolbarItem(id: "FakeSpacer") {
+                        Divider()
+                    }
 
-                ToolbarItem(id: "WarningAndErrorButtons") {
-                    HStack {
-                        Button {
+                    ToolbarItem(id: "CenterSection", showsByDefault: true) {
+                        HStack {
 
-                        } label: {
-                            HStack {
-                                Image(systemName: "exclamationmark.triangle.fill")
-                                    .foregroundColor(.yellow)
-                                Text("1")
+                            Button("EXample") {
+                                showPopover.toggle()
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.leading, 4)
+
+                            .popover(isPresented: $showPopover, arrowEdge: .bottom) {
+                                VStack {
+                                    Text("HEllo")
+                                }
+                                .padding(10)
                             }
 
-                        }
-                        Button {
+                            Spacer()
 
-                        } label: {
-                            HStack {
-                                Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.red)
-                                Text("1")
+                            Image(nsImage: NSApp.applicationIconImage)
+                                .resizable()
+                                .scaledToFit()
+                                .padding(2)
+
+                        }
+                        .background {
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundColor(.gray.opacity(0.2))
+                        }
+
+                    }
+
+                    ToolbarItem(id: "WarningAndErrorButtons") {
+                        HStack {
+                            Button {
+
+                            } label: {
+                                HStack {
+                                    Image(systemName: "exclamationmark.triangle.fill")
+                                        .foregroundColor(.yellow)
+                                    Text("1")
+                                }
+
+                            }
+                            Button {
+
+                            } label: {
+                                HStack {
+                                    Image(systemName: "multiply.circle.fill")
+                                        .foregroundColor(.red)
+                                    Text("1")
+                                }
                             }
                         }
                     }
-                }
 
-                ToolbarItem(id: "FakeSpacer") {
-                    Divider()
+                    ToolbarItem(id: "FakeSpacer") {
+                        Divider()
+                    }
                 }
-            }
         } detail: {
 
             Form {
