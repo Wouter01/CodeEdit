@@ -71,7 +71,6 @@ class DataFile: ObservableObject, Identifiable {
         guard let string = String(data: data, encoding: .utf8) else {
             throw CocoaError(.fileReadUnknownStringEncoding)
         }
-
         self.contents = string
 
         // Cancellable can only be activated when contents have been read,

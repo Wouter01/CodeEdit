@@ -31,13 +31,14 @@ struct WorkspaceFileEditor: View {
                 VStack(spacing: 10) {
                     ProgressView()
                     Text("Opening \(file.fileName)...")
+                        .task(id: file.id) {
+                            print("Loading file \(file.id)")
+                            try? file.readFile()
+                        }
                 }
                 Spacer()
             }
         }
-        .task(id: file.id) {
-            print("Loading file \(file.id)")
-            try? file.readFile()
-        }
+
     }
 }

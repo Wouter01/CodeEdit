@@ -41,14 +41,7 @@ struct WorkspaceSplitView: View {
                 }
 
         } content: {
-//            VStack {
-//            ScrollView {
-            ZStack {
-//                WorkspaceEditorView(tabgroup: files.tabs)
-                WorkspaceEditorAltView(tabgroup: files.tabs)
-            }
-//            }
-//            }
+            WorkspaceEditorAltView(tabgroup: files.tabs)
             .navigationSplitViewColumnWidth(min: 500, ideal: 500)
             .toolbar(id: "Editor") {
 
