@@ -214,8 +214,8 @@ extension OutlineViewController: NSOutlineViewDataSource {
             guard let srcFileItem = workspace2.searchFile(with: fileItemURL) else {
                 return false
             }
-
-            if WorkspaceClient.FileItem.fileManger.fileExists(atPath: destURL.path) {
+            
+            if workspace2.searchFile(with: destURL) != nil {
                 let shouldReplace = replaceFileDialog(fileName: fileItemURL.lastPathComponent)
                 guard shouldReplace else {
                     return false
