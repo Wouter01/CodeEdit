@@ -51,12 +51,8 @@ enum File: Identifiable, Hashable {
             }
             return FileIcon.fileIcon(fileType: type)
 
-        case .folder(let folderFile) where folderFile.fileName == ".codeedit":
-            return "folder.fill.badge.gearshape"
-        case .folder(let folderFile) where folderFile.children.isEmpty:
-            return "folder"
-        case .folder:
-            return "folder.fill"
+        case .folder(let folderFile):
+            return folderFile.systemImage
         }
     }
 

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct BreadcrumbsComponent: View {
 
-    private let fileItem: WorkspaceClient.FileItem
-    private let tappedOpenFile: (WorkspaceClient.FileItem) -> Void
+    private let fileItem: File
+    private let tappedOpenFile: (File) -> Void
 
     @Environment(\.colorScheme)
     var colorScheme
@@ -24,11 +24,14 @@ struct BreadcrumbsComponent: View {
     @State
     var position: NSPoint?
 
+    @State var selection: File
+
     init(
-        fileItem: WorkspaceClient.FileItem,
-        tappedOpenFile: @escaping (WorkspaceClient.FileItem) -> Void
+        fileItem: File,
+        tappedOpenFile: @escaping (File) -> Void
     ) {
         self.fileItem = fileItem
+        self._selection = .init(wrappedValue: fileItem)
         self.tappedOpenFile = tappedOpenFile
     }
 
@@ -40,62 +43,85 @@ struct BreadcrumbsComponent: View {
     /// else if current `fileItem` has no children, it's the opened file
     /// else it's a folder
     private var color: Color {
-        fileItem.parent == nil
-        ? .accentColor
-        : (
-            fileItem.isFolder
-            ? Color(hex: colorScheme == .dark ? "#61b6df" :"#27b9ff")
-            : fileItem.iconColor
-        )
+        switch fileItem {
+        case .file(let dataFile):
+            return dataFile.iconColor
+        case .folder:
+            return Color(hex: colorScheme == .dark ? "#61b6df" :"#27b9ff")
+        case .symlink:
+            return .accentColor
+        }
+    }
+
+    var siblings: [File] {
+        switch fileItem.parent {
+        case .child(let parent):
+            return parent.children
+        case .root:
+            return [fileItem]
+        }
     }
 
     var body: some View {
-        HStack(alignment: .center, spacing: 5) {
-            Image(systemName: image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 12)
-                .foregroundStyle(
-                    prefs.preferences.general.fileIconStyle == .color
-                    ? color
-                    : .secondary
-                )
-                .opacity(activeState != .inactive ? 1.0 : 0.4)
-            Text(fileItem.fileName)
-                .foregroundStyle(.primary)
-                .font(.system(size: 11))
-                .opacity(activeState != .inactive ? 1.0 : 0.2)
+        NSPopUpButtonView(selection: $selection) {
+            let button = NSPopUpButton()
+            button.menu = BreadcrumsMenu(fileItems: siblings, tappedOpenFile: tappedOpenFile)
+            button.font = .systemFont(ofSize: NSFont.systemFontSize(for: .small))
+            button.isBordered = false
+            (button.cell as? NSPopUpButtonCell)?.arrowPosition = .noArrow
+            return button
         }
-        /// Get location in window
-        .background(GeometryReader { (proxy: GeometryProxy) -> Color in
-            if position != NSPoint(
-                x: proxy.frame(in: .global).minX,
-                y: proxy.frame(in: .global).midY
-            ) {
-                DispatchQueue.main.async {
-                    position = NSPoint(
-                        x: proxy.frame(in: .global).minX,
-                        y: proxy.frame(in: .global).midY
-                    )
-                }
+        .padding(.leading, -5)
+    }
+
+    struct NSPopUpButtonView<ItemType>: NSViewRepresentable where ItemType: Equatable {
+        @Binding var selection: ItemType
+        var popupCreator: () -> NSPopUpButton
+
+        typealias NSViewType = NSPopUpButton
+
+        func makeNSView(context: NSViewRepresentableContext<NSPopUpButtonView>) -> NSPopUpButton {
+            let newPopupButton = popupCreator()
+            setPopUpFromSelection(newPopupButton, selection: selection)
+            return newPopupButton
+        }
+
+        func updateNSView(_ nsView: NSPopUpButton, context: NSViewRepresentableContext<NSPopUpButtonView>) {
+            setPopUpFromSelection(nsView, selection: selection)
+        }
+
+        func setPopUpFromSelection(_ button:NSPopUpButton, selection:ItemType)
+        {
+            let itemsList = button.itemArray
+            let matchedMenuItem = itemsList.filter{($0.representedObject as? ItemType) == selection}.first
+            if matchedMenuItem != nil
+            {
+                button.select(matchedMenuItem)
             }
-            return Color.clear
-        })
-        .onTapGesture {
-            if let siblings = fileItem.parent?.children?.sortItems(foldersOnTop: true), !siblings.isEmpty {
-                let menu = BreadcrumsMenu(
-                    fileItems: siblings
-                ) { item in
-                    tappedOpenFile(item)
-                }
-                if let position = position,
-                   let windowHeight = NSApp.keyWindow?.contentView?.frame.height {
-                    let pos = NSPoint(x: position.x, y: windowHeight - 72) // 72 = offset from top to breadcrumbs bar
-                    menu.popUp(
-                        positioning: menu.item(withTitle: fileItem.fileName),
-                        at: pos,
-                        in: NSApp.keyWindow?.contentView
-                    )
+        }
+
+        func makeCoordinator() -> Coordinator {
+            return Coordinator(self)
+        }
+
+        class Coordinator:NSObject {
+            var parent: NSPopUpButtonView!
+
+            init(_ parent: NSPopUpButtonView)
+            {
+                super.init()
+                self.parent = parent
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(dropdownItemSelected),
+                                                       name: NSMenu.didSendActionNotification,
+                                                       object: nil)
+            }
+
+            @objc func dropdownItemSelected(_ notification: NSNotification)
+            {
+                let menuItem = (notification.userInfo?["MenuItem"])! as? NSMenuItem
+                if let selection = menuItem?.representedObject as? ItemType {
+                    parent.selection = selection
                 }
             }
         }

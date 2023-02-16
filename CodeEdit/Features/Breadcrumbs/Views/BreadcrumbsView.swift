@@ -9,8 +9,8 @@ import SwiftUI
 
 struct BreadcrumbsView: View {
 
-    private let file: WorkspaceClient.FileItem
-    private let tappedOpenFile: (WorkspaceClient.FileItem) -> Void
+    private let file: File
+    private let tappedOpenFile: (File) -> Void
 
     @Environment(\.colorScheme)
     private var colorScheme
@@ -18,22 +18,33 @@ struct BreadcrumbsView: View {
     @Environment(\.controlActiveState)
     private var activeState
 
-    @State
-    private var fileItems: [WorkspaceClient.FileItem] = []
-
     init(
-        file: WorkspaceClient.FileItem,
-        tappedOpenFile: @escaping (WorkspaceClient.FileItem) -> Void
+        file: File,
+        tappedOpenFile: @escaping (File) -> Void
     ) {
         self.file = file
         self.tappedOpenFile = tappedOpenFile
+    }
+
+    var fileItems: [File] {
+        var treePath: [File] = [file]
+
+        while true {
+            let parent = treePath.first?.parent
+            switch parent {
+            case .child(let parent):
+                treePath.insert(.folder(parent), at: 0)
+            case .root, .none:
+                return treePath
+            }
+        }
     }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 1.5) {
                 ForEach(fileItems, id: \.self) { fileItem in
-                    if fileItem.parent != nil {
+                    if case .child = fileItem.parent {
                         chevron
                     }
                     BreadcrumbsComponent(fileItem: fileItem, tappedOpenFile: tappedOpenFile)
@@ -44,12 +55,12 @@ struct BreadcrumbsView: View {
         }
         .frame(height: 28, alignment: .center)
         .background(EffectView(.headerView).frame(height: 28))
-        .onAppear {
-            fileInfo(self.file)
-        }
-        .onChange(of: file) { newFile in
-            fileInfo(newFile)
-        }
+//        .onAppear {
+//            fileInfo(self.file)
+//        }
+//        .onChange(of: file) { newFile in
+//            fileInfo(newFile)
+//        }
     }
 
     private var chevron: some View {
@@ -61,12 +72,12 @@ struct BreadcrumbsView: View {
             .opacity(activeState != .inactive ? 0.8 : 0.5)
     }
 
-    private func fileInfo(_ file: WorkspaceClient.FileItem) {
-        fileItems = []
-        var currentFile: WorkspaceClient.FileItem? = file
-        while let currentFileLoop = currentFile {
-            fileItems.insert(currentFileLoop, at: 0)
-            currentFile = currentFileLoop.parent
-        }
-    }
+//    private func fileInfo(_ file: WorkspaceClient.FileItem) {
+//        fileItems = []
+//        var currentFile: WorkspaceClient.FileItem? = file
+//        while let currentFileLoop = currentFile {
+//            fileItems.insert(currentFileLoop, at: 0)
+//            currentFile = currentFileLoop.parent
+//        }
+//    }
 }

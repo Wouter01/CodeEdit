@@ -8,12 +8,12 @@
 import AppKit
 
 final class BreadcrumsMenu: NSMenu, NSMenuDelegate {
-    private let fileItems: [WorkspaceClient.FileItem]
-    private let tappedOpenFile: (WorkspaceClient.FileItem) -> Void
+    private let fileItems: [File]
+    private let tappedOpenFile: (File) -> Void
 
     init(
-        fileItems: [WorkspaceClient.FileItem],
-        tappedOpenFile: @escaping (WorkspaceClient.FileItem) -> Void
+        fileItems: [File],
+        tappedOpenFile: @escaping (File) -> Void
     ) {
         self.fileItems = fileItems
         self.tappedOpenFile = tappedOpenFile
@@ -38,13 +38,13 @@ final class BreadcrumsMenu: NSMenu, NSMenuDelegate {
     /// Only when menu item is highlighted then generate its submenu
     func menu(_: NSMenu, willHighlight item: NSMenuItem?) {
         if let highlightedItem = item, let submenuItems = highlightedItem.submenu?.items, submenuItems.isEmpty {
-            if let highlightedFileItem = highlightedItem.representedObject as? WorkspaceClient.FileItem {
+            if let highlightedFileItem = highlightedItem.representedObject as? File {
                 highlightedItem.submenu = generateSubmenu(highlightedFileItem)
             }
         }
     }
 
-    private func generateSubmenu(_ fileItem: WorkspaceClient.FileItem) -> BreadcrumsMenu? {
+    private func generateSubmenu(_ fileItem: File) -> BreadcrumsMenu? {
         if let children = fileItem.children {
             let menu = BreadcrumsMenu(
                 fileItems: children,
@@ -57,12 +57,12 @@ final class BreadcrumsMenu: NSMenu, NSMenuDelegate {
 }
 
 final class BreadcrumbsMenuItem: NSMenuItem {
-    private let fileItem: WorkspaceClient.FileItem
-    private let tappedOpenFile: (WorkspaceClient.FileItem) -> Void
+    private let fileItem: File
+    private let tappedOpenFile: (File) -> Void
 
     init(
-        fileItem: WorkspaceClient.FileItem,
-        tappedOpenFile: @escaping (WorkspaceClient.FileItem) -> Void
+        fileItem: File,
+        tappedOpenFile: @escaping (File) -> Void
     ) {
         self.fileItem = fileItem
         self.tappedOpenFile = tappedOpenFile
@@ -75,7 +75,7 @@ final class BreadcrumbsMenuItem: NSMenuItem {
         if fileItem.children != nil {
             let subMenu = NSMenu()
             submenu = subMenu
-            icon = "folder.fill"
+            icon = fileItem.systemImage
             color = .secondary
         }
         let image = NSImage(
@@ -84,7 +84,7 @@ final class BreadcrumbsMenuItem: NSMenuItem {
         )?.withSymbolConfiguration(.init(paletteColors: [NSColor(color)]))
         self.image = image
         representedObject = fileItem
-        if fileItem.isFolder {
+        if case .folder = fileItem {
             self.action = nil
         }
     }

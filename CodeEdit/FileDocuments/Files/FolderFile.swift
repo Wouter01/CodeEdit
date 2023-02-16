@@ -49,6 +49,22 @@ class FolderFile: ObservableObject, Identifiable {
 
     var id: URL { url }
 
+    var systemImage: String {
+        if fileName == ".codeedit" {
+            return "folder.fill.badge.gearshape"
+        } else if parent.isRoot {
+            return "square.dashed.inset.filled"
+        } else if children.isEmpty {
+            return "folder"
+        } else {
+            return "folder.fill"
+        }
+    }
+
+    var iconColor: Color {
+        Color(NSColor(named: "FolderBlue") ?? .systemBlue)
+    }
+
     // TODO: should be @Published so view can react to changes.
     lazy var children: [File] = computeChildren()
 

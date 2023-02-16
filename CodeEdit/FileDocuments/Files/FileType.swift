@@ -10,4 +10,13 @@ import Foundation
 enum FileType {
     case child(parent: FolderFile)
     case root(url: URL)
+
+    var isRoot: Bool {
+        switch self {
+        case .child:
+            return false
+        case .root:
+            return true
+        }
+    }
 }

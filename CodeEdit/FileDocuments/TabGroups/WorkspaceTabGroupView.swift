@@ -29,6 +29,20 @@ struct WorkspaceTabGroupView: View {
                 TabBarView()
                     .environmentObject(tabgroup)
                 Divider()
+                if let file = tabgroup.selected {
+                    BreadcrumbsView(file: .file(file)) { newFile in
+                        print("Opening \(newFile.fileName)")
+                        let index = tabgroup.files.firstIndex(of: file)
+                        if case .file(let datafile) = newFile, let index {
+                            tabgroup.files.insert(datafile, at: index)
+//                            DispatchQueue.main.async {
+//                                tabgroup.files.remove(file)
+//                            }
+                            tabgroup.selected = datafile
+                        }
+                    }
+                    Divider()
+                }
             }
             .background(EffectView(.titlebar, blendingMode: .withinWindow, emphasized: false))
         }

@@ -48,7 +48,7 @@ struct WorkspaceCodeFileView: View {
         for item: WorkspaceClient.FileItem
     ) -> some View {
         VStack(spacing: 0) {
-            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+//            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
             Divider()
             CodeFileView(codeFile: codeFile)
         }
@@ -60,7 +60,7 @@ struct WorkspaceCodeFileView: View {
         for item: WorkspaceClient.FileItem
     ) -> some View {
         VStack(spacing: 0) {
-            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
+//            BreadcrumbsView(file: item, tappedOpenFile: workspace.openTab(item:))
             Divider()
 
             if let url = otherFile.previewItemURL,
