@@ -14,6 +14,7 @@ struct WorkspaceFileEditor: View {
     var body: some View {
         VStack {
             if !file.contents.isEmpty {
+//                TextEditor(text: $file.contents)
                 CodeEditTextView(
                     $file.contents,
                     language: .swift,

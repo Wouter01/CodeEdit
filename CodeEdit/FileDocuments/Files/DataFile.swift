@@ -95,6 +95,8 @@ class DataFile: ObservableObject, Identifiable {
         newFileWrapper.preferredFilename = fileWrapper.filename
         newFileWrapper.filename = fileWrapper.filename
         newFileWrapper.fileAttributes = fileWrapper.fileAttributes
+        newFileWrapper.fileAttributes["NSFileModificationDate"] = Date.now
+        newFileWrapper.fileAttributes["NSFileSize"] = data.count
         newFileWrapper.icon = fileWrapper.icon
 
         switch parent {
@@ -106,6 +108,24 @@ class DataFile: ObservableObject, Identifiable {
         }
 
         fileWrapper = newFileWrapper
+
+        NSDocument.markForUpdate(root: rootURL(), file: self)
+    }
+
+    func rootURL() -> URL! {
+        var currentParent = parent
+        while !currentParent.isRoot {
+            switch currentParent {
+            case .child(let parent):
+                currentParent = parent.parent
+            case .root(let url):
+                return url
+            }
+        }
+        if case .root(let url) = currentParent {
+            return url
+        }
+        return nil
     }
 
     var systemImage: String {

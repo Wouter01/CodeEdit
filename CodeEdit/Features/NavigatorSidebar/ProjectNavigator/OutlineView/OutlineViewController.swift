@@ -157,12 +157,9 @@ extension OutlineViewController: NSOutlineViewDataSource {
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-
         if case .folder = item as? Item {
-            print("Is Expandable")
             return true
         }
-        print("Is Not Expandable")
         return false
     }
 

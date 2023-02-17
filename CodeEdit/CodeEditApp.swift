@@ -21,7 +21,8 @@ struct CodeEditApp: App {
         NSSplitViewController.swizzle()
         NSVisualEffectView.swizzle()
         NSDocumentController.swizzle()
-
+        NSDocument.swizzle()
+        FileWrapper.swizzle()
         UserDefaults.standard.removeAll()
 
         // This enables window restoring on normal quit (instead of only on force-quit).

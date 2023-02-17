@@ -142,3 +142,58 @@ extension NSDocumentController {
         )
     }
 }
+
+extension FileWrapper {
+    static var markForUpdate: Set<DataFile> = []
+
+    @objc func swizzled_write(
+        to url: URL,
+        options: WritingOptions,
+        originalContentsURL: URL?
+    ) throws {
+        print("Saving \(url)")
+        try swizzled_write(to: url, options: options, originalContentsURL: originalContentsURL)
+    }
+
+    static func swizzle() {
+        swizzle(
+            #selector (FileWrapper.write(to:options:originalContentsURL:)),
+            #selector (swizzled_write)
+        )
+    }
+}
+
+extension NSDocument {
+
+    static var markForUpdateCollection: [URL: Set<DataFile>] = [:]
+
+    static func markForUpdate(root url: URL, file: DataFile) {
+        Swift.print("Marking \(file.url) for update")
+        markForUpdateCollection[url, default: []].insert(file)
+    }
+
+    @objc func swizzled_writeSafely(
+        to url: URL,
+        ofType typeName: String,
+        for saveOperation: NSDocument.SaveOperationType
+    ) throws {
+        switch saveOperation {
+        case .autosaveInPlaceOperation, .saveOperation:
+            let toUpdate = Self.markForUpdateCollection[url, default: []]
+            Self.markForUpdateCollection.removeValue(forKey: url)
+            for file in toUpdate {
+                Swift.print("Saving \(file.url)")
+                try file.fileWrapper.write(to: file.url, options: .withNameUpdating, originalContentsURL: file.url)
+            }
+        default:
+            try swizzled_writeSafely(to: url, ofType: typeName, for: saveOperation)
+        }
+    }
+
+    static func swizzle() {
+        swizzle(
+            #selector (NSDocument.writeSafely(to:ofType:for:)),
+            #selector (swizzled_writeSafely)
+        )
+    }
+}
