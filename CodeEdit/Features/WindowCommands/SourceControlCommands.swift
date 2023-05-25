@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SourceControlCommands: Commands {
     var body: some Commands {
-        CommandMenu("Source Control") {
+        SwiftUI.CommandMenu("Source Control") {
             Group {
                 Button("Commit...") {
 

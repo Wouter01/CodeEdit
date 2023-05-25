@@ -16,6 +16,9 @@ struct CommandsOverlayView: View {
     @ObservedObject
     private var state: CommandsOverlayViewModel
 
+    @ObservedObject
+    private var manager: CommandManager = .shared
+
     @State
     private var monitor: Any?
 
@@ -26,24 +29,51 @@ struct CommandsOverlayView: View {
         self.closeOverlay = closeOverlay
     }
 
-    var shownCommands: [CodeEditCommand] {
-        state.filteredMenuCommands.filter {
-            $0.isEnabled && !$0.isTopLevel && !$0.isMenu
+    @State var chosenMenu: MenuData?
+
+    var shownCommands: [CommandData] {
+        manager.commands
+            .filter { $0.visibility.contains(.commandPalette) }
+            .sorted(using: KeyPathComparator(\.title))
+    }
+
+    var availableItems: [MenuBarIem] {
+        if let chosenMenu {
+            return chosenMenu.children.map { .command($0) }
         }
+        return manager.commands
+            .filter { $0.visibility.contains(.commandPalette) }
+            .sorted(using: KeyPathComparator(\.title))
+            .map { .command($0) }
+        +
+        manager.menus
+            .map { .menu($0) }
     }
 
     var body: some View {
-        OverlayView<CommandsOverlayItem, EmptyView, CodeEditCommand>(
+        OverlayView<CommandsOverlayItem, EmptyView, MenuBarIem>(
             title: "Commands",
             image: Image(systemName: "magnifyingglass"),
-            options: shownCommands,
+            options: availableItems,
             text: $state.commandQuery,
             alwaysShowOptions: true,
             optionRowHeight: 30
         ) { command, selected in
+
             CommandsOverlayItem(command: command, textToMatch: state.commandQuery, selected: selected)
+
         } onRowClick: {
-            $0.runAction()
+            switch $0 {
+            case .command(let command):
+                switch command.kind {
+                case .button(let action):
+                    action()
+                case .toggle(let isOn):
+                    isOn.wrappedValue.toggle()
+                }
+            case .menu(let menu):
+                chosenMenu = menu
+            }
         } onClose: {
             closeOverlay()
         }
@@ -53,24 +83,54 @@ struct CommandsOverlayView: View {
     }
 }
 
+struct ToggleView: View {
+    var command: CommandData
+    let textToMatch: String?
+    let selected: Bool
+    @Binding var isOn: Bool
+
+    var body: some View {
+        SearchResultLabel(labelName: command.title + (isOn ? " (On)" : " (Off)"), textToMatch: textToMatch ?? "", selected: selected)
+    }
+}
+
 struct CommandsOverlayItem: View {
-    let command: CodeEditCommand
+    let command: MenuBarIem
     let textToMatch: String?
     let selected: Bool
 
     var body: some View {
         HStack(spacing: 8) {
             VStack(alignment: .leading, spacing: 0) {
-                SearchResultLabel(labelName: command.title, textToMatch: textToMatch ?? "", selected: selected)
+                switch command {
+                case .command(let commandData):
+                    switch commandData.kind {
+                    case .button:
+                        if let view = commandData.view {
+                            view
+
+                        } else {
+                            SearchResultLabel(labelName: commandData.title, textToMatch: textToMatch ?? "", selected: selected)
+                        }
+                    case .toggle(let isOn):
+                        ToggleView(command: commandData, textToMatch: textToMatch, selected: selected, isOn: isOn)
+                        //                    SearchResultLabel(labelName: command.title + (isOn.wrappedValue ? " (On)" : " (Off)"), textToMatch: textToMatch ?? "", selected: selected)
+                    }
+                case .menu(let menuData):
+                    SearchResultLabel(labelName: menuData.id, textToMatch: textToMatch ?? "", selected: selected)
+                }
+
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
-            Text(command.shortcut ?? "")
-                .foregroundColor(
-                    selected
-                        ? Color(.selectedMenuItemTextColor)
-                        : Color(.labelColor.withSystemEffect(.disabled))
-                )
+//            if let shortcut = command.keyboardShortcut {
+//                Text(shortcut.modifiers.description + String(shortcut.key.character).uppercased())
+//                    .foregroundColor(
+//                        selected
+//                        ? Color(.selectedMenuItemTextColor)
+//                        : Color(.labelColor.withSystemEffect(.disabled))
+//                    )
+//            }
         }
         .frame(maxWidth: .infinity)
     }

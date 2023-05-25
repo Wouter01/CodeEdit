@@ -18,7 +18,7 @@ struct FindCommands: Commands {
     }
 
     var body: some Commands {
-        CommandMenu("Find") {
+        SwiftUI.CommandMenu("Find") {
             Group {
                 Button("Find...") {
                     send(.showFindPanel)

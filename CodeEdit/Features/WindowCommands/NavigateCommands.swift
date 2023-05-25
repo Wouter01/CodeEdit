@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NavigateCommands: Commands {
     var body: some Commands {
-        CommandMenu("Navigate") {
+        SwiftUI.CommandMenu("Navigate") {
             Group {
                 Button("Reveal in Project Navigator") {
 
