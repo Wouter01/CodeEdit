@@ -297,6 +297,8 @@
 		6C82D6B929BFE34900495C54 /* HelpCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82D6B829BFE34900495C54 /* HelpCommands.swift */; };
 		6C82D6BC29C00CD900495C54 /* FirstResponderPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82D6BB29C00CD900495C54 /* FirstResponderPropertyWrapper.swift */; };
 		6C82D6C629C012AD00495C54 /* NSApp+openWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82D6C529C012AD00495C54 /* NSApp+openWindow.swift */; };
+		6C85A9952A26BA6000C648DF /* CommandPaletteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85A9942A26BA6000C648DF /* CommandPaletteItem.swift */; };
+		6C85A9972A26BA7100C648DF /* CommandPaletteToggleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85A9962A26BA7100C648DF /* CommandPaletteToggleItem.swift */; };
 		6C91D57229B176FF0059A90D /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C91D57129B176FF0059A90D /* TabManager.swift */; };
 		6C97EBCC2978760400302F95 /* AcknowledgementsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */; };
 		6CAAF68A29BC9C2300A1F48A /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -721,6 +723,8 @@
 		6C82D6B829BFE34900495C54 /* HelpCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCommands.swift; sourceTree = "<group>"; };
 		6C82D6BB29C00CD900495C54 /* FirstResponderPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstResponderPropertyWrapper.swift; sourceTree = "<group>"; };
 		6C82D6C529C012AD00495C54 /* NSApp+openWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+openWindow.swift"; sourceTree = "<group>"; };
+		6C85A9942A26BA6000C648DF /* CommandPaletteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPaletteItem.swift; sourceTree = "<group>"; };
+		6C85A9962A26BA7100C648DF /* CommandPaletteToggleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPaletteToggleItem.swift; sourceTree = "<group>"; };
 		6C91D57129B176FF0059A90D /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsWindowController.swift; sourceTree = "<group>"; };
 		6CAB1DC22A1DBAD700129120 /* CommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
@@ -1949,6 +1953,7 @@
 		58FD7603291EA1CB0051D6E4 /* CommandsOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				6C85A9932A26BA5400C648DF /* CommandPaletteItem */,
 				58FD7604291EA1CB0051D6E4 /* ViewModels */,
 				58FD7606291EA1CB0051D6E4 /* Views */,
 				6CAB1DC22A1DBAD700129120 /* CommandManager.swift */,
@@ -2052,6 +2057,15 @@
 				6C82D6C529C012AD00495C54 /* NSApp+openWindow.swift */,
 			);
 			path = NSApplication;
+			sourceTree = "<group>";
+		};
+		6C85A9932A26BA5400C648DF /* CommandPaletteItem */ = {
+			isa = PBXGroup;
+			children = (
+				6C85A9942A26BA6000C648DF /* CommandPaletteItem.swift */,
+				6C85A9962A26BA7100C648DF /* CommandPaletteToggleItem.swift */,
+			);
+			path = CommandPaletteItem;
 			sourceTree = "<group>";
 		};
 		6CAAF68F29BCC6F900A1F48A /* WindowCommands */ = {
@@ -2664,6 +2678,7 @@
 				58F2EB0D292FB2B0004A9BDE /* ThemeSettings.swift in Sources */,
 				85CD0C5F2A10CC3200E531FD /* URL+isImage.swift in Sources */,
 				587B9D9F29300ABD00AC7927 /* SegmentedControl.swift in Sources */,
+				6C85A9952A26BA6000C648DF /* CommandPaletteItem.swift in Sources */,
 				6C7256D729A3D7D000C2D3E0 /* SplitViewControllerView.swift in Sources */,
 				B6EA1FE529DA33DB001BF195 /* ThemeModel.swift in Sources */,
 				B6EA200029DB7966001BF195 /* SettingsColorPicker.swift in Sources */,
@@ -2750,6 +2765,7 @@
 				5882252D292C280D00E83CDE /* StatusBarSplitTerminalButton.swift in Sources */,
 				58798238292E30B90085B254 /* FeedbackWindowController.swift in Sources */,
 				587B9E6C29301D8F00AC7927 /* GitLabNamespace.swift in Sources */,
+				6C85A9972A26BA7100C648DF /* CommandPaletteToggleItem.swift in Sources */,
 				6C48D8F22972DAFC00D6D205 /* Env+IsFullscreen.swift in Sources */,
 				587B9E8729301D8F00AC7927 /* GitHubRepositories.swift in Sources */,
 				587B9DA329300ABD00AC7927 /* SettingsTextEditor.swift in Sources */,

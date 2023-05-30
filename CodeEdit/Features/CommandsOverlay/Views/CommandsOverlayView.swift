@@ -81,32 +81,11 @@ struct CommandsOverlayView: View {
     }
 }
 
-struct ToggleView: View {
-    var command: CommandData
-    let textToMatch: String?
-    @Binding var isOn: Bool
 
-    var body: some View {
-        createHighlightText(title: command.title + (isOn ? " (On)" : " (Off)"), textToMatch: textToMatch ?? "")
-            .allowsTightening(false)
-    }
-
-    func createHighlightText(title: String, textToMatch: String) -> Text {
-        let range = title.range(of: textToMatch, options: .caseInsensitive)
-
-        guard let range else {
-            return Text(title)
-        }
-
-        return Text(title[..<range.lowerBound]) +
-        Text(title[range]).fontWeight(.bold) +
-        Text(title[range.upperBound...])
-    }
-}
 
 struct CommandsOverlayItem: View {
     let command: MenuBarIem
-    let textToMatch: String?
+    let textToMatch: String
 
     var body: some View {
         HStack(spacing: 8) {
@@ -118,15 +97,18 @@ struct CommandsOverlayItem: View {
                         if let view = commandData.view {
                             view
                         } else {
-                            createHighlightText(title: commandData.title, textToMatch: textToMatch ?? "")
+                            createHighlightText(title: commandData.title, textToMatch: textToMatch)
                                 .allowsTightening(false)
+                                .frame(height: 30)
                         }
                     case .toggle(let isOn):
-                        ToggleView(command: commandData, textToMatch: textToMatch, isOn: isOn)
+                        CommandPaletteToggleItem(command: commandData, textToMatch: textToMatch, isOn: isOn)
+                        
                     }
                 case .menu(let menuData):
-                    createHighlightText(title: menuData.id, textToMatch: textToMatch ?? "")
+                    createHighlightText(title: menuData.id, textToMatch: textToMatch)
                         .allowsTightening(false)
+                        .frame(height: 30)
                 }
 
             }
@@ -148,3 +130,4 @@ struct CommandsOverlayItem: View {
         Text(title[range.upperBound...])
     }
 }
+
