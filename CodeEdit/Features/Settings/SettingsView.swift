@@ -101,7 +101,6 @@ struct SettingsView: View {
             }
         }
         .environmentObject(model)
-        .environment(\.settings, settings.preferences)
     }
 }
 
