@@ -43,6 +43,7 @@ struct CommandsOverlayView: View {
         }
         return manager.commands
             .filter { $0.visibility.contains(.commandPalette) }
+            .filter { $0.parentMenu == nil }
             .sorted(using: KeyPathComparator(\.title))
             .map { .command($0) }
         +
@@ -90,7 +91,18 @@ struct ToggleView: View {
     @Binding var isOn: Bool
 
     var body: some View {
-        SearchResultLabel(labelName: command.title + (isOn ? " (On)" : " (Off)"), textToMatch: textToMatch ?? "", selected: selected)
+        createHighlightText(title: command.title + (isOn ? " (On)" : " (Off)"), textToMatch: textToMatch ?? "")
+        
+    }
+
+    func createHighlightText(title: String, textToMatch: String) -> Text {
+
+        let range = title.range(of: textToMatch, options: .caseInsensitive)
+        if let range {
+            return Text(title[..<range.lowerBound]) + Text(title[range]).fontWeight(.bold) + Text(title[range.upperBound...])
+        }
+
+        return Text(title)
     }
 }
 
@@ -98,6 +110,14 @@ struct CommandsOverlayItem: View {
     let command: MenuBarIem
     let textToMatch: String?
     let selected: Bool
+
+    func createHashedChild(child: _VariadicView.Children.Element) -> AnyHashable {
+        var hasher = Hasher()
+        hasher.combine(child.id)
+        hasher.combine("Child")
+        return hasher.finalize()
+
+    }
 
     var body: some View {
         HStack(spacing: 8) {
@@ -110,14 +130,18 @@ struct CommandsOverlayItem: View {
                             view
 
                         } else {
-                            SearchResultLabel(labelName: commandData.title, textToMatch: textToMatch ?? "", selected: selected)
+                            createHighlightText(title: commandData.title, textToMatch: textToMatch ?? "")
+//                            SearchResultLabel(labelName: commandData.title, textToMatch: textToMatch ?? "", selected: selected)
                         }
                     case .toggle(let isOn):
                         ToggleView(command: commandData, textToMatch: textToMatch, selected: selected, isOn: isOn)
+                            
                         //                    SearchResultLabel(labelName: command.title + (isOn.wrappedValue ? " (On)" : " (Off)"), textToMatch: textToMatch ?? "", selected: selected)
                     }
                 case .menu(let menuData):
-                    SearchResultLabel(labelName: menuData.id, textToMatch: textToMatch ?? "", selected: selected)
+                    createHighlightText(title: menuData.id, textToMatch: textToMatch ?? "")
+
+//                    SearchResultLabel(labelName: menuData.id, textToMatch: textToMatch ?? "", selected: selected)
                 }
 
             }
@@ -133,6 +157,16 @@ struct CommandsOverlayItem: View {
 //            }
         }
         .frame(maxWidth: .infinity)
+    }
+
+    func createHighlightText(title: String, textToMatch: String) -> Text {
+
+        let range = title.range(of: textToMatch, options: .caseInsensitive)
+        if let range {
+            return Text(title[..<range.lowerBound]) + Text(title[range]).fontWeight(.bold) + Text(title[range.upperBound...])
+        }
+
+        return Text(title)
     }
 }
 

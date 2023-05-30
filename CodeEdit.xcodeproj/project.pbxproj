@@ -261,6 +261,8 @@
 		6C0BD0782A1EB1C0001C3D5E /* CommandIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0BD0772A1EB1C0001C3D5E /* CommandIDs.swift */; };
 		6C0BD07A2A1EB1DD001C3D5E /* Command+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0BD0792A1EB1DC001C3D5E /* Command+Environment.swift */; };
 		6C0D0C6829E861B000AE4D3F /* SettingsSidebarFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D0C6729E861B000AE4D3F /* SettingsSidebarFix.swift */; };
+		6C0F8EE42A255CDC0048892C /* KeybindingsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0F8EE32A255CDC0048892C /* KeybindingsSettingsView.swift */; };
+		6C0F8EE82A255E2C0048892C /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 6C0F8EE72A255E2C0048892C /* KeyboardShortcuts */; };
 		6C147C4029A328BC0089B630 /* SplitViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C147C3F29A328560089B630 /* SplitViewData.swift */; };
 		6C147C4129A328BF0089B630 /* TabGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C147C3E29A3281D0089B630 /* TabGroup.swift */; };
 		6C147C4229A328C10089B630 /* TabGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C147C3D29A3281D0089B630 /* TabGroupData.swift */; };
@@ -685,6 +687,7 @@
 		6C0BD0772A1EB1C0001C3D5E /* CommandIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandIDs.swift; sourceTree = "<group>"; };
 		6C0BD0792A1EB1DC001C3D5E /* Command+Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command+Environment.swift"; sourceTree = "<group>"; };
 		6C0D0C6729E861B000AE4D3F /* SettingsSidebarFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSidebarFix.swift; sourceTree = "<group>"; };
+		6C0F8EE32A255CDC0048892C /* KeybindingsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeybindingsSettingsView.swift; sourceTree = "<group>"; };
 		6C147C3D29A3281D0089B630 /* TabGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGroupData.swift; sourceTree = "<group>"; };
 		6C147C3E29A3281D0089B630 /* TabGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGroup.swift; sourceTree = "<group>"; };
 		6C147C3F29A328560089B630 /* SplitViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewData.swift; sourceTree = "<group>"; };
@@ -813,6 +816,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F2EB1E292FB954004A9BDE /* Sparkle in Frameworks */,
+				6C0F8EE82A255E2C0048892C /* KeyboardShortcuts in Frameworks */,
 				6CC81CEC2A16BB8F00487975 /* CodeEditTextView in Frameworks */,
 				6C147C4529A329350089B630 /* OrderedCollections in Frameworks */,
 				5879828A292ED15F0085B254 /* SwiftTerm in Frameworks */,
@@ -2200,6 +2204,7 @@
 			isa = PBXGroup;
 			children = (
 				B6CF632729E5418A0085880A /* Models */,
+				6C0F8EE32A255CDC0048892C /* KeybindingsSettingsView.swift */,
 			);
 			path = Keybindings;
 			sourceTree = "<group>";
@@ -2394,6 +2399,7 @@
 				6C81916A29B41DD300B75C92 /* DequeModule */,
 				6CDEFC9529E22C2700B7C684 /* Introspect */,
 				6CC81CEB2A16BB8F00487975 /* CodeEditTextView */,
+				6C0F8EE72A255E2C0048892C /* KeyboardShortcuts */,
 			);
 			productName = CodeEdit;
 			productReference = B658FB2C27DA9E0F00EA4DBD /* CodeEdit.app */;
@@ -2485,6 +2491,7 @@
 				6C147C4329A329350089B630 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				6CDEFC9429E22C2700B7C684 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				6CC81CEA2A16BB8F00487975 /* XCRemoteSwiftPackageReference "CodeEditTextView" */,
+				6C0F8EE62A255E2C0048892C /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = B658FB2D27DA9E0F00EA4DBD /* Products */;
 			projectDirPath = "";
@@ -2793,6 +2800,7 @@
 				B6F0517029D9E36800D72287 /* LocationsSettingsView.swift in Sources */,
 				587B9E6329301D8F00AC7927 /* GitLabAccount.swift in Sources */,
 				285FEC7027FE4B9800E57D53 /* ProjectNavigatorTableViewCell.swift in Sources */,
+				6C0F8EE42A255CDC0048892C /* KeybindingsSettingsView.swift in Sources */,
 				6CB9144B29BEC7F100BC47F2 /* (null) in Sources */,
 				587B9E7429301D8F00AC7927 /* URL+URLParameters.swift in Sources */,
 				581BFB6B2926431000D251EC /* RecentProjectItem.swift in Sources */,
@@ -3844,6 +3852,14 @@
 				version = 2.3.0;
 			};
 		};
+		6C0F8EE62A255E2C0048892C /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		6C147C4329A329350089B630 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
@@ -3895,6 +3911,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 58F2EB1C292FB954004A9BDE /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
+		};
+		6C0F8EE72A255E2C0048892C /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C0F8EE62A255E2C0048892C /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 		6C147C4429A329350089B630 /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -21,10 +21,19 @@
     {
       "identity" : "codeedittextview",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CodeEditApp/CodeEditTextView.git",
+      "location" : "https://github.com/CodeEditApp/CodeEditTextView",
       "state" : {
         "revision" : "1dfd0b535e4d80fd8037298a30020bbfd7b5fb9c",
         "version" : "0.6.3"
+      }
+    },
+    {
+      "identity" : "keyboardshortcuts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
+      "state" : {
+        "revision" : "018e445b340dac78dfc2a4c97c45d9571507c3b5",
+        "version" : "1.11.0"
       }
     },
     {

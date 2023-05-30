@@ -25,6 +25,7 @@ struct CommandMenu<Content: View>: View {
 
                 content()
                     .environment(\.currentView, .menubar)
+                    .environment(\.commandMenu, menu)
                     .variadic { menubarChildren in
 
                         Menu(menu.rawValue) {

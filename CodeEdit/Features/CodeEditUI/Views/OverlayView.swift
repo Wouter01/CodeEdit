@@ -51,6 +51,8 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         self.optionRowHeight = optionRowHeight
     }
 
+    @State var tableview: NSTableView?
+
     var body: some View {
         VStack(spacing: 0) {
             VStack {
@@ -103,12 +105,19 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
                             .foregroundColor(.secondary)
                             .frame(maxWidth: hasPreview ? 272 : .infinity, maxHeight: .infinity)
                     } else {
-                        NSTableViewWrapper(
-                            data: options,
-                            rowHeight: optionRowHeight,
-                            selection: $selection,
-                            itemView: rowViewBuilder
-                        )
+                        List(selection: $selection) {
+                            ForEach(options, id: \.self) { option in
+                                rowViewBuilder(option, true)
+                            }
+                        }
+                        .introspectTableView {
+                            self.tableview = $0
+//                            print($0)
+                            ($0.subviews as? [NSTableRowView])?.forEach { $0.isEmphasized = true }
+                        }
+                        .onChange(of: selection) { _ in
+                            (tableview?.subviews as? [NSTableRowView])?.forEach { $0.isEmphasized = true }
+                        }
                         .frame(maxWidth: hasPreview && previewVisible ? 272 : .infinity)
                     }
                     if hasPreview && previewVisible {

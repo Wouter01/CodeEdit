@@ -24,7 +24,7 @@ struct SettingsView: View {
         .init(.theme, baseColor: .pink, icon: .system("paintbrush.fill")),
         .init(.textEditing, baseColor: .blue, icon: .system("pencil.line")),
         .init(.terminal, baseColor: .blue, icon: .system("terminal.fill")),
-//        .init(.keybindings, baseColor: .gray, icon: .system("keyboard.fill")),
+        .init(.keybindings, baseColor: .gray, icon: .system("keyboard.fill")),
         .init(.sourceControl, baseColor: .blue, icon: .symbol("vault")),
 //        .init(.components, baseColor: .blue, icon: .system("puzzlepiece.fill")),
         .init(.location, baseColor: .green, icon: .system("externaldrive.fill")),
@@ -72,6 +72,8 @@ struct SettingsView: View {
                     TextEditingSettingsView()
                 case .terminal:
                     TerminalSettingsView()
+                case .keybindings:
+                    KeybindingsSettingsView()
                 case .sourceControl:
                     SourceControlSettingsView()
                 case .location:
