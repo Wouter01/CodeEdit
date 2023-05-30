@@ -9,18 +9,16 @@ import Foundation
 import SwiftUI
 
 struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hashable>: View {
-    @ViewBuilder let rowViewBuilder: ((Option, Bool) -> RowView)
-    @ViewBuilder let previewViewBuilder: ((Option) -> PreviewView)?
-
-    var options: [Option]
-    @Binding var text: String
-
     @State var selection: Option?
     @State var previewVisible: Bool = true
 
     let title: String
     let image: Image
-    let hasPreview: Bool
+    var options: [Option]
+    @Binding var text: String
+    let content: ((Option, Bool) -> RowView)
+    let preview: ((Option) -> PreviewView)?
+
     let onRowClick: ((Option) -> Void)
     let onClose: (() -> Void)
     let alwaysShowOptions: Bool
@@ -42,16 +40,23 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         self.image = image
         self.options = options
         self._text = text
-        self.rowViewBuilder = content
-        self.previewViewBuilder = preview
+        self.content = content
+        self.preview = preview
         self.onRowClick = onRowClick
         self.onClose = onClose
-        self.hasPreview = preview != nil
         self.alwaysShowOptions = alwaysShowOptions
         self.optionRowHeight = optionRowHeight
     }
 
-    @State var tableview: NSTableView?
+    var hasPreview: Bool {
+        preview != nil
+    }
+
+    private enum Focus {
+        case list, preview
+    }
+
+    @FocusState private var focusState: Focus?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -62,25 +67,27 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
                         .foregroundColor(.secondary)
                         .padding(.leading, 1)
                         .padding(.trailing, 10)
-                    TextField(title, text: $text)
-                        .font(.system(size: 20, weight: .light, design: .default))
-                        .textFieldStyle(.plain)
-                        .onSubmit {
-                            if let selection {
-                                onRowClick(selection)
-                            } else {
-                                NSSound.beep()
+                    OverlayTextView(placeholder: title, text: $text) { event in
+                        switch (event.key, event.modifiers) {
+                        case (.escape, []):
+                            onClose()
+                            return .drop
+                        case (.return, []), (.upArrow, _), (.downArrow, _):
+                            return .passthrough
+                        default:
+                            return .sendToTextView
+                        }
+                    }
+                    .frame(height: 22)
+                    .task(id: options) {
+                        if options.isEmpty {
+                            selection = nil
+                        } else {
+                            if !options.isEmpty {
+                                selection = options.first
                             }
                         }
-                        .task(id: options) {
-                            if options.isEmpty {
-                                selection = nil
-                            } else {
-                                if !options.isEmpty {
-                                    selection = options.first
-                                }
-                            }
-                        }
+                    }
                     if hasPreview {
                         PreviewToggle(previewVisible: $previewVisible)
                             .onTapGesture {
@@ -107,18 +114,21 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
                     } else {
                         List(selection: $selection) {
                             ForEach(options, id: \.self) { option in
-                                rowViewBuilder(option, true)
+                                content(option, true)
                             }
                         }
-                        .introspectTableView {
-                            self.tableview = $0
-//                            print($0)
-                            ($0.subviews as? [NSTableRowView])?.forEach { $0.isEmphasized = true }
-                        }
-                        .onChange(of: selection) { _ in
-                            (tableview?.subviews as? [NSTableRowView])?.forEach { $0.isEmphasized = true }
-                        }
+                        .focused($focusState, equals: .list)
                         .frame(maxWidth: hasPreview && previewVisible ? 272 : .infinity)
+                        .contextMenu(forSelectionType: Option.self) { _ in
+                            EmptyView()
+                        } primaryAction: { selection in
+                            if let selection = selection.first {
+                                onRowClick(selection)
+                            } else {
+                                NSSound.beep()
+                            }
+                        }
+
                     }
                     if hasPreview && previewVisible {
                         Divider()
@@ -126,8 +136,9 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
                             Spacer()
                                 .frame(maxWidth: .infinity)
                         } else {
-                            if let selection, let previewViewBuilder {
-                                previewViewBuilder(selection)
+                            if let selection, let preview {
+                                preview(selection)
+                                    .focused($focusState, equals: .preview)
                                     .frame(maxWidth: .infinity)
                                     .transition(.move(edge: .trailing))
                             } else {
@@ -139,8 +150,9 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
                 }
             }
         }
-        .overlay {
-            keyHandlers
+        .defaultFocus($focusState, .list)
+        .onChange(of: options) { _ in
+            focusState = .list
         }
         .background(EffectView(.sidebar, blendingMode: .behindWindow))
         .edgesIgnoringSafeArea(.vertical)
@@ -151,41 +163,6 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         )
     }
 
-    @ViewBuilder
-    var keyHandlers: some View {
-        Button {
-            onClose()
-        } label: { EmptyView() }
-            .opacity(0)
-            .keyboardShortcut(.escape, modifiers: [])
-            .accessibilityLabel("Close Overlay")
-        Button {
-            guard selection != options.first else {
-                return
-            }
-            if let selection, let index = options.firstIndex(of: selection) {
-                self.selection = options[index-1]
-            } else {
-                selection = options.first
-            }
-        } label: { EmptyView() }
-            .opacity(0)
-            .keyboardShortcut(.upArrow, modifiers: [])
-            .accessibilityLabel("Select Up")
-        Button {
-            guard selection != options.last else {
-                return
-            }
-            if let selection, let index = options.firstIndex(of: selection) {
-                self.selection = options[index+1]
-            } else {
-                selection = options.first
-            }
-        } label: { EmptyView() }
-            .opacity(0)
-            .keyboardShortcut(.downArrow, modifiers: [])
-            .accessibilityLabel("Select Down")
-    }
 }
 
 struct PreviewToggle: View {

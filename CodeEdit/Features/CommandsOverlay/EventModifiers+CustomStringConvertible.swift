@@ -34,3 +34,34 @@ extension EventModifiers: CustomStringConvertible {
         return symbols.joined()
     }
 }
+
+extension EventModifiers {
+    init(_ nsEventModifiers: NSEvent.ModifierFlags) {
+        let modifiers = nsEventModifiers.intersection(.deviceIndependentFlagsMask)
+        self = []
+
+        if modifiers.contains(.control) {
+            self.insert(.control)
+        }
+
+        if modifiers.contains(.option) {
+            self.insert(.option)
+        }
+
+        if modifiers.contains(.shift) {
+            self.insert(.shift)
+        }
+
+        if modifiers.contains(.command) {
+            self.insert(.command)
+        }
+
+        if modifiers.contains(.function) {
+            self.insert(.function)
+        }
+
+        if modifiers.contains(.capsLock) {
+            self.insert(.capsLock)
+        }
+    }
+}
