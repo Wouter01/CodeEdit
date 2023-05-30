@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CommandData: Hashable, Identifiable {
 
-    let kind: Kind
+    let kind: CommandKind
     let keyboardShortcut: KeyboardShortcut?
     let visibility: Visibility
     let id: CommandID
@@ -25,11 +25,6 @@ struct CommandData: Hashable, Identifiable {
 
         static let menubar = Visibility(rawValue: 1 << 0)
         static let commandPalette = Visibility(rawValue: 1 << 1)
-    }
-
-    enum Kind {
-        case button(action: () -> Void)
-        case toggle(isOn: Binding<Bool>)
     }
 
     static func == (lhs: CommandData, rhs: CommandData) -> Bool {
@@ -56,7 +51,7 @@ struct MenuData: Hashable {
     let children: [CommandData]
 }
 
-enum MenuBarIem: Hashable, Identifiable {
+enum MenuBarItem: Hashable, Identifiable {
     case command(CommandData)
     case menu(MenuData)
 

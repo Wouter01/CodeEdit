@@ -299,6 +299,7 @@
 		6C82D6C629C012AD00495C54 /* NSApp+openWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82D6C529C012AD00495C54 /* NSApp+openWindow.swift */; };
 		6C85A9952A26BA6000C648DF /* CommandPaletteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85A9942A26BA6000C648DF /* CommandPaletteItem.swift */; };
 		6C85A9972A26BA7100C648DF /* CommandPaletteToggleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85A9962A26BA7100C648DF /* CommandPaletteToggleItem.swift */; };
+		6C85A99B2A26C00A00C648DF /* CommandKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C85A99A2A26C00A00C648DF /* CommandKind.swift */; };
 		6C91D57229B176FF0059A90D /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C91D57129B176FF0059A90D /* TabManager.swift */; };
 		6C97EBCC2978760400302F95 /* AcknowledgementsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */; };
 		6CAAF68A29BC9C2300A1F48A /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -725,6 +726,7 @@
 		6C82D6C529C012AD00495C54 /* NSApp+openWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSApp+openWindow.swift"; sourceTree = "<group>"; };
 		6C85A9942A26BA6000C648DF /* CommandPaletteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPaletteItem.swift; sourceTree = "<group>"; };
 		6C85A9962A26BA7100C648DF /* CommandPaletteToggleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPaletteToggleItem.swift; sourceTree = "<group>"; };
+		6C85A99A2A26C00A00C648DF /* CommandKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandKind.swift; sourceTree = "<group>"; };
 		6C91D57129B176FF0059A90D /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 		6C97EBCB2978760400302F95 /* AcknowledgementsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsWindowController.swift; sourceTree = "<group>"; };
 		6CAB1DC22A1DBAD700129120 /* CommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandManager.swift; sourceTree = "<group>"; };
@@ -1964,6 +1966,7 @@
 				6C0BD0752A1EB10C001C3D5E /* CommandLocation.swift */,
 				6C02D0682A1E2E3800C7ED29 /* View+CommandVisibility.swift */,
 				6C02D0652A1E2D9C00C7ED29 /* CommandData.swift */,
+				6C85A99A2A26C00A00C648DF /* CommandKind.swift */,
 				6C02D0622A1E2D6300C7ED29 /* EventModifiers+CustomStringConvertible.swift */,
 			);
 			path = CommandsOverlay;
@@ -2935,6 +2938,7 @@
 				B6E41C7429DD40010088F9F4 /* View+HideSidebarToggle.swift in Sources */,
 				58822532292C280D00E83CDE /* StatusBarViewModel.swift in Sources */,
 				043BCF03281DA18A000AC47C /* WorkspaceDocument+Search.swift in Sources */,
+				6C85A99B2A26C00A00C648DF /* CommandKind.swift in Sources */,
 				58822527292C280D00E83CDE /* StatusBarIndentSelector.swift in Sources */,
 				587B9E9629301D8F00AC7927 /* BitBucketRepositories.swift in Sources */,
 				5878DAA6291AE76700DD95A3 /* OpenQuicklyOverlayPreviewView.swift in Sources */,

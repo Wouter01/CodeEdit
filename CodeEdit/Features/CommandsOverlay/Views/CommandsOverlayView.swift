@@ -37,7 +37,7 @@ struct CommandsOverlayView: View {
             .sorted(using: KeyPathComparator(\.title))
     }
 
-    var availableItems: [MenuBarIem] {
+    var availableItems: [MenuBarItem] {
         if let chosenMenu {
             return chosenMenu.children.map { .command($0) }
         }
@@ -84,7 +84,7 @@ struct CommandsOverlayView: View {
 
 
 struct CommandsOverlayItem: View {
-    let command: MenuBarIem
+    let command: MenuBarItem
     let textToMatch: String
 
     var body: some View {

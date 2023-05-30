@@ -10,7 +10,7 @@ import SwiftUI
 struct Command<AltContent: View>: View {
     var id: CommandID
 
-    var kind: CommandData.Kind
+    var kind: CommandKind
 
     var altContent: () -> AltContent
 
