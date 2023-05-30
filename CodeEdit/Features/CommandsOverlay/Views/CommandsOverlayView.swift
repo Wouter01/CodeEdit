@@ -52,16 +52,14 @@ struct CommandsOverlayView: View {
     }
 
     var body: some View {
-        OverlayView<CommandsOverlayItem, EmptyView, MenuBarIem>(
+        OverlayView(
             title: "Commands",
             image: Image(systemName: "magnifyingglass"),
             options: availableItems,
             text: $state.commandQuery,
             alwaysShowOptions: true
-        ) { command in
-
-            CommandsOverlayItem(command: command, textToMatch: state.commandQuery)
-
+        ) {
+            CommandsOverlayItem(command: $0, textToMatch: state.commandQuery)
         } onRowClick: {
             switch $0 {
             case .command(let command):

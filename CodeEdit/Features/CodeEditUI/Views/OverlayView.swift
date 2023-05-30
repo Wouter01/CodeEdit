@@ -25,7 +25,6 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
 
     @FocusState private var focusState: Focus?
 
-
     var hasPreview: Bool {
         preview != nil
     }
@@ -34,7 +33,6 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         case list, preview
     }
 
-
     init(
         title: String,
         image: Image,
@@ -42,7 +40,7 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         text: Binding<String>,
         alwaysShowOptions: Bool = false,
         content: @escaping ((Option) -> RowView),
-        preview: ((Option) -> PreviewView)? = nil,
+        preview: @escaping (Option) -> PreviewView,
         onRowClick: @escaping ((Option) -> Void),
         onClose: @escaping () -> Void
     ) {
@@ -52,6 +50,27 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         self._text = text
         self.content = content
         self.preview = preview
+        self.onRowClick = onRowClick
+        self.onClose = onClose
+        self.alwaysShowOptions = alwaysShowOptions
+    }
+
+    init(
+        title: String,
+        image: Image,
+        options: [Option],
+        text: Binding<String>,
+        alwaysShowOptions: Bool = false,
+        content: @escaping ((Option) -> RowView),
+        onRowClick: @escaping ((Option) -> Void),
+        onClose: @escaping () -> Void
+    ) where PreviewView == EmptyView {
+        self.title = title
+        self.image = image
+        self.options = options
+        self._text = text
+        self.content = content
+        self.preview = nil
         self.onRowClick = onRowClick
         self.onClose = onClose
         self.alwaysShowOptions = alwaysShowOptions
