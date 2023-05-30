@@ -30,7 +30,7 @@ struct OverlayTextView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSViewType {
         let textfield = MyTextField()
         textfield.textContainer?.maximumNumberOfLines = 1
-        textfield.textContainer?.replaceLayoutManager(LayoutManager1())
+        textfield.textContainer?.replaceLayoutManager(LayoutManager())
         textfield.font = font
         textfield.backgroundColor = .clear
         textfield.placeholderString = placeholder
@@ -48,10 +48,8 @@ struct OverlayTextView: NSViewRepresentable {
     func updateNSView(_ nsView: NSViewType, context: Context) {
 
         if context.environment.controlActiveState == .key && context.coordinator.monitor == nil {
-            print("Adding monitor...")
             context.coordinator.monitor = createMonitor(nsView)
         } else if let monitor = context.coordinator.monitor, context.environment.controlActiveState != .key {
-            print("Removing monitor...")
             NSEvent.removeMonitor(monitor)
             context.coordinator.monitor = nil
         }
@@ -62,10 +60,10 @@ struct OverlayTextView: NSViewRepresentable {
     }
 
     class Coordinator {
-        var monitor: Any?
+        fileprivate var monitor: Any?
     }
 
-    func createMonitor(_ textview: MyTextField) -> Any? {
+    private func createMonitor(_ textview: MyTextField) -> Any? {
         NSEvent.addLocalMonitorForEvents(matching: [.keyDown]) { event in
             let shortcut = KeyboardShortcut(
                 KeyEquivalent(Character(event.characters!)),
@@ -107,7 +105,7 @@ struct OverlayTextView: NSViewRepresentable {
         }
     }
 
-    private final class LayoutManager1: NSLayoutManager {
+    private final class LayoutManager: NSLayoutManager {
         override func fillBackgroundRectArray(
             _ rectArray: UnsafePointer<NSRect>,
             count rectCount: Int,

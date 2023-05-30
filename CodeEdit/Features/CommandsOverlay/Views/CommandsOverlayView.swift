@@ -57,8 +57,7 @@ struct CommandsOverlayView: View {
             image: Image(systemName: "magnifyingglass"),
             options: availableItems,
             text: $state.commandQuery,
-            alwaysShowOptions: true,
-            optionRowHeight: 30
+            alwaysShowOptions: true
         ) { command, selected in
 
             CommandsOverlayItem(command: command, textToMatch: state.commandQuery, selected: selected)

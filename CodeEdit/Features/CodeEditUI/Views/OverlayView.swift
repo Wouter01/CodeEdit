@@ -22,7 +22,18 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
     let onRowClick: ((Option) -> Void)
     let onClose: (() -> Void)
     let alwaysShowOptions: Bool
-    let optionRowHeight: CGFloat
+
+    @FocusState private var focusState: Focus?
+
+
+    var hasPreview: Bool {
+        preview != nil
+    }
+
+    private enum Focus {
+        case list, preview
+    }
+
 
     init(
         title: String,
@@ -30,7 +41,6 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         options: [Option],
         text: Binding<String>,
         alwaysShowOptions: Bool = false,
-        optionRowHeight: CGFloat = 30,
         content: @escaping ((Option, Bool) -> RowView),
         preview: ((Option) -> PreviewView)? = nil,
         onRowClick: @escaping ((Option) -> Void),
@@ -45,18 +55,7 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         self.onRowClick = onRowClick
         self.onClose = onClose
         self.alwaysShowOptions = alwaysShowOptions
-        self.optionRowHeight = optionRowHeight
     }
-
-    var hasPreview: Bool {
-        preview != nil
-    }
-
-    private enum Focus {
-        case list, preview
-    }
-
-    @FocusState private var focusState: Focus?
 
     var body: some View {
         VStack(spacing: 0) {
