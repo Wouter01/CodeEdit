@@ -16,7 +16,7 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
     let image: Image
     var options: [Option]
     @Binding var text: String
-    let content: ((Option, Bool) -> RowView)
+    let content: (Option) -> RowView
     let preview: ((Option) -> PreviewView)?
 
     let onRowClick: ((Option) -> Void)
@@ -41,7 +41,7 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
         options: [Option],
         text: Binding<String>,
         alwaysShowOptions: Bool = false,
-        content: @escaping ((Option, Bool) -> RowView),
+        content: @escaping ((Option) -> RowView),
         preview: ((Option) -> PreviewView)? = nil,
         onRowClick: @escaping ((Option) -> Void),
         onClose: @escaping () -> Void
@@ -111,11 +111,8 @@ struct OverlayView<RowView: View, PreviewView: View, Option: Identifiable & Hash
                             .foregroundColor(.secondary)
                             .frame(maxWidth: hasPreview ? 272 : .infinity, maxHeight: .infinity)
                     } else {
-                        List(selection: $selection) {
-                            ForEach(options, id: \.self) { option in
-                                content(option, true)
-                            }
-                        }
+
+                        List(options, id: \.self, selection: $selection, rowContent: content)
                         .focused($focusState, equals: .list)
                         .frame(maxWidth: hasPreview && previewVisible ? 272 : .infinity)
                         .contextMenu(forSelectionType: Option.self) { _ in
