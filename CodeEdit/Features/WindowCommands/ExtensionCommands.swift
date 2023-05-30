@@ -14,7 +14,7 @@ struct ExtensionCommands: Commands {
     @Environment(\.openWindow) var openWindow
 
     var body: some Commands {
-        CommandMenu("Extensions") {
+        SwiftUI.CommandMenu("Extensions") {
             Button("Open Extensions Window") {
                 openWindow(id: SceneID.extensions.rawValue)
             }
