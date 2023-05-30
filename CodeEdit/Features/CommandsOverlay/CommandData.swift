@@ -17,7 +17,7 @@ struct CommandData: Hashable, Identifiable {
     var view: _VariadicView.Children.Element?
 
     var title: String {
-        id.title
+        id.paletteTitle
     }
 
     struct Visibility: OptionSet {

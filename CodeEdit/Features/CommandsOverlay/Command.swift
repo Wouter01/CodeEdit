@@ -51,9 +51,9 @@ struct Command<AltContent: View>: View {
                 Group {
                     switch kind {
                     case .button(let action):
-                        Button(id.title, action: action)
+                        Button(id.menubarTitle, action: action)
                     case .toggle(let isOn):
-                        Toggle(id.title, isOn: isOn)
+                        Toggle(id.menubarTitle, isOn: isOn)
                     }
                 }
                 .task {

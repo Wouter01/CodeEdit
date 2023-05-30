@@ -53,22 +53,19 @@ struct MainCommands: Commands {
                     Command(.init(id: "theme\(theme.id)", title: theme.displayName)) {
                         themeModel.selectedLightTheme = theme
                     } altContent: {
-                        
                         ThemeSettingsThemeRow(theme: .constant(theme), active: themeModel.selectedLightTheme == theme) {
                             themeModel.selectedLightTheme = $0
                         }
                         .onHover { _ in
                             print("Set to theme 1")
                         }
-                       
                     }
                 }
             }
-
         }
 
         CommandGroup(replacing: .appSettings) {
-            Button("Settings...") {
+            Command(.settings) {
                 openWindow(id: "settings")
             }
             .keyboardShortcut(",")
