@@ -221,22 +221,22 @@ final class CodeEditWindowController: NSWindowController, NSToolbarDelegate, Obs
     }
 
     @IBAction func openCommandsOverlay(_ sender: Any) {
-        if let workspace, let state = workspace.commandsOverlayState {
+        if let workspace {
             if let commandsOverlayPanel {
                 if commandsOverlayPanel.isKeyWindow {
                     commandsOverlayPanel.close()
-                    state.reset()
+
                     return
                 } else {
-                    state.reset()
+
                     window?.addChildWindow(commandsOverlayPanel, ordered: .above)
                     commandsOverlayPanel.makeKeyAndOrderFront(self)
                 }
             } else {
-                state.updateMenuBarCommands()
+
                 let panel = OverlayPanel()
                 self.commandsOverlayPanel = panel
-                let contentView = CommandsOverlayView(state: state, closeOverlay: panel.close)
+                let contentView = CommandsOverlayView(closeOverlay: panel.close)
                 panel.contentView = NSHostingView(rootView: SettingsInjector { contentView })
                 window?.addChildWindow(panel, ordered: .above)
                 panel.makeKeyAndOrderFront(self)

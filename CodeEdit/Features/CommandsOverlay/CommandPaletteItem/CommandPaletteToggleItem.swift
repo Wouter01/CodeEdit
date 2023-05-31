@@ -20,6 +20,6 @@ struct CommandPaletteToggleItem: CommandPaletteItem {
     var body: some View {
         (createHighlightText() + Text(isOn ? " (On)" : " (Off)"))
             .allowsTightening(false)
-            
+            .frame(height: 30)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 extension KeyEquivalent: Equatable {
     public static func == (lhs: KeyEquivalent, rhs: KeyEquivalent) -> Bool {
@@ -42,17 +43,20 @@ struct OverlayTextView: NSViewRepresentable {
             textfield.window?.makeFirstResponder(old)
         }
 
+        context.coordinator.keywindowWatcher = NSApp.publisher(for: \.keyWindow).sink {
+            if $0 == textfield.window && $0 != nil {
+                context.coordinator.monitor = createMonitor(textfield)
+            } else if let monitor = context.coordinator.monitor {
+                NSEvent.removeMonitor(monitor)
+                context.coordinator.monitor = nil
+
+            }
+        }
+
         return textfield
     }
 
     func updateNSView(_ nsView: NSViewType, context: Context) {
-
-        if context.environment.controlActiveState == .key && context.coordinator.monitor == nil {
-            context.coordinator.monitor = createMonitor(nsView)
-        } else if let monitor = context.coordinator.monitor, context.environment.controlActiveState != .key {
-            NSEvent.removeMonitor(monitor)
-            context.coordinator.monitor = nil
-        }
     }
 
     func makeCoordinator() -> Coordinator {
@@ -60,49 +64,59 @@ struct OverlayTextView: NSViewRepresentable {
     }
 
     class Coordinator {
+
         fileprivate var monitor: Any?
-    }
 
-    private func createMonitor(_ textview: MyTextField) -> Any? {
-        NSEvent.addLocalMonitorForEvents(matching: [.keyDown]) { event in
-            let shortcut = KeyboardShortcut(
-                KeyEquivalent(Character(event.characters!)),
-                modifiers: EventModifiers(event.modifierFlags)
-            )
+        var keywindowWatcher: AnyCancellable?
 
-            switch shortcut {
-            case .init("a"):
-                textview.selectAll(nil)
-                return nil
-            case .init("c"):
-                textview.copy(nil)
-                return nil
-            case .init("x"):
-                textview.cut(nil)
-                return nil
-            case .init("v"):
-                textview.paste(nil)
-                return nil
-            default:
-                break
-            }
-
-            switch filterKeyEvents(shortcut) {
-            case .drop:
-                return nil
-            case .passthrough:
-                return event
-            case .sendToTextView:
-                if let window = textview.window {
-                    let old = window.firstResponder
-                    window.makeFirstResponder(textview)
-                    textview.interpretKeyEvents([event])
-                    window.makeFirstResponder(old)
-                    return nil
-                }
-                return event
+        deinit {
+            if let monitor {
+                NSEvent.removeMonitor(monitor)
             }
         }
+    }
+
+        private func createMonitor(_ textview: MyTextField) -> Any? {
+            NSEvent.addLocalMonitorForEvents(matching: [.keyDown]) { event in
+                let shortcut = KeyboardShortcut(
+                    KeyEquivalent(Character(event.characters!)),
+                    modifiers: EventModifiers(event.modifierFlags)
+                )
+
+                switch shortcut {
+                case .init("a"):
+                    textview.selectAll(nil)
+                    return nil
+                case .init("c"):
+                    textview.copy(nil)
+                    return nil
+                case .init("x"):
+                    textview.cut(nil)
+                    return nil
+                case .init("v"):
+                    textview.paste(nil)
+                    return nil
+                default:
+                    break
+                }
+
+                switch filterKeyEvents(shortcut) {
+                case .drop:
+                    return nil
+                case .passthrough:
+                    return event
+                case .sendToTextView:
+                    if let window = textview.window {
+                        let old = window.firstResponder
+                        window.makeFirstResponder(textview)
+                        textview.interpretKeyEvents([event])
+                        window.makeFirstResponder(old)
+                        return nil
+                    }
+                    return event
+                }
+            }
+
     }
 
     private final class LayoutManager: NSLayoutManager {

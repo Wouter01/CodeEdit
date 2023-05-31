@@ -14,9 +14,6 @@ struct CommandsOverlayView: View {
     private var colorScheme: ColorScheme
 
     @ObservedObject
-    private var state: CommandsOverlayViewModel
-
-    @ObservedObject
     private var manager: CommandManager = .shared
 
     @State
@@ -24,12 +21,13 @@ struct CommandsOverlayView: View {
 
     private let closeOverlay: () -> Void
 
-    init(state: CommandsOverlayViewModel, closeOverlay: @escaping () -> Void) {
-        self.state = state
+    init(closeOverlay: @escaping () -> Void) {
         self.closeOverlay = closeOverlay
     }
 
     @State var chosenMenu: MenuData?
+
+    @State var searchText = ""
 
     var shownCommands: [CommandData] {
         manager.commands
@@ -42,6 +40,7 @@ struct CommandsOverlayView: View {
             return chosenMenu.children.map { .command($0) }
         }
         return manager.commands
+            .filter { searchText.isEmpty || $0.title.contains(searchText) }
             .filter { $0.visibility.contains(.commandPalette) }
             .filter { $0.parentMenu == nil }
             .sorted(using: KeyPathComparator(\.title))
@@ -56,10 +55,10 @@ struct CommandsOverlayView: View {
             title: "Commands",
             image: Image(systemName: "magnifyingglass"),
             options: availableItems,
-            text: $state.commandQuery,
+            text: $searchText,
             alwaysShowOptions: true
         ) {
-            CommandsOverlayItem(command: $0, textToMatch: state.commandQuery)
+            CommandsOverlayItem(command: $0, textToMatch: searchText)
         } onRowClick: {
             switch $0 {
             case .command(let command):
@@ -74,9 +73,6 @@ struct CommandsOverlayView: View {
             }
         } onClose: {
             closeOverlay()
-        }
-        .onReceive(state.$commandQuery.debounce(for: 0.05, scheduler: DispatchQueue.main)) { _ in
-            state.fetchMatchingCommands(filter: state.commandQuery)
         }
     }
 }
