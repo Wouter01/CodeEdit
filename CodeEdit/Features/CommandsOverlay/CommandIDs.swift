@@ -32,9 +32,5 @@ extension CommandID {
     static let testToggle = CommandID(id: "testToggle", title: "testToggle")
 
     static let settings = CommandID(id: "settings", menubarTitle: "Settings...", paletteTitle: "Open Settings")
-
-}
-
-enum CommandMenuID: String {
-    case themes = "Themes"
+    static let themes = CommandID(id: "themesMenu", menubarTitle: "Themes", paletteTitle: "Choose Theme")
 }

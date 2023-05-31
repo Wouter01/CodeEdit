@@ -52,7 +52,7 @@ struct CommandsOverlayView: View {
 
     var body: some View {
         OverlayView(
-            title: "Commands",
+            title: chosenMenu?.id.paletteTitle ?? "Commands",
             image: Image(systemName: "magnifyingglass"),
             options: availableItems,
             text: $searchText,
@@ -102,7 +102,7 @@ struct CommandsOverlayItem: View {
                         
                     }
                 case .menu(let menuData):
-                    createHighlightText(title: menuData.id, textToMatch: textToMatch)
+                    createHighlightText(title: menuData.id.paletteTitle, textToMatch: textToMatch)
                         .allowsTightening(false)
                         .frame(height: 30)
                 }

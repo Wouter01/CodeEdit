@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CommandMenu<Content: View>: View {
-    var menu: CommandMenuID
+    var menu: CommandID
 
     var content: () -> Content
 
-    init(_ menu: CommandMenuID, @ViewBuilder content: @escaping () -> Content) {
+    init(_ menu: CommandID, @ViewBuilder content: @escaping () -> Content) {
         self.menu = menu
         self.content = content
     }
@@ -28,7 +28,7 @@ struct CommandMenu<Content: View>: View {
                     .environment(\.commandMenu, menu)
                     .variadic { menubarChildren in
 
-                        Menu(menu.rawValue) {
+                        Menu(menu.menubarTitle) {
                             menubarChildren
                         }
                         .task {
@@ -38,7 +38,7 @@ struct CommandMenu<Content: View>: View {
                                 return data
                             }
                             CommandManager.shared.registerMenu(
-                                MenuData(id: menu.rawValue, children: mappedChildren)
+                                MenuData(id: menu, children: mappedChildren)
                             )
                         }
                     }

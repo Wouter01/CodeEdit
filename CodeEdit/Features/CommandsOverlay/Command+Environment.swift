@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuEnvironmentKey: EnvironmentKey {
-    static var defaultValue: CommandMenuID?
+    static var defaultValue: CommandID?
 }
 
 struct CurrentViewEnvironmentKey: EnvironmentKey {

@@ -56,7 +56,16 @@ struct OverlayTextView: NSViewRepresentable {
         return textfield
     }
 
-    func updateNSView(_ nsView: NSViewType, context: Context) {
+    func updateNSView(_ textfield: NSViewType, context: Context) {
+        if textfield.placeholderString != placeholder {
+            textfield.placeholderString = placeholder
+            Task {
+                let old = textfield.window?.firstResponder
+                textfield.window?.makeFirstResponder(textfield)
+                textfield.window?.makeFirstResponder(old)
+            }
+        }
+
     }
 
     func makeCoordinator() -> Coordinator {

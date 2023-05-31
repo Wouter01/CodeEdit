@@ -49,12 +49,14 @@ struct MainCommands: Commands {
             Command(.testToggle, isOn: $isOn)
 
             CommandMenu(.themes) {
-                ForEach(themeModel.lightThemes, id: \.id) { theme in
+                ForEach(themeModel.darkThemes, id: \.id) { theme in
                     Command(.init(id: "theme\(theme.id)", title: theme.displayName)) {
-                        themeModel.selectedLightTheme = theme
+                        themeModel.selectedDarkTheme = theme
+                        themeModel.selectedTheme = theme
                     } altContent: {
-                        ThemeSettingsThemeRow(theme: .constant(theme), active: themeModel.selectedLightTheme == theme) {
-                            themeModel.selectedLightTheme = $0
+                        ThemeSettingsThemeRow(theme: .constant(theme), active: themeModel.selectedDarkTheme == theme) {
+                            themeModel.selectedDarkTheme = $0
+                            themeModel.selectedTheme = $0
                         }
                         .onHover { _ in
                             print("Set to theme 1")

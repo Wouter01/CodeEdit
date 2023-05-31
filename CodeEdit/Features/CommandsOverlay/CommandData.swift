@@ -13,7 +13,7 @@ struct CommandData: Hashable, Identifiable {
     let keyboardShortcut: KeyboardShortcut?
     let visibility: Visibility
     let id: CommandID
-    let parentMenu: CommandMenuID?
+    let parentMenu: CommandID?
     var view: _VariadicView.Children.Element?
 
     var title: String {
@@ -46,7 +46,7 @@ struct MenuData: Hashable {
         hasher.combine(children.map(\.id))
     }
 
-    let id: String
+    let id: CommandID
 
     let children: [CommandData]
 }
@@ -58,9 +58,9 @@ enum MenuBarItem: Hashable, Identifiable {
     var id: String {
         switch self {
         case .command(let commandData):
-            return "Command" + commandData.title
+            return "Command" + commandData.id.id
         case .menu(let menuData):
-            return "Menu" + menuData.id
+            return "Menu" + menuData.id.id
         }
     }
 }
